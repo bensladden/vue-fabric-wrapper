@@ -12,6 +12,9 @@
 	"peerDependencies": {
 		"vue": "~2"
 	},
+	"dependencies": {
+		"fabric": "^3.4.0"
+	},
 	"devDependencies": {
 		"@vue/cli-plugin-babel": "^4.0.0",
 		"@vue/cli-plugin-eslint": "^4.0.0",

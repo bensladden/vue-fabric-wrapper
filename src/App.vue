@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <fabric-canvas></fabric-canvas>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import FabricCanvas from "./components/FabricCanvas.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    FabricCanvas
   }
 };
 </script>
