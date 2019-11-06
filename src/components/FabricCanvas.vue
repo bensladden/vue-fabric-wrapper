@@ -1,11 +1,10 @@
 <template>
-  <canvas id="canvas" ref="canvas" :width="width+'px'" :height="height+'px'">
+  <canvas id="c" :width="width" :height="height">
     <slot></slot>
   </canvas>
 </template>
 
 <script>
-import Fabric from "fabric";
 let canvasEvents = [
   "object:modified",
   "object:rotated",
@@ -37,6 +36,8 @@ let canvasEvents = [
   "event:drop"
 ];
 
+import { Canvas, Rect } from "fabric";
+
 export default {
   name: "FabricCanvas",
   props: {
@@ -49,23 +50,33 @@ export default {
       canvas: null
     };
   },
-  provide: {
-    canvas: this.canvas
+  provide() {
+    return {
+      canvas: this.canvas
+    };
   },
   methods: {},
   mounted() {
-    this.canvas = new Fabric.canvas("canvas");
-    console.log("canvas created");
+    this.canvas = new Canvas("c");
+    let rect = new Rect({
+      top: 10,
+      left: 10,
+      width: 60,
+      height: 60,
+      fill: "green"
+    });
+
     canvasEvents.forEach(event => {
       let attrs = {};
       for (const key of Object.keys(this.$attrs)) {
         attrs["$" + key] = this.$attrs[key];
       }
-
       this.canvas.on(event, e => {
         this.$emit(event, { ...e, ...attrs });
       });
     });
+
+    this.canvas.add(rect);
   },
   watch: {},
   beforeDestroy() {
@@ -75,4 +86,7 @@ export default {
 </script>
 
 <style>
+canvas {
+  border: 1px solid;
+}
 </style>

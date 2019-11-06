@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <fabric-canvas></fabric-canvas>
+    <fabric-canvas>
+      <fabric-rectangle></fabric-rectangle>
+    </fabric-canvas>
   </div>
 </template>
 
