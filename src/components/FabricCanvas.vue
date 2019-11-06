@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import Fabric from "Fabric";
-
+import Fabric from "fabric";
 let canvasEvents = [
   "object:modified",
   "object:rotated",
@@ -42,7 +41,6 @@ export default {
   name: "FabricCanvas",
   props: {
     backgroundColor: { type: String, required: false, default: "" },
-
     width: { type: Number, required: false, default: 200 },
     height: { type: Number, required: false, default: 200 }
   },
@@ -51,13 +49,17 @@ export default {
       canvas: null
     };
   },
+  provide: {
+    canvas: this.canvas
+  },
   methods: {},
   mounted() {
     this.canvas = new Fabric.canvas("canvas");
+    console.log("canvas created");
     canvasEvents.forEach(event => {
       let attrs = {};
       for (const key of Object.keys(this.$attrs)) {
-        attr["$" + key] = this.$attrs[key];
+        attrs["$" + key] = this.$attrs[key];
       }
 
       this.canvas.on(event, e => {

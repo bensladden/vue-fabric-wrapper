@@ -7,11 +7,12 @@
 
 <script>
 import FabricCanvas from "./components/FabricCanvas.vue";
-
+import FabricRectangle from "./components/FabricRectangle.vue";
 export default {
   name: "app",
   components: {
-    FabricCanvas
+    FabricCanvas,
+    FabricRectangle
   }
 };
 </script>
