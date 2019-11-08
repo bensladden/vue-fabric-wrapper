@@ -36,8 +36,8 @@ let canvasEvents = [
   "event:drop"
 ];
 
-import { Canvas, Rect } from "fabric";
-
+import * as fabric from "fabric";
+import Vue from "vue";
 export default {
   name: "FabricCanvas",
   props: {
@@ -47,36 +47,28 @@ export default {
   },
   data() {
     return {
-      canvas: null
+      fabricWrapper: {
+        canvas: null,
+        fabric
+      },
+      eventBus: new Vue()
     };
   },
   provide() {
     return {
-      canvas: this.canvas
+      fabricWrapper: this.fabricWrapper,
+      eventBus: this.eventBus
     };
   },
   methods: {},
   mounted() {
-    this.canvas = new Canvas("c");
-    let rect = new Rect({
-      top: 10,
-      left: 10,
-      width: 60,
-      height: 60,
-      fill: "green"
-    });
-
+    this.fabricWrapper.canvas = new fabric.Canvas("c");
+    this.eventBus.$emit("canvasCreated");
     canvasEvents.forEach(event => {
-      let attrs = {};
-      for (const key of Object.keys(this.$attrs)) {
-        attrs["$" + key] = this.$attrs[key];
-      }
-      this.canvas.on(event, e => {
-        this.$emit(event, { ...e, ...attrs });
+      this.fabricWrapper.canvas.on(event, e => {
+        this.eventBus.$emit(event, e);
       });
     });
-
-    this.canvas.add(rect);
   },
   watch: {},
   beforeDestroy() {

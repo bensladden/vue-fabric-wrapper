@@ -1,6 +1,9 @@
 <script>
-import { Rect } from "fabric";
+import fabricObject from "./fabricObject";
 export default {
+  name: "fabric-rect",
+  inject: ["eventBus", "fabricWrapper"],
+  mixins: [fabricObject],
   props: {
     top: {
       type: Number,
@@ -23,35 +26,23 @@ export default {
       default: "red"
     }
   },
-
-  inject: ["canvas"],
   data() {
     return {
-      c: this.canvas
+      rect: null
     };
   },
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  mounted() {},
-  watch: {
-    c: {
-      immediate: true,
-      handler(newValue) {
-        if (newValue) {
-          console.log("canvas for child", this.c);
-          console.log(
-            "creating rectange with props:",
-            JSON.stringify(this.$props)
-          );
-          let rect = new Rect({ ...this.$props });
-          this.c.add(rect);
-        }
-      }
-    }
+  created() {
+    this.eventBus.$on("canvasCreated", () => {
+      console.log("creating Rect");
+      this.rect = new this.fabric.Rect({ ...this.definedProps });
+      this.canvas.add(this.rect);
+    });
+  },
+  methods: {
+    init() {}
   }
 };
 </script>
-
-<style>
-</style>
