@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <h1>Vue-Fabric</h1>
     <fabric-canvas>
       <fabric-rectangle :id="1"></fabric-rectangle>
       <fabric-circle :id="2"></fabric-circle>
