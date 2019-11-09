@@ -42,8 +42,8 @@ export default {
   name: "FabricCanvas",
   props: {
     backgroundColor: { type: String, required: false, default: "" },
-    width: { type: Number, required: false, default: 200 },
-    height: { type: Number, required: false, default: 200 }
+    width: { type: Number, required: false, default: 500 },
+    height: { type: Number, required: false, default: 300 }
   },
   data() {
     return {

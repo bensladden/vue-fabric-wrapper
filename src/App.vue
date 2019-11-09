@@ -2,7 +2,9 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <fabric-canvas>
-      <fabric-rectangle :id="id"></fabric-rectangle>
+      <fabric-rectangle :id="1"></fabric-rectangle>
+      <fabric-circle :id="2"></fabric-circle>
+      <fabric-ellipse :id="3"></fabric-ellipse>
     </fabric-canvas>
   </div>
 </template>
@@ -10,16 +12,19 @@
 <script>
 import FabricCanvas from "./components/FabricCanvas.vue";
 import FabricRectangle from "./components/FabricRectangle.vue";
+import FabricCircle from "./components/FabricCircle.vue";
+import FabricEllipse from "./components/FabricEllipse.vue";
+
 export default {
   name: "app",
   components: {
     FabricCanvas,
-    FabricRectangle
+    FabricRectangle,
+    FabricCircle,
+    FabricEllipse
   },
   data() {
-    return {
-      id: 99
-    };
+    return {};
   }
 };
 </script>

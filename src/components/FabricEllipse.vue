@@ -1,34 +1,34 @@
 <script>
 import fabricObject from "./fabricObject";
 export default {
-  name: "fabric-rect",
+  name: "fabric-ellipse",
   inject: ["eventBus", "fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {
       type: Number,
-      default: 0
+      default: 20
     },
     left: {
       type: Number,
-      default: 0
+      default: 20
     },
-    width: {
+    rx: {
       type: Number,
-      default: 50
+      default: 40
     },
-    height: {
+    ry: {
       type: Number,
-      default: 50
+      default: 60
     },
     fill: {
       type: String,
-      default: "red"
+      default: "Green"
     }
   },
   data() {
     return {
-      rect: null
+      ellipse: null
     };
   },
   render(h) {
@@ -36,8 +36,8 @@ export default {
   },
   created() {
     this.eventBus.$on("canvasCreated", () => {
-      this.rect = new this.fabric.Rect({ ...this.definedProps });
-      this.canvas.add(this.rect);
+      this.ellipse = new this.fabric.Ellipse({ ...this.definedProps });
+      this.canvas.add(this.ellipse);
       this.eventBus.$emit("objectCreated", this.id);
     });
   },

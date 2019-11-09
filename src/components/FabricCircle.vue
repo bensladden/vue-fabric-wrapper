@@ -1,34 +1,30 @@
 <script>
 import fabricObject from "./fabricObject";
 export default {
-  name: "fabric-rect",
+  name: "fabric-circle",
   inject: ["eventBus", "fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {
       type: Number,
-      default: 0
+      default: 40
     },
     left: {
       type: Number,
       default: 0
     },
-    width: {
-      type: Number,
-      default: 50
-    },
-    height: {
+    radius: {
       type: Number,
       default: 50
     },
     fill: {
       type: String,
-      default: "red"
+      default: "blue"
     }
   },
   data() {
     return {
-      rect: null
+      circle: null
     };
   },
   render(h) {
@@ -36,8 +32,8 @@ export default {
   },
   created() {
     this.eventBus.$on("canvasCreated", () => {
-      this.rect = new this.fabric.Rect({ ...this.definedProps });
-      this.canvas.add(this.rect);
+      this.circle = new this.fabric.Circle({ ...this.definedProps });
+      this.canvas.add(this.circle);
       this.eventBus.$emit("objectCreated", this.id);
     });
   },

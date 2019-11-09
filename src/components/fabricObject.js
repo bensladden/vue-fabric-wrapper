@@ -126,7 +126,6 @@ export default {
             let canvasObj = this.canvas.getObjects();
             let res = [];
             this.transverseCanvasObjects(canvasObj, "id", this.id, res);
-            console.log("item", res[0]);
             return res[0];
         }
     },
@@ -143,16 +142,18 @@ export default {
     },
     created() {
         this.eventBus.$on("objectCreated", id => {
-            console.log("aa");
             if (this.id === id) {
-                console.log("creating Object Events");
                 OBJECT_EVENTS.forEach(event => {
                     this.item.on(event, e => {
-                        console.log("fabricObject Event", event, this.id);
                         this.eventBus.$emit(event, { id: this.id, ...e });
                     });
                 });
             }
+        });
+    },
+    beforeDestroy() {
+        OBJECT_EVENTS.forEach(event => {
+            this.item.off(event);
         });
     }
 };
