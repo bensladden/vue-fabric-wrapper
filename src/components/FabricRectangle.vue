@@ -39,6 +39,7 @@ export default {
       console.log("creating Rect");
       this.rect = new this.fabric.Rect({ ...this.definedProps });
       this.canvas.add(this.rect);
+      this.eventBus.$emit("objectCreated", this.id);
     });
   },
   methods: {
