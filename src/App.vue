@@ -5,6 +5,7 @@
       <fabric-rectangle :id="1"></fabric-rectangle>
       <fabric-circle :id="2"></fabric-circle>
       <fabric-ellipse :id="3"></fabric-ellipse>
+      <fabric-triangle :id="4"></fabric-triangle>
     </fabric-canvas>
   </div>
 </template>
@@ -14,6 +15,7 @@ import FabricCanvas from "./components/FabricCanvas.vue";
 import FabricRectangle from "./components/FabricRectangle.vue";
 import FabricCircle from "./components/FabricCircle.vue";
 import FabricEllipse from "./components/FabricEllipse.vue";
+import FabricTriangle from "./components/FabricTriangle.vue";
 
 export default {
   name: "app",
@@ -21,7 +23,8 @@ export default {
     FabricCanvas,
     FabricRectangle,
     FabricCircle,
-    FabricEllipse
+    FabricEllipse,
+    FabricTriangle
   },
   data() {
     return {};
