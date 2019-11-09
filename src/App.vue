@@ -6,7 +6,7 @@
       <fabric-circle :id="2"></fabric-circle>
       <fabric-ellipse :id="3"></fabric-ellipse>
       <fabric-triangle :id="4"></fabric-triangle>
-      <fabric-image-from-URL :id="5"></fabric-image-from-URL>
+      <fabric-image-from-URL :id="5" :left.sync="left"></fabric-image-from-URL>
     </fabric-canvas>
   </div>
 </template>
@@ -30,7 +30,9 @@ export default {
     FabricImageFromURL
   },
   data() {
-    return {};
+    return {
+      left: 80
+    };
   }
 };
 </script>

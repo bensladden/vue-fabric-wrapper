@@ -25,13 +25,15 @@ export default {
   },
   created() {
     this.eventBus.$on("canvasCreated", () => {
-      this.fabric.Image.fromURL(this.url, img => {
-        this.image = img;
-        this.image.id = this.id;
-        //TODO update with props
-        this.canvas.add(this.image);
-        this.eventBus.$emit("objectCreated", this.id);
-      });
+      this.fabric.Image.fromURL(
+        this.url,
+        img => {
+          this.image = img;
+          this.canvas.add(this.image);
+          this.eventBus.$emit("objectCreated", this.id);
+        },
+        { ...this.definedProps }
+      );
     });
   },
   methods: {},

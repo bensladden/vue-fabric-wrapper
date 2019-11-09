@@ -23,8 +23,21 @@ const OBJECT_EVENTS = [
     "dragleave",
     "drop"
 ];
-// const WATCH_PROPS = [];
 
+//Props to change via interaction and need to be emitted for prop.sync usage
+const EMIT_PROPS = ["angle", "height", "left", "originX", "originY", "scaleX", "scaleY", "skewX", "skewY", "top"];
+
+const watchEmitProp = (key, deep) => ({
+    handler(newValue) {
+        //If the prop caused the update there is no point emitting it back
+        console.log("watch fired", key, newValue);
+        if (this.$props[key] === newValue) {
+            return;
+        }
+        this.$emit("update:" + key, newValue);
+    },
+    deep
+});
 export default {
     name: "fabric-object",
     inheritAttrs: false,
@@ -140,6 +153,7 @@ export default {
             }
         }
     },
+    watch: {},
     created() {
         this.eventBus.$on("objectCreated", id => {
             if (this.id === id) {
@@ -148,6 +162,11 @@ export default {
                         this.eventBus.$emit(event, { id: this.id, ...e });
                     });
                 });
+                //Setup Watchers for emmit sync option
+                EMIT_PROPS.forEach(prop => {
+                    this.$watch("item." + prop, watchEmitProp(prop, true));
+                });
+                //TODO setup watches for prop changes
             }
         });
     },
