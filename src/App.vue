@@ -6,6 +6,7 @@
       <fabric-circle :id="2"></fabric-circle>
       <fabric-ellipse :id="3"></fabric-ellipse>
       <fabric-triangle :id="4"></fabric-triangle>
+      <fabric-image-from-URL :id="5"></fabric-image-from-URL>
     </fabric-canvas>
   </div>
 </template>
@@ -16,6 +17,7 @@ import FabricRectangle from "./components/FabricRectangle.vue";
 import FabricCircle from "./components/FabricCircle.vue";
 import FabricEllipse from "./components/FabricEllipse.vue";
 import FabricTriangle from "./components/FabricTriangle.vue";
+import FabricImageFromURL from "./components/FabricImageFromURL.vue";
 
 export default {
   name: "app",
@@ -24,7 +26,8 @@ export default {
     FabricRectangle,
     FabricCircle,
     FabricEllipse,
-    FabricTriangle
+    FabricTriangle,
+    FabricImageFromURL
   },
   data() {
     return {};
