@@ -1,36 +1,35 @@
-// const OBJECT_EVENTS = [
-//     "event:added",
-//     "event:removed",
-//     "event:selected",
-//     "event:deselected",
-//     "event:modified",
-//     "event:modified",
-//     "event:moved",
-//     "event:scaled",
-//     "event:rotated",
-//     "event:skewed",
-//     "event:rotating",
-//     "event:scaling",
-//     "event:moving",
-//     "event:skewing",
-//     "event:mousedown",
-//     "event:mouseup",
-//     "event:mouseover",
-//     "event:mouseout",
-//     "event:mousewheel",
-//     "event:mousedblclick",
-//     "event:dragover",
-//     "event:dragenter",
-//     "event:dragleave",
-//     "event:drop"
-// ];
-
+const OBJECT_EVENTS = [
+    "added",
+    "removed",
+    "selected",
+    "deselected",
+    "modified",
+    "moved",
+    "scaled",
+    "rotated",
+    "skewed",
+    "rotating",
+    "scaling",
+    "moving",
+    "skewing",
+    "mousedown",
+    "mouseup",
+    "mouseover",
+    "mouseout",
+    "mousewheel",
+    "mousedblclick",
+    "dragover",
+    "dragenter",
+    "dragleave",
+    "drop"
+];
 // const WATCH_PROPS = [];
 
 export default {
     name: "fabric-object",
     inheritAttrs: false,
     props: {
+        id: { type: [Number, String], required: true },
         angle: Number,
         backgroundColor: String,
         borderColor: String,
@@ -102,7 +101,7 @@ export default {
         top: Number,
         //transformMatrix :Array, Depreciated,
         transparentCorners: { type: Boolean, default: true },
-        //type :String,
+        //type :String, not editable
         visible: { type: Boolean, default: true },
         width: Number
     },
@@ -117,13 +116,42 @@ export default {
         definedProps() {
             const obj = { ...this.$props };
             Object.keys(obj).forEach(key => {
-                console.log(key, obj[key]);
                 if (obj[key] === undefined) {
                     delete obj[key];
                 }
             });
             return obj;
+        },
+        item() {
+            let canvasObj = this.canvas.getObjects();
+            let res = [];
+            this.transverseCanvasObjects(canvasObj, "id", this.id, res);
+            console.log("item", res[0]);
+            return res[0];
         }
     },
-    methods: {}
+    methods: {
+        transverseCanvasObjects(objects, attr, val, objectList) {
+            for (let i in objects) {
+                if (objects[i]["type"] == "group") {
+                    this.transverseCanvasObjects(objects[i].getObjects(), attr, val, objectList);
+                } else if (objects[i][attr] == val) {
+                    objectList.push(objects[i]);
+                }
+            }
+        }
+    },
+    created() {
+        this.eventBus.$on("objectCreated", id => {
+            if (this.id === id) {
+                console.log("creating Object Events");
+                OBJECT_EVENTS.forEach(event => {
+                    this.item.on(event, e => {
+                        console.log("fabricObject Event", event, e);
+                        this.eventBus.$emit(event, e);
+                    });
+                });
+            }
+        });
+    }
 };

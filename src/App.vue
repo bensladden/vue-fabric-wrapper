@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <fabric-canvas>
-      <fabric-rectangle></fabric-rectangle>
+      <fabric-rectangle :id="id"></fabric-rectangle>
     </fabric-canvas>
   </div>
 </template>
@@ -15,6 +15,11 @@ export default {
   components: {
     FabricCanvas,
     FabricRectangle
+  },
+  data() {
+    return {
+      id: 99
+    };
   }
 };
 </script>
