@@ -2,10 +2,12 @@
 	"name": "vue-fabric",
 	"version": "0.1.0",
 	"private": true,
-	"main": "dist/lib/VueFabric.common.js",
+	"author": "Ben Sladden",
+	"main": "dist/lib/vue-fabric.common.js",
 	"scripts": {
 		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build",
+		"build": "rimraf dist && vue-cli-service build",
+		"build-lib": "rimraf dist && vue-cli-service build --target lib ./src/components/index.js",
 		"lint": "vue-cli-service lint"
 	},
 	"license": "MIT",
@@ -28,6 +30,7 @@
 		"exports-loader": "^0.7.0",
 		"node-sass": "^4.12.0",
 		"prettier": "^1.18.2",
+		"rimraf": "^3.0.0",
 		"sass-loader": "^8.0.0",
 		"vue": "^2.6.10",
 		"vue-template-compiler": "^2.6.10"
