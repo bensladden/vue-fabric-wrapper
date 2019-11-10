@@ -37,9 +37,12 @@ let canvasEvents = [
 ];
 
 import * as fabric from "fabric";
+import fabricStaticCanvas from "./fabricStaticCanvas";
 import Vue from "vue";
+
 export default {
   name: "FabricCanvas",
+  mixins: [fabricStaticCanvas],
   props: {
     backgroundColor: { type: String, required: false, default: "" },
     width: { type: Number, required: false, default: 500 },
