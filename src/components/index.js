@@ -9,17 +9,24 @@ import FabricTriangle from "./FabricTriangle.vue";
 // import ResponsiveGridLayout from './ResponsiveGridLayout.vue';
 
 const VueFabric = {
-    FabricCanvas,
-    FabricCircle,
-    FabricEllipse,
-    FabricImageFromURL,
-    FabricRectangle,
-    FabricTriangle
+  FabricCanvas,
+  FabricCircle,
+  FabricEllipse,
+  FabricImageFromURL,
+  FabricRectangle,
+  FabricTriangle
 };
 
 Object.keys(VueFabric).forEach(name => {
-    Vue.component(name, VueFabric[name]);
+  Vue.component(name, VueFabric[name]);
 });
 
 export default VueFabric;
-export { FabricCanvas, FabricCircle, FabricEllipse, FabricImageFromURL, FabricRectangle, FabricTriangle };
+export {
+  FabricCanvas,
+  FabricCircle,
+  FabricEllipse,
+  FabricImageFromURL,
+  FabricRectangle,
+  FabricTriangle
+};
