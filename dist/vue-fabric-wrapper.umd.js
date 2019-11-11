@@ -31825,7 +31825,7 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"bacc3410-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=4da444a8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2e55a4f3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=4da444a8&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}},[_vm._t("default")],2)}
 var staticRenderFns = []
 
@@ -32084,7 +32084,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var OBJECT_EVENTS = ["added", "removed", "selected", "deselected", "modified", "moved", "scaled", "rotated", "skewed", "rotating", "scaling", "moving", "skewing", "mousedown", "mouseup", "mouseover", "mouseout", "mousewheel", "mousedblclick", "dragover", "dragenter", "dragleave", "drop"]; //Props to change via interaction and need to be emitted for prop.sync usage
 
-var EMIT_PROPS = ["angle", "height", "left", "originX", "originY", "scaleX", "scaleY", "skewX", "skewY", "top"];
+var EMIT_PROPS = ["angle", "height", "left", "originX", "originY", "scaleX", "scaleY", "skewX", "skewY", "top", "width"]; //Monitor the fabric Object (item) and emit an update to allow .sync usage
 
 var watchEmitProp = function watchEmitProp(key, deep) {
   return {
@@ -32095,6 +32095,25 @@ var watchEmitProp = function watchEmitProp(key, deep) {
       }
 
       this.$emit("update:" + key, newValue);
+    },
+    deep: deep
+  };
+}; //Monitor the fabric Objects (item) Props and update the item with the changed value
+
+
+var watchProp = function watchProp(key, deep) {
+  return {
+    handler: function handler(newValue) {
+      //If the prop did not cause the update there is no updating the canvas
+      if (this.item.get(key) === newValue) {
+        return;
+      }
+
+      this.item.set(key, newValue);
+
+      if (EMIT_PROPS.includes(key)) {
+        this.canvas.renderAll();
+      }
     },
     deep: deep
   };
@@ -32313,7 +32332,11 @@ var watchEmitProp = function watchEmitProp(key, deep) {
 
         EMIT_PROPS.forEach(function (prop) {
           _this.$watch("item." + prop, watchEmitProp(prop, true));
-        }); //TODO setup watches for prop changes
+        }); //Setup prop watches to sync with fabric
+
+        Object.keys(_this.$props).forEach(function (key) {
+          _this.$watch(key, watchProp(key, true));
+        });
       }
     });
   },
