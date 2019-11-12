@@ -17,7 +17,8 @@ export default {
   },
   data() {
     return {
-      image: null
+      image: null,
+      type: "image"
     };
   },
   render(h) {

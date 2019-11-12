@@ -1,7 +1,8 @@
 <template>
-  <canvas id="c" :width="width" :height="height">
+  <div>
+    <canvas id="c" :width="width" :height="height"></canvas>
     <slot></slot>
-  </canvas>
+  </div>
 </template>
 
 <script>
@@ -45,8 +46,8 @@ export default {
   mixins: [fabricStaticCanvas],
   props: {
     backgroundColor: { type: String, required: false, default: "" },
-    width: { type: Number, required: false, default: 500 },
-    height: { type: Number, required: false, default: 300 }
+    width: { type: Number, required: false, default: 600 },
+    height: { type: Number, required: false, default: 400 }
   },
   data() {
     return {
@@ -54,7 +55,8 @@ export default {
         canvas: null,
         fabric
       },
-      eventBus: new Vue()
+      eventBus: new Vue(),
+      type: "canvas"
     };
   },
   provide() {

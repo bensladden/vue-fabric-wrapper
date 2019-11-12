@@ -28,7 +28,8 @@ export default {
   },
   data() {
     return {
-      triangle: null
+      triangle: null,
+      type: "triangle"
     };
   },
   render(h) {

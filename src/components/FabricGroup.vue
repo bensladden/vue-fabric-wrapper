@@ -1,31 +1,20 @@
 <script>
 import fabricObject from "./fabricObject";
+import fabricCollection from "./fabricCollection";
 export default {
-  name: "fabric-circle",
+  name: "fabric-group",
   inject: ["eventBus", "fabricWrapper"],
-  mixins: [fabricObject],
+  mixins: [fabricObject, fabricCollection],
   props: {
-    top: {
-      type: Number,
-      default: 40
-    },
-    left: {
-      type: Number,
-      default: 0
-    },
-    radius: {
-      type: Number,
-      default: 50
-    },
-    fill: {
-      type: String,
-      default: "blue"
+    subTargetCheck: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      circle: null,
-      type: "circle"
+      group: null,
+      type: "group"
     };
   },
   render(h) {
@@ -33,9 +22,10 @@ export default {
   },
   created() {
     this.eventBus.$on("canvasCreated", () => {
-      this.circle = new this.fabric.Circle({ ...this.definedProps });
-      this.canvas.add(this.circle);
+      this.group = new this.fabric.Group([], { ...this.definedProps });
+      this.canvas.add(this.group);
       this.eventBus.$emit("objectCreated", this.id);
+      this.eventBus.$emit("groupCreated", this.id);
     });
   },
   methods: {},

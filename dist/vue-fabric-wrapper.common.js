@@ -31816,12 +31816,12 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2e55a4f3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=4da444a8&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}},[_vm._t("default")],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2e55a4f3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=4da444a8&
+// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
 
 // EXTERNAL MODULE: ./node_modules/fabric/dist/fabric.js
 var fabric = __webpack_require__("7a94");
@@ -31885,6 +31885,7 @@ var fabric = __webpack_require__("7a94");
 //
 //
 //
+//
 var canvasEvents = ["object:modified", "object:rotated", "object:scaled", "object:moved", "object:skewed", "object:rotating", "object:scaling", "object:moving", "object:skewing", "before:transform", "before:selection:cleared", "selection:cleared", "selection:updated", "selection:created", "path:created", "mouse:down", "mouse:move", "mouse:up", "mouse:down:before", "mouse:move:before", "mouse:up:before", "mouse:over", "mouse:out", "mouse:dblclick", "event:dragover", "event:dragenter", "event:dragleave", "event:drop"];
 
 
@@ -31901,12 +31902,12 @@ var canvasEvents = ["object:modified", "object:rotated", "object:scaled", "objec
     width: {
       type: Number,
       required: false,
-      default: 500
+      default: 600
     },
     height: {
       type: Number,
       required: false,
-      default: 300
+      default: 400
     }
   },
   data: function data() {
@@ -31915,7 +31916,8 @@ var canvasEvents = ["object:modified", "object:rotated", "object:scaled", "objec
         canvas: null,
         fabric: fabric
       },
-      eventBus: new external_commonjs_vue_commonjs2_vue_root_Vue_default.a()
+      eventBus: new external_commonjs_vue_commonjs2_vue_root_Vue_default.a(),
+      type: "canvas"
     };
   },
   provide: function provide() {
@@ -32299,7 +32301,8 @@ var watchProp = function watchProp(key, deep) {
   methods: {
     transverseCanvasObjects: function transverseCanvasObjects(objects, attr, val, objectList) {
       for (var i in objects) {
-        if (objects[i]["type"] == "group") {
+        //look inside groups unless it is a group object you are searching for
+        if (objects[i]["type"] == "group" && objects[i][attr] !== val) {
           this.transverseCanvasObjects(objects[i].getObjects(), attr, val, objectList);
         } else if (objects[i][attr] == val) {
           objectList.push(objects[i]);
@@ -32371,7 +32374,8 @@ function FabricCirclevue_type_script_lang_js_defineProperty(obj, key, value) { i
   },
   data: function data() {
     return {
-      circle: null
+      circle: null,
+      type: "circle"
     };
   },
   render: function render(h) {
@@ -32449,7 +32453,8 @@ function FabricEllipsevue_type_script_lang_js_defineProperty(obj, key, value) { 
   },
   data: function data() {
     return {
-      ellipse: null
+      ellipse: null,
+      type: "ellipse"
     };
   },
   render: function render(h) {
@@ -32519,7 +32524,8 @@ function FabricImageFromURLvue_type_script_lang_js_defineProperty(obj, key, valu
   },
   data: function data() {
     return {
-      image: null
+      image: null,
+      type: "image"
     };
   },
   render: function render(h) {
@@ -32599,7 +32605,8 @@ function FabricRectanglevue_type_script_lang_js_defineProperty(obj, key, value) 
   },
   data: function data() {
     return {
-      rect: null
+      rect: null,
+      type: "rect"
     };
   },
   render: function render(h) {
@@ -32608,13 +32615,27 @@ function FabricRectanglevue_type_script_lang_js_defineProperty(obj, key, value) 
   created: function created() {
     var _this = this;
 
-    this.eventBus.$on("canvasCreated", function () {
-      _this.rect = new _this.fabric.Rect(FabricRectanglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", function () {
+        _this.rect = new _this.fabric.Rect(FabricRectanglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
 
-      _this.canvas.add(_this.rect);
+        _this.canvas.add(_this.rect);
 
-      _this.eventBus.$emit("objectCreated", _this.id);
-    });
+        _this.eventBus.$emit("objectCreated", _this.id);
+      });
+    }
+
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", function (id) {
+        if (id === _this.$parent.id) {
+          _this.rect = new _this.fabric.Rect(FabricRectanglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+          _this.$parent.item.addWithUpdate(_this.rect);
+
+          _this.eventBus.$emit("objectCreated", _this.id);
+        }
+      });
+    }
   },
   methods: {},
   beforeDestroy: function beforeDestroy() {}
@@ -32677,7 +32698,8 @@ function FabricTrianglevue_type_script_lang_js_defineProperty(obj, key, value) {
   },
   data: function data() {
     return {
-      triangle: null
+      triangle: null,
+      type: "triangle"
     };
   },
   render: function render(h) {

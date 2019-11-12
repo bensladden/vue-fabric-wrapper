@@ -28,7 +28,8 @@ export default {
   },
   data() {
     return {
-      ellipse: null
+      ellipse: null,
+      type: "ellipse"
     };
   },
   render(h) {

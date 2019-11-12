@@ -7,6 +7,14 @@
       <fabric-ellipse :id="3"></fabric-ellipse>
       <fabric-triangle :id="4"></fabric-triangle>
       <fabric-image-from-URL :id="5" :left.sync="left"></fabric-image-from-URL>
+      <fabric-group :id="6" :left="0" :top="0">
+        <fabric-rectangle :id="61" :top="10" :fill="'blue'"></fabric-rectangle>
+        <fabric-rectangle
+          :id="62"
+          :left="10"
+          :fill="'green'"
+        ></fabric-rectangle>
+      </fabric-group>
     </fabric-canvas>
 
     <button @click="left = 100">Modify Left to 100</button>
@@ -15,6 +23,7 @@
 
 <script>
 import FabricCanvas from "./components/FabricCanvas.vue";
+import FabricGroup from "./components/FabricGroup.vue";
 import FabricRectangle from "./components/FabricRectangle.vue";
 import FabricCircle from "./components/FabricCircle.vue";
 import FabricEllipse from "./components/FabricEllipse.vue";
@@ -25,6 +34,7 @@ export default {
   name: "app",
   components: {
     FabricCanvas,
+    FabricGroup,
     FabricRectangle,
     FabricCircle,
     FabricEllipse,

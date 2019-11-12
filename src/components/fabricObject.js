@@ -170,7 +170,8 @@ export default {
   methods: {
     transverseCanvasObjects(objects, attr, val, objectList) {
       for (let i in objects) {
-        if (objects[i]["type"] == "group") {
+        //look inside groups unless it is a group object you are searching for
+        if (objects[i]["type"] == "group" && objects[i][attr] !== val) {
           this.transverseCanvasObjects(
             objects[i].getObjects(),
             attr,

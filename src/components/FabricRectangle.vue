@@ -28,18 +28,30 @@ export default {
   },
   data() {
     return {
-      rect: null
+      rect: null,
+      type: "rect"
     };
   },
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
   created() {
-    this.eventBus.$on("canvasCreated", () => {
-      this.rect = new this.fabric.Rect({ ...this.definedProps });
-      this.canvas.add(this.rect);
-      this.eventBus.$emit("objectCreated", this.id);
-    });
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", () => {
+        this.rect = new this.fabric.Rect({ ...this.definedProps });
+        this.canvas.add(this.rect);
+        this.eventBus.$emit("objectCreated", this.id);
+      });
+    }
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", id => {
+        if (id === this.$parent.id) {
+          this.rect = new this.fabric.Rect({ ...this.definedProps });
+          this.$parent.item.addWithUpdate(this.rect);
+          this.eventBus.$emit("objectCreated", this.id);
+        }
+      });
+    }
   },
   methods: {},
   beforeDestroy() {}
