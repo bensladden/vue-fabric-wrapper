@@ -15,6 +15,7 @@
           :fill="'green'"
         ></fabric-rectangle>
       </fabric-group>
+      <fabric-text :id="7" :text="'hello'"></fabric-text>
     </fabric-canvas>
 
     <button @click="left = 100">Modify Left to 100</button>
@@ -29,7 +30,7 @@ import FabricCircle from "./components/FabricCircle.vue";
 import FabricEllipse from "./components/FabricEllipse.vue";
 import FabricTriangle from "./components/FabricTriangle.vue";
 import FabricImageFromURL from "./components/FabricImageFromURL.vue";
-
+import FabricText from "./components/FabricText.vue";
 export default {
   name: "app",
   components: {
@@ -39,7 +40,8 @@ export default {
     FabricCircle,
     FabricEllipse,
     FabricTriangle,
-    FabricImageFromURL
+    FabricImageFromURL,
+    FabricText
   },
   data() {
     return {
