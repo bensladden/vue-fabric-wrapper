@@ -17,6 +17,11 @@
       </fabric-group>
       <fabric-text :id="7" :text="'hello'"></fabric-text>
       <fabric-line :id="8"></fabric-line>
+      <fabric-image-from-URL
+        :id="9"
+        :url="'../svg/pipe.svg'"
+        :left.sync="left"
+      ></fabric-image-from-URL>
     </fabric-canvas>
 
     <button @click="left = 100">Modify Left to 100</button>
