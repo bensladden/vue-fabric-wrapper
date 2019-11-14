@@ -12,7 +12,7 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"fabric": "3.4.0",
+		"fabric": "3.5.0",
 		"vue": "2.6.10"
 	},
 	"devDependencies": {
