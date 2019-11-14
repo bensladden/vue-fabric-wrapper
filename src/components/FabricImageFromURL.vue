@@ -25,17 +25,34 @@ export default {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
   created() {
-    this.eventBus.$on("canvasCreated", () => {
-      this.fabric.Image.fromURL(
-        this.url,
-        img => {
-          this.image = img;
-          this.canvas.add(this.image);
-          this.eventBus.$emit("objectCreated", this.id);
-        },
-        { ...this.definedProps }
-      );
-    });
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", () => {
+        this.fabric.Image.fromURL(
+          this.url,
+          img => {
+            this.image = img;
+            this.canvas.add(this.image);
+            this.eventBus.$emit("objectCreated", this.id);
+          },
+          { ...this.definedProps }
+        );
+      });
+    }
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", id => {
+        if (id === this.$parent.id) {
+          this.fabric.Image.fromURL(
+            this.url,
+            img => {
+              this.image = img;
+              this.$parent.item.addWithUpdate(this.image);
+              this.eventBus.$emit("objectCreated", this.id);
+            },
+            { ...this.definedProps }
+          );
+        }
+      });
+    }
   },
   methods: {},
   beforeDestroy() {}

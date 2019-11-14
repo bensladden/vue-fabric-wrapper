@@ -49,11 +49,26 @@ export default {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
   created() {
-    this.eventBus.$on("canvasCreated", () => {
-      this.textObj = new this.fabric.Text(this.text, { ...this.definedProps });
-      this.canvas.add(this.textObj);
-      this.eventBus.$emit("objectCreated", this.id);
-    });
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", () => {
+        this.textObj = new this.fabric.Text(this.text, {
+          ...this.definedProps
+        });
+        this.canvas.add(this.textObj);
+        this.eventBus.$emit("objectCreated", this.id);
+      });
+    }
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", id => {
+        if (id === this.$parent.id) {
+          this.textObj = new this.fabric.Text(this.text, {
+            ...this.definedProps
+          });
+          this.$parent.item.addWithUpdate(this.textObj);
+          this.eventBus.$emit("objectCreated", this.id);
+        }
+      });
+    }
   },
   methods: {},
   beforeDestroy() {}
