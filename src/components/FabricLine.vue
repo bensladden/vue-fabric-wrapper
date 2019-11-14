@@ -1,35 +1,23 @@
 <script>
 import fabricObject from "./fabricObject";
 export default {
-  name: "fabric-triangle",
+  name: "fabric-line",
   inject: ["eventBus", "fabricWrapper"],
   mixins: [fabricObject],
   props: {
-    top: {
-      type: Number,
-      default: 80
+    points: {
+      type: Array,
+      default: function() {
+        return [0, 0, 100, 100];
+      }
     },
-    left: {
-      type: Number,
-      default: 120
-    },
-    width: {
-      type: Number,
-      default: 50
-    },
-    height: {
-      type: Number,
-      default: 50
-    },
-    fill: {
-      type: String,
-      default: "yellow"
-    }
+    fill: { type: String, default: "red" },
+    stroke: { type: String, default: "red" }
   },
   data() {
     return {
-      triangle: null,
-      type: "triangle"
+      line: null,
+      type: "line"
     };
   },
   render(h) {
@@ -38,16 +26,18 @@ export default {
   created() {
     if (this.$parent.type === "canvas") {
       this.eventBus.$on("canvasCreated", () => {
-        this.triangle = new this.fabric.Triangle({ ...this.definedProps });
-        this.canvas.add(this.triangle);
+        this.line = new this.fabric.Line(this.points, { ...this.definedProps });
+        this.canvas.add(this.line);
         this.eventBus.$emit("objectCreated", this.id);
       });
     }
     if (this.$parent.type === "group") {
       this.eventBus.$on("groupCreated", id => {
         if (id === this.$parent.id) {
-          this.triangle = new this.fabric.Triangle({ ...this.definedProps });
-          this.$parent.item.addWithUpdate(this.triangle);
+          this.line = new this.fabric.Line(this.points, {
+            ...this.definedProps
+          });
+          this.$parent.item.addWithUpdate(this.line);
           this.eventBus.$emit("objectCreated", this.id);
         }
       });
