@@ -1,0 +1,13 @@
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="2.1500in" height="0.6612in" viewBox="0 0 530 163">
+<path style="fill:#7f7f7f" d="M15,15 l500,0 0,133 -500,0 0,-133z" />
+<path style="fill:#999" d="M15,24 l500,0 0,116 -500,0 0,-116z" />
+<path style="fill:#b2b2b2" d="M15,38 l500,0 0,88 -500,0 0,-88z" />
+<path style="fill:#ccc" d="M15,51 l500,0 0,61 -500,0 0,-61z" />
+<path style="fill:#e5e5e5" d="M15,62 l500,0 0,39 -500,0 0,-39z" />
+<path style="fill:#fff" d="M15,74 l500,0 0,16 -500,0 0,-16z" />
+<path style="fill:none;stroke:#4c4c4c;stroke-width:2" d="M15,148 l500,0" />
+<path style="fill:none;stroke:#4c4c4c;stroke-width:2" d="M515,15 l-500,0" />
+</svg>
