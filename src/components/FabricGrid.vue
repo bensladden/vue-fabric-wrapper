@@ -20,6 +20,7 @@ import FabricGroup from "./FabricGroup.vue";
 import FabricLine from "./FabricLine.vue";
 export default {
   props: {
+    id: { type: [Number, String], required: true },
     gridSize: { type: Number, default: 10 },
     gridHeight: { type: Number, default: 100 },
     gridWidth: { type: Number, default: 100 }
@@ -59,6 +60,9 @@ export default {
         });
       }
     }
+  },
+  created() {
+    this.setup();
   }
 };
 </script>

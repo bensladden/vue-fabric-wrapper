@@ -22,6 +22,7 @@
         :url="'../svg/pipe.svg'"
         :left.sync="left"
       ></fabric-image-from-URL>
+	  <fabric-grid :id="11"></fabric-grid>
     </fabric-canvas>
 
     <button @click="left = 100">Modify Left to 100</button>
@@ -38,6 +39,7 @@ import FabricTriangle from "./components/FabricTriangle.vue";
 import FabricImageFromURL from "./components/FabricImageFromURL.vue";
 import FabricText from "./components/FabricText.vue";
 import FabricLine from "./components/FabricLine.vue";
+import FabricGrid from "./components/FabricGrid.vue";
 
 export default {
   name: "app",
@@ -50,7 +52,8 @@ export default {
     FabricTriangle,
     FabricImageFromURL,
     FabricText,
-    FabricLine
+    FabricLine,
+	FabricGrid
   },
   data() {
     return {
