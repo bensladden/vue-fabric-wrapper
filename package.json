@@ -1,14 +1,28 @@
 {
 	"name": "vue-fabric-wrapper",
+	"description": "vue wrapper for fabricjs",
+	"keywords": [
+		"vuejs",
+		"fabricjs"
+	],
 	"version": "0.1.0",
-	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bensladden/vue-fabric-wrapper.git"
+	},
+	"files": [
+		"dist"
+	],
 	"author": "Ben Sladden",
-	"main": "dist/lib/vue-fabric.common.js",
+	"main": "dist/vue-fabric-wrapper.common.js",
+	"unpkg": "dist/vue-fabric-wrapper.umd.min.js",
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "rimraf dist && vue-cli-service build",
-		"build-lib": "rimraf dist && vue-cli-service build --target lib ./src/components/index.js",
-		"lint": "vue-cli-service lint"
+		"build:lib": "rimraf dist && vue-cli-service build --target lib ./src/components/index.js",
+		"lint": "vue-cli-service lint",
+		"docs:dev": "vuepress dev docs",
+		"docs:build": "vuepress build docs"
 	},
 	"license": "MIT",
 	"dependencies": {
@@ -30,6 +44,7 @@
 		"prettier": "1.19.1",
 		"rimraf": "3.0.0",
 		"sass-loader": "8.0.0",
-		"vue-template-compiler": "2.6.10"
+		"vue-template-compiler": "2.6.10",
+		"vuepress": "^1.2.0"
 	}
 }

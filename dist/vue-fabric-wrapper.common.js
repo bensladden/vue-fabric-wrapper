@@ -31826,7 +31826,7 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"bda204ec-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ea7af58-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
 var staticRenderFns = []
 
@@ -32534,7 +32534,7 @@ var FabricEllipse_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricEllipse = (FabricEllipse_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"bda204ec-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=5e556e25&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ea7af58-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=5e556e25&
 var FabricGridvue_type_template_id_5e556e25_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',{attrs:{"id":_vm.id}},[_vm._l((_vm.verticalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'v' + index,attrs:{"id":_vm.id + 'v' + index}},'fabric-line',line,false))}),_vm._l((_vm.horizontalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'h' + index,attrs:{"id":_vm.id + 'h' + index}},'fabric-line',line,false))})],2)}
 var FabricGridvue_type_template_id_5e556e25_staticRenderFns = []
 
@@ -32903,6 +32903,111 @@ var FabricImageFromURL_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricImageFromURL = (FabricImageFromURL_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricPolygon.vue?vue&type=script&lang=js&
+function FabricPolygonvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricPolygonvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricPolygonvue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { FabricPolygonvue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricPolygonvue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function FabricPolygonvue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ var FabricPolygonvue_type_script_lang_js_ = ({
+  name: "fabric-polygon",
+  inject: ["eventBus", "fabricWrapper"],
+  mixins: [fabricObject],
+  props: {
+    points: {
+      type: Array,
+      default: function _default() {
+        return [{
+          x: 10,
+          y: 10
+        }, {
+          x: 50,
+          y: 30
+        }, {
+          x: 40,
+          y: 70
+        }, {
+          x: 60,
+          y: 50
+        }, {
+          x: 100,
+          y: 150
+        }, {
+          x: 40,
+          y: 100
+        }];
+      }
+    },
+    fill: {
+      type: String,
+      default: "purple"
+    },
+    stroke: {
+      type: String,
+      default: "purple"
+    }
+  },
+  data: function data() {
+    return {
+      polygon: null,
+      type: "polygon"
+    };
+  },
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  created: function created() {
+    var _this = this;
+
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", function () {
+        _this.polygon = new _this.fabric.Polygon(_this.points, FabricPolygonvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+        _this.canvas.add(_this.polygon);
+
+        _this.eventBus.$emit("objectCreated", _this.id);
+      });
+    }
+
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", function (id) {
+        if (id === _this.$parent.id) {
+          _this.polygon = new _this.fabric.Polygon(_this.points, FabricPolygonvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+          _this.$parent.item.addWithUpdate(_this.polygon);
+
+          _this.eventBus.$emit("objectCreated", _this.id);
+        }
+      });
+    }
+  },
+  methods: {},
+  beforeDestroy: function beforeDestroy() {}
+});
+// CONCATENATED MODULE: ./src/components/FabricPolygon.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricPolygonvue_type_script_lang_js_ = (FabricPolygonvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricPolygon.vue
+var FabricPolygon_render, FabricPolygon_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricPolygon_component = normalizeComponent(
+  components_FabricPolygonvue_type_script_lang_js_,
+  FabricPolygon_render,
+  FabricPolygon_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricPolygon = (FabricPolygon_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricRectangle.vue?vue&type=script&lang=js&
 function FabricRectanglevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -33207,7 +33312,9 @@ var FabricTriangle_component = normalizeComponent(
 
 
 
-var VueFabric = {
+
+
+var VueFabricWrapper = {
   FabricCanvas: FabricCanvas,
   FabricCircle: FabricCircle,
   FabricEllipse: FabricEllipse,
@@ -33215,14 +33322,16 @@ var VueFabric = {
   FabricGroup: FabricGroup,
   FabricImageFromURL: FabricImageFromURL,
   FabricLine: FabricLine,
+  FabricPolygon: FabricPolygon,
+  FabricPolyline: FabricLine,
   FabricRectangle: FabricRectangle,
   FabricText: FabricText,
   FabricTriangle: FabricTriangle
 };
-Object.keys(VueFabric).forEach(function (name) {
-  external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component(name, VueFabric[name]);
+Object.keys(VueFabricWrapper).forEach(function (name) {
+  external_commonjs_vue_commonjs2_vue_root_Vue_default.a.component(name, VueFabricWrapper[name]);
 });
-/* harmony default export */ var components = (VueFabric);
+/* harmony default export */ var components = (VueFabricWrapper);
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 /* concated harmony reexport FabricCanvas */__webpack_require__.d(__webpack_exports__, "FabricCanvas", function() { return FabricCanvas; });
@@ -33232,6 +33341,8 @@ Object.keys(VueFabric).forEach(function (name) {
 /* concated harmony reexport FabricGroup */__webpack_require__.d(__webpack_exports__, "FabricGroup", function() { return FabricGroup; });
 /* concated harmony reexport FabricImageFromURL */__webpack_require__.d(__webpack_exports__, "FabricImageFromURL", function() { return FabricImageFromURL; });
 /* concated harmony reexport FabricLine */__webpack_require__.d(__webpack_exports__, "FabricLine", function() { return FabricLine; });
+/* concated harmony reexport FabricPolygon */__webpack_require__.d(__webpack_exports__, "FabricPolygon", function() { return FabricPolygon; });
+/* concated harmony reexport FabricPolyline */__webpack_require__.d(__webpack_exports__, "FabricPolyline", function() { return FabricLine; });
 /* concated harmony reexport FabricRectangle */__webpack_require__.d(__webpack_exports__, "FabricRectangle", function() { return FabricRectangle; });
 /* concated harmony reexport FabricText */__webpack_require__.d(__webpack_exports__, "FabricText", function() { return FabricText; });
 /* concated harmony reexport FabricTriangle */__webpack_require__.d(__webpack_exports__, "FabricTriangle", function() { return FabricTriangle; });
