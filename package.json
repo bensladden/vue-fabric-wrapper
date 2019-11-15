@@ -1,7 +1,15 @@
 {
 	"name": "vue-fabric-wrapper",
+	"description": "vue wrapper for fabricjs",
+	"keywords": [
+		"vuejs",
+		"fabricjs"
+	],
 	"version": "0.1.0",
-	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bensladden/vue-fabric-wrapper.git"
+	},
 	"author": "Ben Sladden",
 	"main": "dist/vue-fabric-wrapper.common.js",
 	"unpkg": "dist/vue-fabric-wrapper.umd.min.js",
