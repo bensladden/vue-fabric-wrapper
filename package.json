@@ -10,6 +10,9 @@
 		"type": "git",
 		"url": "https://github.com/bensladden/vue-fabric-wrapper.git"
 	},
+	"files": [
+		"dist"
+	],
 	"author": "Ben Sladden",
 	"main": "dist/vue-fabric-wrapper.common.js",
 	"unpkg": "dist/vue-fabric-wrapper.umd.min.js",
