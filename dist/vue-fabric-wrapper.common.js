@@ -285,7 +285,7 @@ function fromByteArray (uint8) {
 /* WEBPACK VAR INJECTION */(function(Buffer) {/* build: `node build.js modules=ALL exclude=gestures,accessors requirejs minifier=uglifyjs` */
 /*! Fabric.js Copyright 2008-2015, Printio (Juriy Zaytsev, Maxim Chernyak) */
 
-var fabric = fabric || { version: '3.4.0' };
+var fabric = fabric || { version: '3.5.0' };
 if (true) {
   exports.fabric = fabric;
 }
@@ -1592,7 +1592,7 @@ fabric.CommonMethods = {
      * @memberOf fabric.util
      * @param  {Object} options
      * @param  {Number} [options.angle] angle in degrees
-     * @return {Array[Number]} transform matrix
+     * @return {Number[]} transform matrix
      */
     calcRotateMatrix: function(options) {
       if (!options.angle) {
@@ -1619,7 +1619,7 @@ fabric.CommonMethods = {
      * @param  {Boolean} [options.flipY]
      * @param  {Number} [options.skewX]
      * @param  {Number} [options.skewX]
-     * @return {Array[Number]} transform matrix
+     * @return {Number[]} transform matrix
      */
     calcDimensionsMatrix: function(options) {
       var scaleX = typeof options.scaleX === 'undefined' ? 1 : options.scaleX,
@@ -1664,7 +1664,7 @@ fabric.CommonMethods = {
      * @param  {Number} [options.skewX]
      * @param  {Number} [options.translateX]
      * @param  {Number} [options.translateY]
-     * @return {Array[Number]} transform matrix
+     * @return {Number[]} transform matrix
      */
     composeMatrix: function(options) {
       var matrix = [1, 0, 0, 1, options.translateX || 0, options.translateY || 0],
@@ -1687,7 +1687,7 @@ fabric.CommonMethods = {
      * @param  {Number} scaleX
      * @param  {Number} scaleY
      * @param  {Number} skewX
-     * @return {Array[Number]} transform matrix
+     * @return {Number[]} transform matrix
      */
     customTransformMatrix: function(scaleX, scaleY, skewX) {
       return fabric.util.composeMatrix({ scaleX: scaleX, scaleY: scaleY, skewX: skewX });
@@ -4792,6 +4792,9 @@ fabric.ElementsParser = function(elements, callback, options, reviver, parsingOp
         objTransformInv,
         clipPath.calcTransformMatrix()
       );
+      if (clipPath.clipPath) {
+        this.resolveClipPath(clipPath);
+      }
       var options = fabric.util.qrDecompose(gTransform);
       clipPath.flipX = false;
       clipPath.flipY = false;
@@ -6070,7 +6073,7 @@ fabric.ElementsParser = function(elements, callback, options, reviver, parsingOp
      * Imported from svg gradients, is not applied with the current transform in the center.
      * Before this transform is applied, the origin point is at the top left corner of the object
      * plus the addition of offsetY and offsetX.
-     * @type Array[Number]
+     * @type Number[]
      * @default null
      */
     gradientTransform: null,
@@ -6080,14 +6083,15 @@ fabric.ElementsParser = function(elements, callback, options, reviver, parsingOp
      * If `pixels`, the number of coords are in the same unit of width / height.
      * If set as `percentage` the coords are still a number, but 1 means 100% of width
      * for the X and 100% of the height for the y. It can be bigger than 1 and negative.
-     * @type String pixels || percentage
+     * allowed values pixels or percentage.
+     * @type String
      * @default 'pixels'
      */
     gradientUnits: 'pixels',
 
     /**
-     * Gradient type
-     * @type String linear || radial
+     * Gradient type linear or radial
+     * @type String
      * @default 'pixels'
      */
     type: 'linear',
@@ -6099,7 +6103,7 @@ fabric.ElementsParser = function(elements, callback, options, reviver, parsingOp
      * @param {Object} [options.gradientUnits] gradient units
      * @param {Object} [options.offsetX] SVG import compatibility
      * @param {Object} [options.offsetY] SVG import compatibility
-     * @param {Array[Object]} options.colorStops contains the colorstops.
+     * @param {Object[]} options.colorStops contains the colorstops.
      * @param {Object} options.coords contains the coords of the gradient
      * @param {Number} [options.coords.x1] X coordiante of the first point for linear or of the focal point for radial
      * @param {Number} [options.coords.y1] Y coordiante of the first point for linear or of the focal point for radial
@@ -9168,7 +9172,7 @@ fabric.BaseBrush = fabric.util.createClass(/** @lends fabric.BaseBrush.prototype
       var path = this.createPath(pathData);
       this.canvas.clearContext(this.canvas.contextTop);
       this.canvas.add(path);
-      this.canvas.renderAll();
+      this.canvas.requestRenderAll();
       path.setCoords();
       this._resetShadow();
 
@@ -14321,9 +14325,6 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
       else {
         alternative && alternative(ctx);
       }
-      if (this.strokeUniform) {
-        ctx.setLineDash(ctx.getLineDash().map(function(value) { return value * ctx.lineWidth; }));
-      }
     },
 
     /**
@@ -14655,9 +14656,10 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
       options || (options = { });
 
       var utils = fabric.util, origParams = utils.saveObjectTransform(this),
+          originalGroup = this.group,
           originalShadow = this.shadow, abs = Math.abs,
           multiplier = (options.multiplier || 1) * (options.enableRetinaScaling ? fabric.devicePixelRatio : 1);
-
+      delete this.group;
       if (options.withoutTransform) {
         utils.resetObjectTransform(this);
       }
@@ -14679,6 +14681,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
         else {
           scaling = this.getObjectScaling();
         }
+        // consider non scaling shadow.
         shadowOffset.x = 2 * Math.round(abs(shadow.offsetX) + shadowBlur) * (abs(scaling.scaleX));
         shadowOffset.y = 2 * Math.round(abs(shadow.offsetY) + shadowBlur) * (abs(scaling.scaleY));
       }
@@ -14701,6 +14704,9 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
       var canvasEl = canvas.toCanvasElement(multiplier || 1, options);
       this.shadow = originalShadow;
       this.canvas = originalCanvas;
+      if (originalGroup) {
+        this.group = originalGroup;
+      }
       this.set(origParams).setCoords();
       // canvas.dispose will call image.dispose that will nullify the elements
       // since this canvas is a simple element for the process, we remove references
@@ -14843,6 +14849,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
      * @param {Function} [callback] Callback to invoke when image set as a pattern
      * @return {fabric.Object} thisArg
      * @chainable
+     * @deprecated since 3.5.0
      * @see {@link http://jsfiddle.net/fabricjs/QT3pa/|jsFiddle demo}
      * @example <caption>Set pattern</caption>
      * object.setPatternFill({
@@ -14863,6 +14870,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
      * @param {Number} [options.offsetY=0] Shadow vertical offset
      * @return {fabric.Object} thisArg
      * @chainable
+     * @deprecated since 3.5.0
      * @see {@link http://jsfiddle.net/fabricjs/7gvJG/|jsFiddle demo}
      * @example <caption>Set shadow with string notation</caption>
      * object.setShadow('2px 2px 10px rgba(0,0,0,0.2)');
@@ -14884,6 +14892,7 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
      * Sets "color" of an instance (alias of `set('fill', &hellip;)`)
      * @param {String} color Color value
      * @return {fabric.Object} thisArg
+     * @deprecated since 3.5.0
      * @chainable
      */
     setColor: function(color) {
@@ -20667,7 +20676,8 @@ fabric.util.object.extend(fabric.Object.prototype, /** @lends fabric.Object.prot
     },
 
     /**
-     * @private, needed to check if image needs resize
+     * needed to check if image needs resize
+     * @private
      */
     _needsResize: function() {
       var scale = this.getTotalObjectScaling();
@@ -31816,7 +31826,7 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2e55a4f3-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"bda204ec-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
 var staticRenderFns = []
 
@@ -32384,13 +32394,27 @@ function FabricCirclevue_type_script_lang_js_defineProperty(obj, key, value) { i
   created: function created() {
     var _this = this;
 
-    this.eventBus.$on("canvasCreated", function () {
-      _this.circle = new _this.fabric.Circle(FabricCirclevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", function () {
+        _this.circle = new _this.fabric.Circle(FabricCirclevue_type_script_lang_js_objectSpread({}, _this.definedProps));
 
-      _this.canvas.add(_this.circle);
+        _this.canvas.add(_this.circle);
 
-      _this.eventBus.$emit("objectCreated", _this.id);
-    });
+        _this.eventBus.$emit("objectCreated", _this.id);
+      });
+    }
+
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", function (id) {
+        if (id === _this.$parent.id) {
+          _this.circle = new _this.fabric.Circle(FabricCirclevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+          _this.$parent.item.addWithUpdate(_this.circle);
+
+          _this.eventBus.$emit("objectCreated", _this.id);
+        }
+      });
+    }
   },
   methods: {},
   beforeDestroy: function beforeDestroy() {}
@@ -32463,13 +32487,27 @@ function FabricEllipsevue_type_script_lang_js_defineProperty(obj, key, value) { 
   created: function created() {
     var _this = this;
 
-    this.eventBus.$on("canvasCreated", function () {
-      _this.ellipse = new _this.fabric.Ellipse(FabricEllipsevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", function () {
+        _this.ellipse = new _this.fabric.Ellipse(FabricEllipsevue_type_script_lang_js_objectSpread({}, _this.definedProps));
 
-      _this.canvas.add(_this.ellipse);
+        _this.canvas.add(_this.ellipse);
 
-      _this.eventBus.$emit("objectCreated", _this.id);
-    });
+        _this.eventBus.$emit("objectCreated", _this.id);
+      });
+    }
+
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", function (id) {
+        if (id === _this.$parent.id) {
+          _this.ellipse = new _this.fabric.Ellipse(FabricEllipsevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+          _this.$parent.item.addWithUpdate(_this.ellipse);
+
+          _this.eventBus.$emit("objectCreated", _this.id);
+        }
+      });
+    }
   },
   methods: {},
   beforeDestroy: function beforeDestroy() {}
@@ -32496,6 +32534,286 @@ var FabricEllipse_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricEllipse = (FabricEllipse_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"bda204ec-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=5e556e25&
+var FabricGridvue_type_template_id_5e556e25_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',{attrs:{"id":_vm.id}},[_vm._l((_vm.verticalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'v' + index,attrs:{"id":_vm.id + 'v' + index}},'fabric-line',line,false))}),_vm._l((_vm.horizontalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'h' + index,attrs:{"id":_vm.id + 'h' + index}},'fabric-line',line,false))})],2)}
+var FabricGridvue_type_template_id_5e556e25_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/FabricGrid.vue?vue&type=template&id=5e556e25&
+
+// CONCATENATED MODULE: ./src/components/fabricCollection.js
+/* harmony default export */ var fabricCollection = ({
+  name: "fabric-collection",
+  props: {},
+  computed: {},
+  methods: {
+    add: function add(obj) {
+      this.item.add(obj);
+    },
+    getObjects: function getObjects(type) {
+      var t = type || "";
+      this.item.getObjects(t);
+    },
+    remove: function remove(obj) {
+      this.item.remove(obj);
+    }
+  }
+});
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGroup.vue?vue&type=script&lang=js&
+function FabricGroupvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricGroupvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricGroupvue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { FabricGroupvue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricGroupvue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function FabricGroupvue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+/* harmony default export */ var FabricGroupvue_type_script_lang_js_ = ({
+  name: "fabric-group",
+  inject: ["eventBus", "fabricWrapper"],
+  mixins: [fabricObject, fabricCollection],
+  props: {
+    subTargetCheck: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data: function data() {
+    return {
+      group: null,
+      type: "group"
+    };
+  },
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  created: function created() {
+    var _this = this;
+
+    this.eventBus.$on("canvasCreated", function () {
+      _this.group = new _this.fabric.Group([], FabricGroupvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+      _this.canvas.add(_this.group);
+
+      _this.eventBus.$emit("objectCreated", _this.id);
+
+      _this.eventBus.$emit("groupCreated", _this.id);
+    });
+  },
+  methods: {},
+  beforeDestroy: function beforeDestroy() {}
+});
+// CONCATENATED MODULE: ./src/components/FabricGroup.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricGroupvue_type_script_lang_js_ = (FabricGroupvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricGroup.vue
+var FabricGroup_render, FabricGroup_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricGroup_component = normalizeComponent(
+  components_FabricGroupvue_type_script_lang_js_,
+  FabricGroup_render,
+  FabricGroup_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricGroup = (FabricGroup_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLine.vue?vue&type=script&lang=js&
+function FabricLinevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricLinevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricLinevue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { FabricLinevue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricLinevue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function FabricLinevue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ var FabricLinevue_type_script_lang_js_ = ({
+  name: "fabric-line",
+  inject: ["eventBus", "fabricWrapper"],
+  mixins: [fabricObject],
+  props: {
+    points: {
+      type: Array,
+      default: function _default() {
+        return [0, 0, 100, 100];
+      }
+    },
+    fill: {
+      type: String,
+      default: "red"
+    },
+    stroke: {
+      type: String,
+      default: "red"
+    }
+  },
+  data: function data() {
+    return {
+      line: null,
+      type: "line"
+    };
+  },
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  created: function created() {
+    var _this = this;
+
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", function () {
+        _this.line = new _this.fabric.Line(_this.points, FabricLinevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+        _this.canvas.add(_this.line);
+
+        _this.eventBus.$emit("objectCreated", _this.id);
+      });
+    }
+
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", function (id) {
+        if (id === _this.$parent.id) {
+          _this.line = new _this.fabric.Line(_this.points, FabricLinevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+          _this.$parent.item.addWithUpdate(_this.line);
+
+          _this.eventBus.$emit("objectCreated", _this.id);
+        }
+      });
+    }
+  },
+  methods: {},
+  beforeDestroy: function beforeDestroy() {}
+});
+// CONCATENATED MODULE: ./src/components/FabricLine.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricLinevue_type_script_lang_js_ = (FabricLinevue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricLine.vue
+var FabricLine_render, FabricLine_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricLine_component = normalizeComponent(
+  components_FabricLinevue_type_script_lang_js_,
+  FabricLine_render,
+  FabricLine_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricLine = (FabricLine_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var FabricGridvue_type_script_lang_js_ = ({
+  props: {
+    id: {
+      type: [Number, String],
+      required: true
+    },
+    gridSize: {
+      type: Number,
+      default: 10
+    },
+    gridHeight: {
+      type: Number,
+      default: 100
+    },
+    gridWidth: {
+      type: Number,
+      default: 100
+    }
+  },
+  components: {
+    FabricGroup: FabricGroup,
+    FabricLine: FabricLine
+  },
+  data: function data() {
+    return {
+      horizontalLines: [],
+      verticalLines: []
+    };
+  },
+  computed: {
+    numberofVerticalLines: function numberofVerticalLines() {
+      return parseInt(this.gridWidth / this.gridSize);
+    },
+    numberofHorizontalLines: function numberofHorizontalLines() {
+      return parseInt(this.gridHeight / this.gridSize);
+    }
+  },
+  methods: {
+    setup: function setup() {
+      this.horizontalLines = [];
+      this.verticalLines = [];
+
+      for (var i = 0; i < this.numberofVerticalLines; i++) {
+        this.verticalLines.push({
+          stroke: "#ccc",
+          selectable: false,
+          points: [0, i * this.gridSize, this.gridWidth, i * this.gridSize]
+        });
+        this.horizontalLines.push({
+          stroke: "#ccc",
+          selectable: false,
+          points: [i * this.gridSize, 0, i * this.gridSize, this.gridHeight]
+        });
+      }
+    }
+  },
+  created: function created() {
+    this.setup();
+  }
+});
+// CONCATENATED MODULE: ./src/components/FabricGrid.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricGridvue_type_script_lang_js_ = (FabricGridvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricGrid.vue
+
+
+
+
+
+/* normalize component */
+
+var FabricGrid_component = normalizeComponent(
+  components_FabricGridvue_type_script_lang_js_,
+  FabricGridvue_type_template_id_5e556e25_render,
+  FabricGridvue_type_template_id_5e556e25_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricGrid = (FabricGrid_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricImageFromURL.vue?vue&type=script&lang=js&
 function FabricImageFromURLvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -32534,15 +32852,31 @@ function FabricImageFromURLvue_type_script_lang_js_defineProperty(obj, key, valu
   created: function created() {
     var _this = this;
 
-    this.eventBus.$on("canvasCreated", function () {
-      _this.fabric.Image.fromURL(_this.url, function (img) {
-        _this.image = img;
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", function () {
+        _this.fabric.Image.fromURL(_this.url, function (img) {
+          _this.image = img;
 
-        _this.canvas.add(_this.image);
+          _this.canvas.add(_this.image);
 
-        _this.eventBus.$emit("objectCreated", _this.id);
-      }, FabricImageFromURLvue_type_script_lang_js_objectSpread({}, _this.definedProps));
-    });
+          _this.eventBus.$emit("objectCreated", _this.id);
+        }, FabricImageFromURLvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+      });
+    }
+
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", function (id) {
+        if (id === _this.$parent.id) {
+          _this.fabric.Image.fromURL(_this.url, function (img) {
+            _this.image = img;
+
+            _this.$parent.item.addWithUpdate(_this.image);
+
+            _this.eventBus.$emit("objectCreated", _this.id);
+          }, FabricImageFromURLvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+        }
+      });
+    }
   },
   methods: {},
   beforeDestroy: function beforeDestroy() {}
@@ -32662,6 +32996,112 @@ var FabricRectangle_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricRectangle = (FabricRectangle_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricText.vue?vue&type=script&lang=js&
+function FabricTextvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricTextvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricTextvue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { FabricTextvue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricTextvue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function FabricTextvue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ var FabricTextvue_type_script_lang_js_ = ({
+  name: "fabric-text",
+  inject: ["eventBus", "fabricWrapper"],
+  mixins: [fabricObject],
+  props: {
+    top: {
+      type: Number,
+      default: 40
+    },
+    left: {
+      type: Number,
+      default: 0
+    },
+    fontFamily: {
+      type: String,
+      default: "Times New Roman"
+    },
+    fontSize: {
+      type: Number,
+      default: 40
+    },
+    fontStyle: {
+      type: String,
+      default: "normal"
+    },
+    fontWeight: {
+      type: [Number, String],
+      default: "normal"
+    },
+    text: {
+      type: String,
+      required: true
+    },
+    textAlign: {
+      type: String,
+      default: "left"
+    },
+    textBackgroundColor: String
+  },
+  data: function data() {
+    return {
+      textObj: null,
+      type: "text"
+    };
+  },
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  created: function created() {
+    var _this = this;
+
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", function () {
+        _this.textObj = new _this.fabric.Text(_this.text, FabricTextvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+        _this.canvas.add(_this.textObj);
+
+        _this.eventBus.$emit("objectCreated", _this.id);
+      });
+    }
+
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", function (id) {
+        if (id === _this.$parent.id) {
+          _this.textObj = new _this.fabric.Text(_this.text, FabricTextvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+          _this.$parent.item.addWithUpdate(_this.textObj);
+
+          _this.eventBus.$emit("objectCreated", _this.id);
+        }
+      });
+    }
+  },
+  methods: {},
+  beforeDestroy: function beforeDestroy() {}
+});
+// CONCATENATED MODULE: ./src/components/FabricText.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricTextvue_type_script_lang_js_ = (FabricTextvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricText.vue
+var FabricText_render, FabricText_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricText_component = normalizeComponent(
+  components_FabricTextvue_type_script_lang_js_,
+  FabricText_render,
+  FabricText_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricText = (FabricText_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricTriangle.vue?vue&type=script&lang=js&
 function FabricTrianglevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -32708,13 +33148,27 @@ function FabricTrianglevue_type_script_lang_js_defineProperty(obj, key, value) {
   created: function created() {
     var _this = this;
 
-    this.eventBus.$on("canvasCreated", function () {
-      _this.triangle = new _this.fabric.Triangle(FabricTrianglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", function () {
+        _this.triangle = new _this.fabric.Triangle(FabricTrianglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
 
-      _this.canvas.add(_this.triangle);
+        _this.canvas.add(_this.triangle);
 
-      _this.eventBus.$emit("objectCreated", _this.id);
-    });
+        _this.eventBus.$emit("objectCreated", _this.id);
+      });
+    }
+
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", function (id) {
+        if (id === _this.$parent.id) {
+          _this.triangle = new _this.fabric.Triangle(FabricTrianglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+          _this.$parent.item.addWithUpdate(_this.triangle);
+
+          _this.eventBus.$emit("objectCreated", _this.id);
+        }
+      });
+    }
   },
   methods: {},
   beforeDestroy: function beforeDestroy() {}
@@ -32748,14 +33202,21 @@ var FabricTriangle_component = normalizeComponent(
 
 
 
- // import ResponsiveGridLayout from './ResponsiveGridLayout.vue';
+
+
+
+
 
 var VueFabric = {
   FabricCanvas: FabricCanvas,
   FabricCircle: FabricCircle,
   FabricEllipse: FabricEllipse,
+  FabricGrid: FabricGrid,
+  FabricGroup: FabricGroup,
   FabricImageFromURL: FabricImageFromURL,
+  FabricLine: FabricLine,
   FabricRectangle: FabricRectangle,
+  FabricText: FabricText,
   FabricTriangle: FabricTriangle
 };
 Object.keys(VueFabric).forEach(function (name) {
@@ -32767,8 +33228,12 @@ Object.keys(VueFabric).forEach(function (name) {
 /* concated harmony reexport FabricCanvas */__webpack_require__.d(__webpack_exports__, "FabricCanvas", function() { return FabricCanvas; });
 /* concated harmony reexport FabricCircle */__webpack_require__.d(__webpack_exports__, "FabricCircle", function() { return FabricCircle; });
 /* concated harmony reexport FabricEllipse */__webpack_require__.d(__webpack_exports__, "FabricEllipse", function() { return FabricEllipse; });
+/* concated harmony reexport FabricGrid */__webpack_require__.d(__webpack_exports__, "FabricGrid", function() { return FabricGrid; });
+/* concated harmony reexport FabricGroup */__webpack_require__.d(__webpack_exports__, "FabricGroup", function() { return FabricGroup; });
 /* concated harmony reexport FabricImageFromURL */__webpack_require__.d(__webpack_exports__, "FabricImageFromURL", function() { return FabricImageFromURL; });
+/* concated harmony reexport FabricLine */__webpack_require__.d(__webpack_exports__, "FabricLine", function() { return FabricLine; });
 /* concated harmony reexport FabricRectangle */__webpack_require__.d(__webpack_exports__, "FabricRectangle", function() { return FabricRectangle; });
+/* concated harmony reexport FabricText */__webpack_require__.d(__webpack_exports__, "FabricText", function() { return FabricText; });
 /* concated harmony reexport FabricTriangle */__webpack_require__.d(__webpack_exports__, "FabricTriangle", function() { return FabricTriangle; });
 
 
