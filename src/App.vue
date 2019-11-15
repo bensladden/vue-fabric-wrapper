@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Vue-Fabric-Wrapper</h1>
     <fabric-canvas>
-      <fabric-rectangle :id="1"></fabric-rectangle>
+      <fabric-polygon :id="1"></fabric-polygon>
       <fabric-circle :id="2"></fabric-circle>
       <fabric-ellipse :id="3"></fabric-ellipse>
       <fabric-triangle :id="4"></fabric-triangle>
@@ -22,7 +22,7 @@
         :url="'../svg/pipe.svg'"
         :left.sync="left"
       ></fabric-image-from-URL>
-	  <fabric-grid :id="11"></fabric-grid>
+      <fabric-grid :id="11"></fabric-grid>
     </fabric-canvas>
 
     <button @click="left = 100">Modify Left to 100</button>
@@ -40,6 +40,7 @@ import FabricImageFromURL from "./components/FabricImageFromURL.vue";
 import FabricText from "./components/FabricText.vue";
 import FabricLine from "./components/FabricLine.vue";
 import FabricGrid from "./components/FabricGrid.vue";
+import FabricPolygon from "./components/FabricPolygon";
 
 export default {
   name: "app",
@@ -53,7 +54,8 @@ export default {
     FabricImageFromURL,
     FabricText,
     FabricLine,
-	FabricGrid
+    FabricGrid,
+    FabricPolygon
   },
   data() {
     return {

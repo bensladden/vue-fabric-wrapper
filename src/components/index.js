@@ -6,11 +6,13 @@ import FabricGrid from "./FabricGrid.vue";
 import FabricGroup from "./FabricGroup.vue";
 import FabricImageFromURL from "./FabricImageFromURL.vue";
 import FabricLine from "./FabricLine.vue";
+import FabricPolygon from "./FabricPolygon.vue";
+import FabricPolyline from "./FabricLine.vue";
 import FabricRectangle from "./FabricRectangle.vue";
 import FabricText from "./FabricText.vue";
 import FabricTriangle from "./FabricTriangle.vue";
 
-const VueFabric = {
+const VueFabricWrapper = {
   FabricCanvas,
   FabricCircle,
   FabricEllipse,
@@ -18,16 +20,18 @@ const VueFabric = {
   FabricGroup,
   FabricImageFromURL,
   FabricLine,
+  FabricPolygon,
+  FabricPolyline,
   FabricRectangle,
   FabricText,
   FabricTriangle
 };
 
-Object.keys(VueFabric).forEach(name => {
-  Vue.component(name, VueFabric[name]);
+Object.keys(VueFabricWrapper).forEach(name => {
+  Vue.component(name, VueFabricWrapper[name]);
 });
 
-export default VueFabric;
+export default VueFabricWrapper;
 export {
   FabricCanvas,
   FabricCircle,
@@ -36,6 +40,8 @@ export {
   FabricGroup,
   FabricImageFromURL,
   FabricLine,
+  FabricPolygon,
+  FabricPolyline,
   FabricRectangle,
   FabricText,
   FabricTriangle
