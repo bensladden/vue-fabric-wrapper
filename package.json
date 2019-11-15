@@ -3,7 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"author": "Ben Sladden",
-	"main": "dist/lib/vue-fabric.common.js",
+	"main": "dist/vue-fabric-wrapper.common.js",
+	"unpkg": "dist/vue-fabric-wrapper.umd.min.js",
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "rimraf dist && vue-cli-service build",
