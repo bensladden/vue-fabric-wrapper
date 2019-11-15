@@ -1,5 +1,13 @@
 # vue-fabric
 
+<p align="center">
+	<img src="https://flat.badgen.net/github/branches/bensladden/vue-fabric" alt="branches">
+	<img src="https://flat.badgen.net/github/releases/bensladden/vue-fabric" alt="releases">
+	<img src="https://flat.badgen.net/github/open-issues/bensladden/vue-fabric" alt="openIssues">
+	<img src="https://flat.badgen.net/github/last-commit/bensladden/vue-fabric" alt="lastCommit">
+	<img src="https://flat.badgen.net/github/license/bensladden/vue-fabric" alt="license">
+</p>
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c31e91bb-b672-483c-bf98-1582de3cfaec/deploy-status)](https://app.netlify.com/sites/vue-fabric-wrapper/deploys)
 
 ## 🚀 How to use
