@@ -17,12 +17,11 @@
       </fabric-group>
       <fabric-text :id="7" :text="'hello'"></fabric-text>
       <fabric-line :id="8"></fabric-line>
-      <fabric-image-from-URL
+      <!-- <fabric-SVG-from-URL
         :id="9"
         :url="'../svg/pipe.svg'"
-        :left.sync="left"
-      ></fabric-image-from-URL>
-      <fabric-grid :id="11"></fabric-grid>
+      ></fabric-SVG-from-URL>-->
+      <fabric-path :id="11"></fabric-path>
     </fabric-canvas>
 
     <button @click="left = 100">Modify Left to 100</button>
@@ -37,9 +36,10 @@ import FabricCircle from "./components/FabricCircle.vue";
 import FabricEllipse from "./components/FabricEllipse.vue";
 import FabricTriangle from "./components/FabricTriangle.vue";
 import FabricImageFromURL from "./components/FabricImageFromURL.vue";
+// import FabricSVGFromURL from "./components/FabricSVGFromURL.vue";
 import FabricText from "./components/FabricText.vue";
 import FabricLine from "./components/FabricLine.vue";
-import FabricGrid from "./components/FabricGrid.vue";
+import FabricPath from "./components/FabricPath.vue";
 import FabricPolygon from "./components/FabricPolygon";
 
 export default {
@@ -52,9 +52,10 @@ export default {
     FabricEllipse,
     FabricTriangle,
     FabricImageFromURL,
+    //FabricSVGFromURL,
     FabricText,
     FabricLine,
-    FabricGrid,
+    FabricPath,
     FabricPolygon
   },
   data() {

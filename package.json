@@ -3,7 +3,12 @@
 	"description": "vue wrapper for fabricjs",
 	"keywords": [
 		"vuejs",
-		"fabricjs"
+		"fabricjs",
+		"vue-fabric",
+		"vue",
+		"fabric",
+		"canvas",
+		"components"
 	],
 	"version": "0.1.2",
 	"repository": {
