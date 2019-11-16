@@ -1,4 +1,4 @@
-# vue-fabric
+# vue-fabric-wrapper
 
 <p align="center">
 	<img src="https://flat.badgen.net/github/branches/bensladden/vue-fabric" alt="branches">
@@ -13,7 +13,27 @@
 [![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-template-rltsr?fontsize=14&hidenavigation=1&theme=dark)
 
 
-## 🚀 How to use
+## Currently implemented the following Fabric Objects:
+  Fabric.Canvas,
+  Fabric.Circle,
+  Fabric.Ellipse,
+  Fabric.Group,
+  FabricImageFromURL,
+  Fabric.Line,
+  Fabric.Polygon,
+  Fabric.Polyline,
+  Fabric.Rectangle,
+  Fabric.Text,
+  Fabric.Triangle
+
+## ⚙️ Installation
+```sh
+$ npm install vue-fabric-wrapper
+```
+## 📄 Documents
+Coming Soon!
+
+## 🚀 How to use in Vue
 
 ```vue
 <template>
@@ -48,31 +68,62 @@ export default {
 </style>
 
 ```
-
-## Project setup
-
+## 🚀 How to use in Nuxt
+Create Plugin with the following example code
 ```
-npm install
-```
+import Vue from 'vue';
+import vueFabricWrapper from 'vue-fabric-wrapper';
 
-### Compiles and hot-reloads for development
-
-```
-npm run serve
+Vue.component("FabricCanvas", vueFabricWrapper.FabricCanvas)
+Vue.component("FabricCircle", vueFabricWrapper.FabricCircle)
 ```
 
-### Compiles and minifies for production
-
+Add this to nuxt.config and use mode client
 ```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
+module.exports = {
+	plugins: [
+			{ src: "@/plugins/fabric.js", mode: "client" }
+		]
+}
 ```
 
-### Customize configuration
+Finally use client-only to render only on the client side
+```
+<template>
+  <client-only>
+    <fabric-canvas>
+      <fabric-circle :id="2"></fabric-circle>
+    </fabric-canvas>
+  </client-only>
+</template>
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<script>
+export default {
+
+};
+</script>
+
+<style>
+</style>
+```
+
+## ⭐️ Show Your Support
+Please give a ⭐️ if this project helped you!
+
+
+## 👏 Contributing
+
+If you have any questions or requests or want to contribute to `vue-fabric-wrapper` or other packages, please write the [issue](https://github.com/bensladden/vue-fabric-wrapper/issues) or give me a Pull Request freely.
+
+## 🐞 Bug Report
+
+If you find a bug, please report to us opening a new [Issue](https://github.com/bensladden/vue-fabric-wrapper/issues) on GitHub.
+
+## ⚙️ Development
+### `npm run serve`
+
+Runs the app in the development mode.<br>
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
+
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.

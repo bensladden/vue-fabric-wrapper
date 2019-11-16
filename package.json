@@ -5,7 +5,7 @@
 		"vuejs",
 		"fabricjs"
 	],
-	"version": "0.1.0",
+	"version": "0.1.2",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/bensladden/vue-fabric-wrapper.git"
