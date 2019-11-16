@@ -20,6 +20,7 @@
   Fabric.Group,
   FabricImageFromURL,
   Fabric.Line,
+  Fabric.Path,
   Fabric.Polygon,
   Fabric.Polyline,
   Fabric.Rectangle,
