@@ -10,58 +10,43 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c31e91bb-b672-483c-bf98-1582de3cfaec/deploy-status)](https://app.netlify.com/sites/vue-fabric-wrapper/deploys)
 
+[![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-template-rltsr?fontsize=14&hidenavigation=1&theme=dark)
+
+
 ## 🚀 How to use
 
 ```vue
 <template>
-    <div id="app">
-        <h1>Vue-Fabric-Wrapper</h1>
-        <fabric-canvas>
-            <fabric-rectangle :id="1"></fabric-rectangle>
-            <fabric-circle :id="2"></fabric-circle>
-            <fabric-ellipse :id="3"></fabric-ellipse>
-            <fabric-triangle :id="4"></fabric-triangle>
-            <fabric-image-from-URL :id="5" :left.sync="left"></fabric-image-from-URL>
-        </fabric-canvas>
-    </div>
+  <div id="app">
+    <fabric-canvas>
+      <fabric-circle :id="3"></fabric-circle>
+    </fabric-canvas>
+  </div>
 </template>
 
 <script>
-import FabricCanvas from "./components/FabricCanvas.vue";
-import FabricRectangle from "./components/FabricRectangle.vue";
-import FabricCircle from "./components/FabricCircle.vue";
-import FabricEllipse from "./components/FabricEllipse.vue";
-import FabricTriangle from "./components/FabricTriangle.vue";
-import FabricImageFromURL from "./components/FabricImageFromURL.vue";
+import vueFabricWrapper from "vue-fabric-wrapper";
 
 export default {
-    name: "app",
-    components: {
-        FabricCanvas,
-        FabricRectangle,
-        FabricCircle,
-        FabricEllipse,
-        FabricTriangle,
-        FabricImageFromURL
-    },
-    data() {
-        return {
-            left: 80
-        };
-    }
+  name: "App",
+  components: {
+    FabricCanvas: vueFabricWrapper.FabricCanvas,
+    FabricCircle: vueFabricWrapper.FabricCircle
+  }
 };
 </script>
 
-<style lang="scss">
+<style>
 #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
+
 ```
 
 ## Project setup
