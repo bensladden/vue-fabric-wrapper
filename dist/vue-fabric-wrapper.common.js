@@ -32903,6 +32903,91 @@ var FabricImageFromURL_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricImageFromURL = (FabricImageFromURL_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricPath.vue?vue&type=script&lang=js&
+function FabricPathvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricPathvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricPathvue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { FabricPathvue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricPathvue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ var FabricPathvue_type_script_lang_js_ = ({
+  name: "fabric-path",
+  inject: ["eventBus", "fabricWrapper"],
+  mixins: [fabricObject],
+  props: {
+    d: {
+      type: String,
+      default: "M 0 0 L 200 100 L 170 200 z"
+    },
+    fill: {
+      type: String,
+      default: "purple"
+    },
+    stroke: {
+      type: String,
+      default: "purple"
+    }
+  },
+  data: function data() {
+    return {
+      path: null,
+      type: "path"
+    };
+  },
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  created: function created() {
+    var _this = this;
+
+    if (this.$parent.type === "canvas") {
+      this.eventBus.$on("canvasCreated", function () {
+        _this.path = new _this.fabric.Path(_this.d, FabricPathvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+        _this.canvas.add(_this.path);
+
+        _this.eventBus.$emit("objectCreated", _this.id);
+      });
+    }
+
+    if (this.$parent.type === "group") {
+      this.eventBus.$on("groupCreated", function (id) {
+        if (id === _this.$parent.id) {
+          _this.path = new _this.fabric.Path(_this.d, FabricPathvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+
+          _this.$parent.item.addWithUpdate(_this.path);
+
+          _this.eventBus.$emit("objectCreated", _this.id);
+        }
+      });
+    }
+  },
+  methods: {},
+  beforeDestroy: function beforeDestroy() {}
+});
+// CONCATENATED MODULE: ./src/components/FabricPath.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricPathvue_type_script_lang_js_ = (FabricPathvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricPath.vue
+var FabricPath_render, FabricPath_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricPath_component = normalizeComponent(
+  components_FabricPathvue_type_script_lang_js_,
+  FabricPath_render,
+  FabricPath_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricPath = (FabricPath_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricPolygon.vue?vue&type=script&lang=js&
 function FabricPolygonvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -33314,6 +33399,7 @@ var FabricTriangle_component = normalizeComponent(
 
 
 
+
 var VueFabricWrapper = {
   FabricCanvas: FabricCanvas,
   FabricCircle: FabricCircle,
@@ -33322,6 +33408,7 @@ var VueFabricWrapper = {
   FabricGroup: FabricGroup,
   FabricImageFromURL: FabricImageFromURL,
   FabricLine: FabricLine,
+  FabricPath: FabricPath,
   FabricPolygon: FabricPolygon,
   FabricPolyline: FabricLine,
   FabricRectangle: FabricRectangle,
@@ -33341,6 +33428,7 @@ Object.keys(VueFabricWrapper).forEach(function (name) {
 /* concated harmony reexport FabricGroup */__webpack_require__.d(__webpack_exports__, "FabricGroup", function() { return FabricGroup; });
 /* concated harmony reexport FabricImageFromURL */__webpack_require__.d(__webpack_exports__, "FabricImageFromURL", function() { return FabricImageFromURL; });
 /* concated harmony reexport FabricLine */__webpack_require__.d(__webpack_exports__, "FabricLine", function() { return FabricLine; });
+/* concated harmony reexport FabricPath */__webpack_require__.d(__webpack_exports__, "FabricPath", function() { return FabricPath; });
 /* concated harmony reexport FabricPolygon */__webpack_require__.d(__webpack_exports__, "FabricPolygon", function() { return FabricPolygon; });
 /* concated harmony reexport FabricPolyline */__webpack_require__.d(__webpack_exports__, "FabricPolyline", function() { return FabricLine; });
 /* concated harmony reexport FabricRectangle */__webpack_require__.d(__webpack_exports__, "FabricRectangle", function() { return FabricRectangle; });
