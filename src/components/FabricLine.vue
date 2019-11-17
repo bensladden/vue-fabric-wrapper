@@ -5,11 +5,21 @@ export default {
   inject: ["eventBus", "fabricWrapper"],
   mixins: [fabricObject],
   props: {
-    points: {
-      type: Array,
-      default: function() {
-        return [0, 0, 100, 100];
-      }
+    x1: {
+      type: Number,
+      default: 0
+    },
+    y1: {
+      type: Number,
+      default: 0
+    },
+    x2: {
+      type: Number,
+      default: 1
+    },
+    y2: {
+      type: Number,
+      default: 1
     },
     fill: { type: String, default: "red" },
     stroke: { type: String, default: "red" }
@@ -26,7 +36,9 @@ export default {
   created() {
     if (this.$parent.type === "canvas") {
       this.eventBus.$on("canvasCreated", () => {
-        this.line = new this.fabric.Line(this.points, { ...this.definedProps });
+        this.line = new this.fabric.Line([this.x1, this.y1, this.x2, this.y2], {
+          ...this.definedProps
+        });
         this.canvas.add(this.line);
         this.eventBus.$emit("objectCreated", this.id);
       });
@@ -34,9 +46,12 @@ export default {
     if (this.$parent.type === "group") {
       this.eventBus.$on("groupCreated", id => {
         if (id === this.$parent.id) {
-          this.line = new this.fabric.Line(this.points, {
-            ...this.definedProps
-          });
+          this.line = new this.fabric.Line(
+            [this.x1, this.y1, this.x2, this.y2],
+            {
+              ...this.definedProps
+            }
+          );
           this.$parent.item.addWithUpdate(this.line);
           this.eventBus.$emit("objectCreated", this.id);
         }
