@@ -10,7 +10,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c31e91bb-b672-483c-bf98-1582de3cfaec/deploy-status)](https://app.netlify.com/sites/vue-fabric-wrapper/deploys)
 
-[![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-template-rltsr?fontsize=14&hidenavigation=1&theme=dark)
+Stick Man Example: [![Edit Vue Template](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vue-template-rltsr?fontsize=14&hidenavigation=1&theme=dark)
 
 
 ## Currently implemented the following Fabric Objects:

@@ -1,72 +1,213 @@
 <template>
   <div id="app">
-    <h1>Vue-Fabric-Wrapper</h1>
-    <fabric-canvas>
-      <fabric-polygon :id="1"></fabric-polygon>
-      <fabric-circle :id="2"></fabric-circle>
-      <fabric-ellipse :id="3"></fabric-ellipse>
-      <fabric-triangle :id="4"></fabric-triangle>
-      <fabric-image-from-URL :id="5" :left.sync="left"></fabric-image-from-URL>
-      <fabric-group :id="6" :left="0" :top="0">
-        <fabric-rectangle :id="61" :top="10" :fill="'blue'"></fabric-rectangle>
-        <fabric-rectangle
-          :id="62"
-          :left="10"
-          :fill="'green'"
-        ></fabric-rectangle>
-      </fabric-group>
-      <fabric-text :id="7" :text="'hello'"></fabric-text>
-      <fabric-line :id="8"></fabric-line>
-      <!-- <fabric-SVG-from-URL
-        :id="9"
-        :url="'../svg/pipe.svg'"
-      ></fabric-SVG-from-URL>-->
-      <fabric-path :id="11"></fabric-path>
+    <h1>Vue Fabric Wrapper: Stick Man</h1>
+    Original Demo:
+    <a href="http://fabricjs.com/stickman">here</a>
+    <br />See Demo in CodeSandbox
+    <a
+      href="https://codesandbox.io/s/vue-template-rltsr?fontsize=14&hidenavigation=1&theme=dark"
+      >here</a
+    >
+    <fabric-canvas :height="400" :width="400">
+      <fabric-line
+        :id="'headToBody'"
+        :x1="headPosLeft"
+        :y1="headPosTop"
+        :x2="bodyPosLeft"
+        :y2="bodyPosTop"
+        :fill="'red'"
+        :stroke="'red'"
+        :strokeWidth="5"
+        :selectable="false"
+        :evented="false"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-line>
+      <fabric-line
+        :id="'bodyToWaist'"
+        :x1="bodyPosLeft"
+        :y1="bodyPosTop"
+        :x2="waistPosLeft"
+        :y2="waistPosTop"
+        :fill="'red'"
+        :stroke="'red'"
+        :strokeWidth="5"
+        :selectable="false"
+        :evented="false"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-line>
+      <fabric-line
+        :id="'bodyToLeftArm'"
+        :x1="bodyPosLeft"
+        :y1="bodyPosTop"
+        :x2="leftHandPosLeft"
+        :y2="leftHandPosTop"
+        :fill="'red'"
+        :stroke="'red'"
+        :strokeWidth="5"
+        :selectable="false"
+        :evented="false"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-line>
+      <fabric-line
+        :id="'bodyToRightArm'"
+        :x1="bodyPosLeft"
+        :y1="bodyPosTop"
+        :x2="rightHandPosLeft"
+        :y2="rightHandPosTop"
+        :fill="'red'"
+        :stroke="'red'"
+        :strokeWidth="5"
+        :selectable="false"
+        :evented="false"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-line>
+      <fabric-line
+        :id="'waistToLeftFoot'"
+        :x1="leftFootPosLeft"
+        :y1="leftFootPosTop"
+        :x2="waistPosLeft"
+        :y2="waistPosTop"
+        :fill="'red'"
+        :stroke="'red'"
+        :strokeWidth="5"
+        :selectable="false"
+        :evented="false"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-line>
+      <fabric-line
+        :id="'waistToRightFoot'"
+        :x1="rightFootPosLeft"
+        :y1="rightFootPosTop"
+        :x2="waistPosLeft"
+        :y2="waistPosTop"
+        :fill="'red'"
+        :stroke="'red'"
+        :strokeWidth="5"
+        :selectable="false"
+        :evented="false"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-line>
+      <fabric-circle
+        :id="'head'"
+        :left.sync="headPosLeft"
+        :top.sync="headPosTop"
+        :strokeWidth="5"
+        :radius="12"
+        :fill="'#fff'"
+        :stroke="'#666'"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-circle>
+      <fabric-circle
+        :id="'body'"
+        :left.sync="bodyPosLeft"
+        :top.sync="bodyPosTop"
+        :strokeWidth="5"
+        :radius="12"
+        :fill="'#fff'"
+        :stroke="'#666'"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-circle>
+      <fabric-circle
+        :id="'waist'"
+        :left.sync="waistPosLeft"
+        :top.sync="waistPosTop"
+        :strokeWidth="5"
+        :radius="12"
+        :fill="'#fff'"
+        :stroke="'#666'"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-circle>
+      <fabric-circle
+        :id="'leftHand'"
+        :left.sync="leftHandPosLeft"
+        :top.sync="leftHandPosTop"
+        :strokeWidth="5"
+        :radius="12"
+        :fill="'#fff'"
+        :stroke="'#666'"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-circle>
+      <fabric-circle
+        :id="'rightHand'"
+        :left.sync="rightHandPosLeft"
+        :top.sync="rightHandPosTop"
+        :strokeWidth="5"
+        :radius="12"
+        :fill="'#fff'"
+        :stroke="'#666'"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-circle>
+      <fabric-circle
+        :id="'leftFoot'"
+        :left.sync="leftFootPosLeft"
+        :top.sync="leftFootPosTop"
+        :strokeWidth="5"
+        :radius="12"
+        :fill="'#fff'"
+        :stroke="'#666'"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-circle>
+      <fabric-circle
+        :id="'rightFoot'"
+        :left.sync="rightFootPosLeft"
+        :top.sync="rightFootPosTop"
+        :strokeWidth="5"
+        :radius="12"
+        :fill="'#fff'"
+        :stroke="'#666'"
+        :originX="'center'"
+        :originY="'center'"
+      ></fabric-circle>
     </fabric-canvas>
-
-    <button @click="left = 100">Modify Left to 100</button>
   </div>
 </template>
 
 <script>
-import FabricCanvas from "./components/FabricCanvas.vue";
-import FabricGroup from "./components/FabricGroup.vue";
-import FabricRectangle from "./components/FabricRectangle.vue";
-import FabricCircle from "./components/FabricCircle.vue";
-import FabricEllipse from "./components/FabricEllipse.vue";
-import FabricTriangle from "./components/FabricTriangle.vue";
-import FabricImageFromURL from "./components/FabricImageFromURL.vue";
-// import FabricSVGFromURL from "./components/FabricSVGFromURL.vue";
-import FabricText from "./components/FabricText.vue";
-import FabricLine from "./components/FabricLine.vue";
-import FabricPath from "./components/FabricPath.vue";
-import FabricPolygon from "./components/FabricPolygon";
+import FabricCanvas from "./components/FabricCanvas";
+import FabricLine from "./components/FabricLine";
+import FabricCircle from "./components/FabricCircle";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
     FabricCanvas,
-    FabricGroup,
-    FabricRectangle,
     FabricCircle,
-    FabricEllipse,
-    FabricTriangle,
-    FabricImageFromURL,
-    //FabricSVGFromURL,
-    FabricText,
-    FabricLine,
-    FabricPath,
-    FabricPolygon
+    FabricLine
   },
   data() {
     return {
-      left: 80
+      headPosLeft: 250,
+      headPosTop: 125,
+      bodyPosLeft: 250,
+      bodyPosTop: 175,
+      waistPosLeft: 250,
+      waistPosTop: 250,
+      leftHandPosLeft: 175,
+      leftHandPosTop: 225,
+      rightHandPosLeft: 325,
+      rightHandPosTop: 225,
+      leftFootPosLeft: 200,
+      leftFootPosTop: 350,
+      rightFootPosLeft: 300,
+      rightFootPosTop: 350
     };
   }
 };
 </script>
 
-<style lang="scss">
+<style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
