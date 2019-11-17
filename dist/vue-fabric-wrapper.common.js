@@ -32638,11 +32638,21 @@ function FabricLinevue_type_script_lang_js_defineProperty(obj, key, value) { if 
   inject: ["eventBus", "fabricWrapper"],
   mixins: [fabricObject],
   props: {
-    points: {
-      type: Array,
-      default: function _default() {
-        return [0, 0, 100, 100];
-      }
+    x1: {
+      type: Number,
+      default: 0
+    },
+    y1: {
+      type: Number,
+      default: 0
+    },
+    x2: {
+      type: Number,
+      default: 1
+    },
+    y2: {
+      type: Number,
+      default: 1
     },
     fill: {
       type: String,
@@ -32667,7 +32677,7 @@ function FabricLinevue_type_script_lang_js_defineProperty(obj, key, value) { if 
 
     if (this.$parent.type === "canvas") {
       this.eventBus.$on("canvasCreated", function () {
-        _this.line = new _this.fabric.Line(_this.points, FabricLinevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+        _this.line = new _this.fabric.Line([_this.x1, _this.y1, _this.x2, _this.y2], FabricLinevue_type_script_lang_js_objectSpread({}, _this.definedProps));
 
         _this.canvas.add(_this.line);
 
@@ -32678,7 +32688,7 @@ function FabricLinevue_type_script_lang_js_defineProperty(obj, key, value) { if 
     if (this.$parent.type === "group") {
       this.eventBus.$on("groupCreated", function (id) {
         if (id === _this.$parent.id) {
-          _this.line = new _this.fabric.Line(_this.points, FabricLinevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          _this.line = new _this.fabric.Line([_this.x1, _this.y1, _this.x2, _this.y2], FabricLinevue_type_script_lang_js_objectSpread({}, _this.definedProps));
 
           _this.$parent.item.addWithUpdate(_this.line);
 
