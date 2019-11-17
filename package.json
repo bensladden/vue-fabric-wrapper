@@ -38,7 +38,7 @@
 		"@vue/cli-plugin-babel": "4.0.5",
 		"@vue/cli-plugin-eslint": "4.0.5",
 		"@vue/cli-service": "4.0.5",
-		"@vue/eslint-config-prettier": "5.0.0",
+		"@vue/eslint-config-prettier": "5.1.0",
 		"babel-eslint": "10.0.3",
 		"core-js": "3.4.1",
 		"eslint": "6.6.0",
