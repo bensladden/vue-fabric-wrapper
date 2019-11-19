@@ -32308,6 +32308,16 @@ var watchProp = function watchProp(key, deep) {
       var res = [];
       this.transverseCanvasObjects(canvasObj, "id", this.id, res);
       return res[0];
+    },
+    parentType: function parentType() {
+      return this.$parent.type;
+    },
+    parentItem: function parentItem() {
+      if (this.parentType == "canvas") {
+        return this.canvas;
+      }
+
+      return this.$parent.item;
     }
   },
   methods: {
@@ -32988,7 +32998,7 @@ function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if 
         if (id === _this.$parent.id) {
           _this.pathObj = new _this.fabric.Path(_this.path, FabricPathvue_type_script_lang_js_objectSpread({}, _this.definedProps));
 
-          _this.$parent.item.addWithUpdate(_this.path);
+          _this.$parent.item.addWithUpdate(_this.pathObj);
 
           _this.eventBus.$emit("objectCreated", _this.id);
         }
@@ -33008,7 +33018,7 @@ function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if 
 
         if (this.$parent.type === "group") {
           this.pathObj = new this.fabric.Path(newValue, FabricPathvue_type_script_lang_js_objectSpread({}, this.definedProps));
-          this.$parent.item.addWithUpdate(this.path);
+          this.$parent.item.addWithUpdate(this.pathObj);
           this.eventBus.$emit("objectCreated", this.id);
         }
       }
