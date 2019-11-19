@@ -31826,7 +31826,7 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ea7af58-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"18d37a24-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
 var staticRenderFns = []
 
@@ -32079,6 +32079,8 @@ var component = normalizeComponent(
 
 /* harmony default export */ var FabricCanvas = (component.exports);
 // CONCATENATED MODULE: ./src/components/fabricObject.js
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -32318,38 +32320,57 @@ var watchProp = function watchProp(key, deep) {
           objectList.push(objects[i]);
         }
       }
+    },
+    createEvents: function createEvents() {
+      var _this = this;
+
+      OBJECT_EVENTS.forEach(function (event) {
+        _this.item.on(event, function (e) {
+          _this.eventBus.$emit(event, _objectSpread({
+            id: _this.id
+          }, e));
+        });
+      });
+    },
+    destroyEvents: function destroyEvents() {
+      var _this2 = this;
+
+      OBJECT_EVENTS.forEach(function (event) {
+        _this2.item.off(event);
+      });
+    },
+    createWatchers: function createWatchers() {
+      var _this3 = this;
+
+      //Setup Watchers for emmit sync option
+      EMIT_PROPS.forEach(function (prop) {
+        _this3.$watch("item." + prop, watchEmitProp(prop, true));
+      }); //Setup prop watches to sync with fabric
+
+      Object.keys(this.$props).forEach(function (key) {
+        //Custom watch check to make sure the mixin also does not genearte a watch
+        if (_typeof(_this3.customWatch) !== ( true ? "undefined" : undefined)) {
+          if (_this3.customWatch.includes(key)) {
+            return;
+          }
+        }
+
+        _this3.$watch(key, watchProp(key, true));
+      });
     }
   },
   watch: {},
   created: function created() {
-    var _this = this;
+    var _this4 = this;
 
     this.eventBus.$on("objectCreated", function (id) {
-      if (_this.id === id) {
-        OBJECT_EVENTS.forEach(function (event) {
-          _this.item.on(event, function (e) {
-            _this.eventBus.$emit(event, _objectSpread({
-              id: _this.id
-            }, e));
-          });
-        }); //Setup Watchers for emmit sync option
-
-        EMIT_PROPS.forEach(function (prop) {
-          _this.$watch("item." + prop, watchEmitProp(prop, true));
-        }); //Setup prop watches to sync with fabric
-
-        Object.keys(_this.$props).forEach(function (key) {
-          _this.$watch(key, watchProp(key, true));
-        });
+      if (_this4.id === id) {
+        _this4.createWatchers();
       }
     });
   },
   beforeDestroy: function beforeDestroy() {
-    var _this2 = this;
-
-    OBJECT_EVENTS.forEach(function (event) {
-      _this2.item.off(event);
-    });
+    this.destroyEvents();
   }
 });
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCircle.vue?vue&type=script&lang=js&
@@ -32534,7 +32555,7 @@ var FabricEllipse_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricEllipse = (FabricEllipse_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ea7af58-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=5e556e25&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"18d37a24-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=5e556e25&
 var FabricGridvue_type_template_id_5e556e25_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',{attrs:{"id":_vm.id}},[_vm._l((_vm.verticalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'v' + index,attrs:{"id":_vm.id + 'v' + index}},'fabric-line',line,false))}),_vm._l((_vm.horizontalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'h' + index,attrs:{"id":_vm.id + 'h' + index}},'fabric-line',line,false))})],2)}
 var FabricGridvue_type_template_id_5e556e25_staticRenderFns = []
 
@@ -32926,8 +32947,8 @@ function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if 
   inject: ["eventBus", "fabricWrapper"],
   mixins: [fabricObject],
   props: {
-    d: {
-      type: String,
+    path: {
+      type: [String, Array],
       default: "M 0 0 L 200 100 L 170 200 z"
     },
     fill: {
@@ -32941,8 +32962,9 @@ function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if 
   },
   data: function data() {
     return {
-      path: null,
-      type: "path"
+      pathObj: null,
+      type: "path",
+      customWatch: ["path"]
     };
   },
   render: function render(h) {
@@ -32953,9 +32975,9 @@ function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if 
 
     if (this.$parent.type === "canvas") {
       this.eventBus.$on("canvasCreated", function () {
-        _this.path = new _this.fabric.Path(_this.d, FabricPathvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+        _this.pathObj = new _this.fabric.Path(_this.path, FabricPathvue_type_script_lang_js_objectSpread({}, _this.definedProps));
 
-        _this.canvas.add(_this.path);
+        _this.canvas.add(_this.pathObj);
 
         _this.eventBus.$emit("objectCreated", _this.id);
       });
@@ -32964,7 +32986,7 @@ function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if 
     if (this.$parent.type === "group") {
       this.eventBus.$on("groupCreated", function (id) {
         if (id === _this.$parent.id) {
-          _this.path = new _this.fabric.Path(_this.d, FabricPathvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          _this.pathObj = new _this.fabric.Path(_this.path, FabricPathvue_type_script_lang_js_objectSpread({}, _this.definedProps));
 
           _this.$parent.item.addWithUpdate(_this.path);
 
@@ -32973,8 +32995,28 @@ function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if 
       });
     }
   },
-  methods: {},
-  beforeDestroy: function beforeDestroy() {}
+  watch: {
+    path: function path(newValue) {
+      if (this.item) {
+        this.canvas.remove(this.item);
+
+        if (this.$parent.type === "canvas") {
+          this.pathObj = new this.fabric.Path(newValue, FabricPathvue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.canvas.add(this.pathObj);
+          this.eventBus.$emit("objectCreated", this.id);
+        }
+
+        if (this.$parent.type === "group") {
+          this.pathObj = new this.fabric.Path(newValue, FabricPathvue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.$parent.item.addWithUpdate(this.path);
+          this.eventBus.$emit("objectCreated", this.id);
+        }
+      }
+    }
+  } //   beforeDestroy() {
+  //     this.destroyEvents();
+  //   }
+
 });
 // CONCATENATED MODULE: ./src/components/FabricPath.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_FabricPathvue_type_script_lang_js_ = (FabricPathvue_type_script_lang_js_); 
