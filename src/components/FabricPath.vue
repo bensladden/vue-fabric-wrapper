@@ -42,20 +42,21 @@ export default {
     },
     path(newValue) {
       if (this.item) {
-        this.canvas.remove(this.item); //TODO fix with group aswell
-        if (this.$parent.type === "canvas") {
+        if (this.parentType === "canvas") {
+          //this.destroyEvents();
+          this.canvas.remove(this.item);
           this.pathObj = new this.fabric.Path(newValue, {
             ...this.definedProps
           });
           this.canvas.add(this.pathObj);
-          this.eventBus.$emit("objectCreated", this.id);
         }
         if (this.$parent.type === "group") {
+          //this.destroyEvents();
+          this.parentItem.remove(this.item);
           this.pathObj = new this.fabric.Path(newValue, {
             ...this.definedProps
           });
-          this.$parent.item.addWithUpdate(this.pathObj);
-          this.eventBus.$emit("objectCreated", this.id);
+          this.parentItem.addWithUpdate(this.pathObj);
         }
       }
     }
