@@ -126,50 +126,54 @@
         :originX="'center'"
         :originY="'center'"
       ></fabric-circle>
-      <fabric-circle
+      <fabric-triangle
         :id="'leftHand'"
         :left.sync="leftHandPosLeft"
         :top.sync="leftHandPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :width="24"
+        :height="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
-      <fabric-circle
+      ></fabric-triangle>
+      <fabric-triangle
         :id="'rightHand'"
         :left.sync="rightHandPosLeft"
         :top.sync="rightHandPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :width="24"
+        :height="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
-      <fabric-circle
+      ></fabric-triangle>
+      <fabric-rectangle
         :id="'leftFoot'"
         :left.sync="leftFootPosLeft"
         :top.sync="leftFootPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :width="36"
+        :height="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
-      <fabric-circle
+      ></fabric-rectangle>
+      <fabric-rectangle
         :id="'rightFoot'"
         :left.sync="rightFootPosLeft"
         :top.sync="rightFootPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :width="36"
+        :height="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
+      ></fabric-rectangle>
     </fabric-canvas>
   </div>
 </template>
@@ -178,13 +182,17 @@
 import FabricCanvas from "./components/FabricCanvas";
 import FabricLine from "./components/FabricLine";
 import FabricCircle from "./components/FabricCircle";
+import FabricTriangle from "./components/FabricTriangle";
+import FabricRectangle from "./components/FabricRectangle";
 
 export default {
   name: "App",
   components: {
     FabricCanvas,
     FabricCircle,
-    FabricLine
+    FabricLine,
+    FabricTriangle,
+    FabricRectangle
   },
   data() {
     return {

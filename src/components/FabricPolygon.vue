@@ -30,26 +30,23 @@ export default {
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created() {
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", () => {
-        this.polygon = new this.fabric.Polygon(this.points, {
-          ...this.definedProps
-        });
-        this.canvas.add(this.polygon);
-        this.eventBus.$emit("objectCreated", this.id);
-      });
-    }
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", id => {
-        if (id === this.$parent.id) {
+  watch: {
+    parentItem: {
+      handler(newValue) {
+        if (newValue) {
+          //Parent is created
           this.polygon = new this.fabric.Polygon(this.points, {
             ...this.definedProps
           });
-          this.$parent.item.addWithUpdate(this.polygon);
-          this.eventBus.$emit("objectCreated", this.id);
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.polygon);
+          } else {
+            this.canvas.add(this.polygon);
+          }
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},

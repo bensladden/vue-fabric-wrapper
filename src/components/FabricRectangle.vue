@@ -35,22 +35,21 @@ export default {
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created() {
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", () => {
-        this.rect = new this.fabric.Rect({ ...this.definedProps });
-        this.canvas.add(this.rect);
-        this.eventBus.$emit("objectCreated", this.id);
-      });
-    }
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", id => {
-        if (id === this.$parent.id) {
+  watch: {
+    parentItem: {
+      handler(newValue) {
+        if (newValue) {
+          //Parent is created
           this.rect = new this.fabric.Rect({ ...this.definedProps });
-          this.$parent.item.addWithUpdate(this.rect);
-          this.eventBus.$emit("objectCreated", this.id);
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.rect);
+          } else {
+            this.canvas.add(this.rect);
+          }
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
