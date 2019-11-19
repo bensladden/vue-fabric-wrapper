@@ -38,7 +38,7 @@ export default {
           this.pathObj = new this.fabric.Path(this.path, {
             ...this.definedProps
           });
-          this.$parent.item.addWithUpdate(this.path);
+          this.$parent.item.addWithUpdate(this.pathObj);
           this.eventBus.$emit("objectCreated", this.id);
         }
       });
@@ -59,7 +59,7 @@ export default {
           this.pathObj = new this.fabric.Path(newValue, {
             ...this.definedProps
           });
-          this.$parent.item.addWithUpdate(this.path);
+          this.$parent.item.addWithUpdate(this.pathObj);
           this.eventBus.$emit("objectCreated", this.id);
         }
       }

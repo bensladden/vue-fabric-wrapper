@@ -165,6 +165,15 @@ export default {
       let res = [];
       this.transverseCanvasObjects(canvasObj, "id", this.id, res);
       return res[0];
+    },
+    parentType() {
+      return this.$parent.type;
+    },
+    parentItem() {
+      if (this.parentType == "canvas") {
+        return this.canvas;
+      }
+      return this.$parent.item;
     }
   },
   methods: {
