@@ -182,31 +182,45 @@ export default {
           objectList.push(objects[i]);
         }
       }
+    },
+    createEvents() {
+      OBJECT_EVENTS.forEach(event => {
+        this.item.on(event, e => {
+          this.eventBus.$emit(event, { id: this.id, ...e });
+        });
+      });
+    },
+    destroyEvents() {
+      OBJECT_EVENTS.forEach(event => {
+        this.item.off(event);
+      });
+    },
+    createWatchers() {
+      //Setup Watchers for emmit sync option
+      EMIT_PROPS.forEach(prop => {
+        this.$watch("item." + prop, watchEmitProp(prop, true));
+      });
+      //Setup prop watches to sync with fabric
+      Object.keys(this.$props).forEach(key => {
+        //Custom watch check to make sure the mixin also does not genearte a watch
+        if (typeof this.customWatch !== typeof undefined) {
+          if (this.customWatch.includes(key)) {
+            return;
+          }
+        }
+        this.$watch(key, watchProp(key, true));
+      });
     }
   },
   watch: {},
   created() {
     this.eventBus.$on("objectCreated", id => {
       if (this.id === id) {
-        OBJECT_EVENTS.forEach(event => {
-          this.item.on(event, e => {
-            this.eventBus.$emit(event, { id: this.id, ...e });
-          });
-        });
-        //Setup Watchers for emmit sync option
-        EMIT_PROPS.forEach(prop => {
-          this.$watch("item." + prop, watchEmitProp(prop, true));
-        });
-        //Setup prop watches to sync with fabric
-        Object.keys(this.$props).forEach(key => {
-          this.$watch(key, watchProp(key, true));
-        });
+        this.createWatchers();
       }
     });
   },
   beforeDestroy() {
-    OBJECT_EVENTS.forEach(event => {
-      this.item.off(event);
-    });
+    this.destroyEvents();
   }
 };

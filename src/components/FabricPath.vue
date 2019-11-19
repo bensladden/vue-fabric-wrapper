@@ -5,8 +5,8 @@ export default {
   inject: ["eventBus", "fabricWrapper"],
   mixins: [fabricObject],
   props: {
-    d: {
-      type: String,
+    path: {
+      type: [String, Array],
       default: "M 0 0 L 200 100 L 170 200 z"
     },
     fill: { type: String, default: "purple" },
@@ -14,8 +14,9 @@ export default {
   },
   data() {
     return {
-      path: null,
-      type: "path"
+      pathObj: null,
+      type: "path",
+      customWatch: ["path"]
     };
   },
   render(h) {
@@ -24,17 +25,17 @@ export default {
   created() {
     if (this.$parent.type === "canvas") {
       this.eventBus.$on("canvasCreated", () => {
-        this.path = new this.fabric.Path(this.d, {
+        this.pathObj = new this.fabric.Path(this.path, {
           ...this.definedProps
         });
-        this.canvas.add(this.path);
+        this.canvas.add(this.pathObj);
         this.eventBus.$emit("objectCreated", this.id);
       });
     }
     if (this.$parent.type === "group") {
       this.eventBus.$on("groupCreated", id => {
         if (id === this.$parent.id) {
-          this.path = new this.fabric.Path(this.d, {
+          this.pathObj = new this.fabric.Path(this.path, {
             ...this.definedProps
           });
           this.$parent.item.addWithUpdate(this.path);
@@ -43,7 +44,29 @@ export default {
       });
     }
   },
-  methods: {},
-  beforeDestroy() {}
+  watch: {
+    path(newValue) {
+      if (this.item) {
+        this.canvas.remove(this.item);
+        if (this.$parent.type === "canvas") {
+          this.pathObj = new this.fabric.Path(newValue, {
+            ...this.definedProps
+          });
+          this.canvas.add(this.pathObj);
+          this.eventBus.$emit("objectCreated", this.id);
+        }
+        if (this.$parent.type === "group") {
+          this.pathObj = new this.fabric.Path(newValue, {
+            ...this.definedProps
+          });
+          this.$parent.item.addWithUpdate(this.path);
+          this.eventBus.$emit("objectCreated", this.id);
+        }
+      }
+    }
+  }
+  //   beforeDestroy() {
+  //     this.destroyEvents();
+  //   }
 };
 </script>
