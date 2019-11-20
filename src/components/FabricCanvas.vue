@@ -55,14 +55,12 @@ export default {
         canvas: null,
         fabric
       },
-      eventBus: new Vue(),
       type: "canvas"
     };
   },
   provide() {
     return {
-      fabricWrapper: this.fabricWrapper,
-      eventBus: this.eventBus
+      fabricWrapper: this.fabricWrapper
     };
   },
   methods: {},
