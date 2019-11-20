@@ -2,7 +2,7 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-line",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     x1: {
@@ -49,6 +49,7 @@ export default {
           } else {
             this.canvas.add(this.line);
           }
+          this.createEvents();
           this.createWatchers();
         }
       },

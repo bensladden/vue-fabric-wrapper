@@ -2,7 +2,7 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-ellipse",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {
@@ -46,6 +46,7 @@ export default {
           } else {
             this.canvas.add(this.ellipse);
           }
+          this.createEvents();
           this.createWatchers();
         }
       },

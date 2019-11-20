@@ -143,7 +143,7 @@ export default {
     visible: { type: Boolean, default: true },
     width: Number
   },
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   computed: {
     canvas() {
       return this.fabricWrapper.canvas;
@@ -160,12 +160,6 @@ export default {
       });
       return obj;
     },
-    item() {
-      let canvasObj = this.canvas.getObjects();
-      let res = [];
-      this.transverseCanvasObjects(canvasObj, "id", this.id, res);
-      return res[0];
-    },
     parentType() {
       return this.$parent.type;
     },
@@ -174,6 +168,14 @@ export default {
         return this.canvas;
       }
       return this.$parent.item;
+    },
+    item() {
+      if (this.parentItem) {
+        let canvasObj = this.canvas.getObjects();
+        let res = [];
+        this.transverseCanvasObjects(canvasObj, "id", this.id, res);
+        return res[0];
+      }
     }
   },
   methods: {
@@ -195,7 +197,7 @@ export default {
     createEvents() {
       OBJECT_EVENTS.forEach(event => {
         this.item.on(event, e => {
-          this.eventBus.$emit(event, { id: this.id, ...e });
+          this.$emit(event, { id: this.id, ...e });
         });
       });
     },
@@ -205,10 +207,16 @@ export default {
       });
     },
     createWatchers() {
+      this.createFabricItemWatchers();
+      this.createPropWatchers();
+    },
+    createFabricItemWatchers() {
       //Setup Watchers for emmit sync option
       EMIT_PROPS.forEach(prop => {
         this.$watch("item." + prop, watchEmitProp(prop, true));
       });
+    },
+    createPropWatchers() {
       //Setup prop watches to sync with fabric
       Object.keys(this.$props).forEach(key => {
         //Custom watch check to make sure the mixin also does not genearte a watch
@@ -222,13 +230,6 @@ export default {
     }
   },
   watch: {},
-  created() {
-    this.eventBus.$on("objectCreated", id => {
-      if (this.id === id) {
-        this.createWatchers();
-      }
-    });
-  },
   beforeDestroy() {
     this.destroyEvents();
   }

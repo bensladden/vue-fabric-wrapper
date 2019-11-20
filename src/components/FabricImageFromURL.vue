@@ -2,17 +2,17 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-image-from-URL",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     url: { type: String, default: "../vue.png" },
     top: {
       type: Number,
-      default: 80
+      default: 0
     },
     left: {
       type: Number,
-      default: 80
+      default: 0
     }
   },
   data() {
@@ -38,6 +38,7 @@ export default {
               } else {
                 this.canvas.add(this.image);
               }
+              this.createEvents();
               this.createWatchers();
             },
             { ...this.definedProps }

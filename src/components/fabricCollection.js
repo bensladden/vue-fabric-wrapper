@@ -8,7 +8,10 @@ export default {
     },
     getObjects(type) {
       let t = type || "";
-      this.item.getObjects(t);
+      if (this.item) {
+        return this.item.getObjects(t);
+      }
+      return [];
     },
     remove(obj) {
       this.item.remove(obj);

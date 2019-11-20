@@ -2,7 +2,7 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-path",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     path: {
@@ -35,6 +35,7 @@ export default {
           } else {
             this.canvas.add(this.pathObj);
           }
+          this.createEvents();
           this.createWatchers();
         }
       },
@@ -43,7 +44,7 @@ export default {
     path(newValue) {
       if (this.item) {
         if (this.parentType === "canvas") {
-          //this.destroyEvents();
+          this.destroyEvents();
           this.canvas.remove(this.item);
           this.pathObj = new this.fabric.Path(newValue, {
             ...this.definedProps
@@ -51,7 +52,7 @@ export default {
           this.canvas.add(this.pathObj);
         }
         if (this.$parent.type === "group") {
-          //this.destroyEvents();
+          this.destroyEvents();
           this.parentItem.remove(this.item);
           this.pathObj = new this.fabric.Path(newValue, {
             ...this.definedProps

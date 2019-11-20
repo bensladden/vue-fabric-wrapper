@@ -104,17 +104,18 @@
         :originX="'center'"
         :originY="'center'"
       ></fabric-circle>
-      <fabric-circle
+      <fabric-ellipse
         :id="'body'"
         :left.sync="bodyPosLeft"
         :top.sync="bodyPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :rx="12"
+        :ry="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
+      ></fabric-ellipse>
       <fabric-circle
         :id="'waist'"
         :left.sync="waistPosLeft"
@@ -174,14 +175,26 @@
         :originX="'center'"
         :originY="'center'"
       ></fabric-rectangle>
+      <fabric-group :id="3421">
+        <fabric-polygon :id="342101"></fabric-polygon>
+        <fabric-text :id="342104" :text="'hello stick man'"></fabric-text>
+      </fabric-group>
+      <fabric-polyline :id="342102"></fabric-polyline>
+      <fabric-image-from-url :id="342103"></fabric-image-from-url>
     </fabric-canvas>
   </div>
 </template>
 
 <script>
 import FabricCanvas from "./components/FabricCanvas";
-import FabricLine from "./components/FabricLine";
 import FabricCircle from "./components/FabricCircle";
+import FabricEllipse from "./components/FabricEllipse";
+import FabricGroup from "./components/FabricGroup";
+import FabricImageFromUrl from "./components/FabricImageFromURL";
+import FabricLine from "./components/FabricLine";
+import FabricPolygon from "./components/FabricPolygon";
+import FabricPolyline from "./components/FabricPolyine";
+import FabricText from "./components/FabricText";
 import FabricTriangle from "./components/FabricTriangle";
 import FabricRectangle from "./components/FabricRectangle";
 
@@ -190,7 +203,13 @@ export default {
   components: {
     FabricCanvas,
     FabricCircle,
+    FabricEllipse,
+    FabricGroup,
+    FabricImageFromUrl,
     FabricLine,
+    FabricPolygon,
+    FabricPolyline,
+    FabricText,
     FabricTriangle,
     FabricRectangle
   },

@@ -3,7 +3,7 @@ import fabricObject from "./fabricObject";
 import fabricCollection from "./fabricCollection";
 export default {
   name: "fabric-group",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject, fabricCollection],
   props: {
     subTargetCheck: {
@@ -31,6 +31,7 @@ export default {
           } else {
             this.canvas.add(this.group);
           }
+          this.createEvents();
           this.createWatchers();
         }
       },

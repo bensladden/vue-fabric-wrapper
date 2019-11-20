@@ -2,7 +2,7 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-text",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {
@@ -61,6 +61,7 @@ export default {
           } else {
             this.canvas.add(this.textObj);
           }
+          this.createEvents();
           this.createWatchers();
         }
       },

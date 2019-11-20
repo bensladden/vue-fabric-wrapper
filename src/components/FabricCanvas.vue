@@ -68,10 +68,9 @@ export default {
   methods: {},
   mounted() {
     this.fabricWrapper.canvas = new fabric.Canvas("c");
-    this.eventBus.$emit("canvasCreated");
     canvasEvents.forEach(event => {
       this.fabricWrapper.canvas.on(event, e => {
-        this.eventBus.$emit(event, e);
+        this.$emit(event, e);
       });
     });
   },

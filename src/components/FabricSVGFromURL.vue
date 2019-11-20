@@ -15,7 +15,7 @@ import fabricGroup from "./FabricGroup";
 
 export default {
   name: "fabric-svg-from-URL",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   components: {
     fabricGroup
     //fabricPath
@@ -37,28 +37,28 @@ export default {
       objs: null
     };
   },
-  created() {
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", () => {
-        this.fabricWrapper.fabric.loadSVGFromURL(this.url, (objs, options) => {
-          this.objs = this.fabricWrapper.fabric.util.groupSVGElements(
-            objs,
-            options
-          );
-          console.log("objs", this.objs.getObjects());
-        });
-      });
-    }
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", id => {
-        if (id === this.$parent.id) {
-          this.fabricWrapper.fabric.loadSVGFromURL(this.url, objs => {
-            this.objs = objs;
-          });
-        }
-      });
-    }
-  },
+  //   created() {
+  //     if (this.$parent.type === "canvas") {
+  //       this.eventBus.$on("canvasCreated", () => {
+  //         this.fabricWrapper.fabric.loadSVGFromURL(this.url, (objs, options) => {
+  //           this.objs = this.fabricWrapper.fabric.util.groupSVGElements(
+  //             objs,
+  //             options
+  //           );
+  //           console.log("objs", this.objs.getObjects());
+  //         });
+  //       });
+  //     }
+  //     if (this.$parent.type === "group") {
+  //       this.eventBus.$on("groupCreated", id => {
+  //         if (id === this.$parent.id) {
+  //           this.fabricWrapper.fabric.loadSVGFromURL(this.url, objs => {
+  //             this.objs = objs;
+  //           });
+  //         }
+  //       });
+  //     }
+  //   },
   methods: {},
   beforeDestroy() {}
 };

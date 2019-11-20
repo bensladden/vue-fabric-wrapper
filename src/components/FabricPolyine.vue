@@ -2,7 +2,7 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-polyline",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     points: {
@@ -42,6 +42,7 @@ export default {
           } else {
             this.canvas.add(this.polyline);
           }
+          this.createEvents();
           this.createWatchers();
         }
       },

@@ -42,6 +42,7 @@ export default {
           } else {
             this.canvas.add(this.circle);
           }
+          this.createEvents();
           this.createWatchers();
         }
       },
