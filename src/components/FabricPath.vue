@@ -2,7 +2,7 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-path",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     path: {
@@ -22,45 +22,42 @@ export default {
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created() {
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", () => {
-        this.pathObj = new this.fabric.Path(this.path, {
-          ...this.definedProps
-        });
-        this.canvas.add(this.pathObj);
-        this.eventBus.$emit("objectCreated", this.id);
-      });
-    }
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", id => {
-        if (id === this.$parent.id) {
+  watch: {
+    parentItem: {
+      handler(newValue) {
+        if (newValue) {
+          //Parent is created
           this.pathObj = new this.fabric.Path(this.path, {
             ...this.definedProps
           });
-          this.$parent.item.addWithUpdate(this.pathObj);
-          this.eventBus.$emit("objectCreated", this.id);
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.pathObj);
+          } else {
+            this.canvas.add(this.pathObj);
+          }
+          this.createEvents();
+          this.createWatchers();
         }
-      });
-    }
-  },
-  watch: {
+      },
+      immediate: true
+    },
     path(newValue) {
       if (this.item) {
-        this.canvas.remove(this.item);
-        if (this.$parent.type === "canvas") {
+        if (this.parentType === "canvas") {
+          this.destroyEvents();
+          this.canvas.remove(this.item);
           this.pathObj = new this.fabric.Path(newValue, {
             ...this.definedProps
           });
           this.canvas.add(this.pathObj);
-          this.eventBus.$emit("objectCreated", this.id);
         }
         if (this.$parent.type === "group") {
+          this.destroyEvents();
+          this.parentItem.remove(this.item);
           this.pathObj = new this.fabric.Path(newValue, {
             ...this.definedProps
           });
-          this.$parent.item.addWithUpdate(this.pathObj);
-          this.eventBus.$emit("objectCreated", this.id);
+          this.parentItem.addWithUpdate(this.pathObj);
         }
       }
     }

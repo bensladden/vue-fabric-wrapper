@@ -2,7 +2,7 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-ellipse",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {
@@ -35,22 +35,22 @@ export default {
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created() {
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", () => {
-        this.ellipse = new this.fabric.Ellipse({ ...this.definedProps });
-        this.canvas.add(this.ellipse);
-        this.eventBus.$emit("objectCreated", this.id);
-      });
-    }
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", id => {
-        if (id === this.$parent.id) {
+  watch: {
+    parentItem: {
+      handler(newValue) {
+        if (newValue) {
+          //Parent is created
           this.ellipse = new this.fabric.Ellipse({ ...this.definedProps });
-          this.$parent.item.addWithUpdate(this.ellipse);
-          this.eventBus.$emit("objectCreated", this.id);
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.ellipse);
+          } else {
+            this.canvas.add(this.ellipse);
+          }
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},

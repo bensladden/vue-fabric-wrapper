@@ -2,17 +2,17 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-image-from-URL",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     url: { type: String, default: "../vue.png" },
     top: {
       type: Number,
-      default: 80
+      default: 0
     },
     left: {
       type: Number,
-      default: 80
+      default: 0
     }
   },
   data() {
@@ -24,34 +24,28 @@ export default {
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created() {
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", () => {
-        this.fabric.Image.fromURL(
-          this.url,
-          img => {
-            this.image = img;
-            this.canvas.add(this.image);
-            this.eventBus.$emit("objectCreated", this.id);
-          },
-          { ...this.definedProps }
-        );
-      });
-    }
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", id => {
-        if (id === this.$parent.id) {
+  watch: {
+    parentItem: {
+      handler(newValue) {
+        if (newValue) {
+          //Parent is created
           this.fabric.Image.fromURL(
             this.url,
             img => {
               this.image = img;
-              this.$parent.item.addWithUpdate(this.image);
-              this.eventBus.$emit("objectCreated", this.id);
+              if (this.parentType == "group") {
+                this.parentItem.addWithUpdate(this.image);
+              } else {
+                this.canvas.add(this.image);
+              }
+              this.createEvents();
+              this.createWatchers();
             },
             { ...this.definedProps }
           );
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},

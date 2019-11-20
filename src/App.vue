@@ -104,17 +104,18 @@
         :originX="'center'"
         :originY="'center'"
       ></fabric-circle>
-      <fabric-circle
+      <fabric-ellipse
         :id="'body'"
         :left.sync="bodyPosLeft"
         :top.sync="bodyPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :rx="12"
+        :ry="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
+      ></fabric-ellipse>
       <fabric-circle
         :id="'waist'"
         :left.sync="waistPosLeft"
@@ -126,65 +127,91 @@
         :originX="'center'"
         :originY="'center'"
       ></fabric-circle>
-      <fabric-circle
+      <fabric-triangle
         :id="'leftHand'"
         :left.sync="leftHandPosLeft"
         :top.sync="leftHandPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :width="24"
+        :height="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
-      <fabric-circle
+      ></fabric-triangle>
+      <fabric-triangle
         :id="'rightHand'"
         :left.sync="rightHandPosLeft"
         :top.sync="rightHandPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :width="24"
+        :height="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
-      <fabric-circle
+      ></fabric-triangle>
+      <fabric-rectangle
         :id="'leftFoot'"
         :left.sync="leftFootPosLeft"
         :top.sync="leftFootPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :width="36"
+        :height="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
-      <fabric-circle
+      ></fabric-rectangle>
+      <fabric-rectangle
         :id="'rightFoot'"
         :left.sync="rightFootPosLeft"
         :top.sync="rightFootPosTop"
         :strokeWidth="5"
-        :radius="12"
+        :width="36"
+        :height="24"
         :fill="'#fff'"
         :stroke="'#666'"
         :originX="'center'"
         :originY="'center'"
-      ></fabric-circle>
+      ></fabric-rectangle>
+      <fabric-group :id="3421">
+        <fabric-polygon :id="342101"></fabric-polygon>
+        <fabric-text :id="342104" :text="'hello stick man'"></fabric-text>
+      </fabric-group>
+      <fabric-polyline :id="342102"></fabric-polyline>
+      <fabric-image-from-url :id="342103"></fabric-image-from-url>
     </fabric-canvas>
   </div>
 </template>
 
 <script>
 import FabricCanvas from "./components/FabricCanvas";
-import FabricLine from "./components/FabricLine";
 import FabricCircle from "./components/FabricCircle";
+import FabricEllipse from "./components/FabricEllipse";
+import FabricGroup from "./components/FabricGroup";
+import FabricImageFromUrl from "./components/FabricImageFromURL";
+import FabricLine from "./components/FabricLine";
+import FabricPolygon from "./components/FabricPolygon";
+import FabricPolyline from "./components/FabricPolyine";
+import FabricText from "./components/FabricText";
+import FabricTriangle from "./components/FabricTriangle";
+import FabricRectangle from "./components/FabricRectangle";
 
 export default {
   name: "App",
   components: {
     FabricCanvas,
     FabricCircle,
-    FabricLine
+    FabricEllipse,
+    FabricGroup,
+    FabricImageFromUrl,
+    FabricLine,
+    FabricPolygon,
+    FabricPolyline,
+    FabricText,
+    FabricTriangle,
+    FabricRectangle
   },
   data() {
     return {

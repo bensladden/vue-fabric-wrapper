@@ -2,7 +2,7 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-polyline",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     points: {
@@ -29,26 +29,24 @@ export default {
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created() {
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", () => {
-        this.polyline = new this.fabric.Polyline(this.points, {
-          ...this.definedProps
-        });
-        this.canvas.add(this.polyline);
-        this.eventBus.$emit("objectCreated", this.id);
-      });
-    }
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", id => {
-        if (id === this.$parent.id) {
+  watch: {
+    parentItem: {
+      handler(newValue) {
+        if (newValue) {
+          //Parent is created
           this.polyline = new this.fabric.Polyline(this.points, {
             ...this.definedProps
           });
-          this.$parent.item.addWithUpdate(this.polyline);
-          this.eventBus.$emit("objectCreated", this.id);
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.polyline);
+          } else {
+            this.canvas.add(this.polyline);
+          }
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},

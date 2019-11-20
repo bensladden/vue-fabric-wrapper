@@ -2,7 +2,7 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-line",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     x1: {
@@ -33,29 +33,27 @@ export default {
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created() {
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", () => {
-        this.line = new this.fabric.Line([this.x1, this.y1, this.x2, this.y2], {
-          ...this.definedProps
-        });
-        this.canvas.add(this.line);
-        this.eventBus.$emit("objectCreated", this.id);
-      });
-    }
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", id => {
-        if (id === this.$parent.id) {
+  watch: {
+    parentItem: {
+      handler(newValue) {
+        if (newValue) {
+          //Parent is created
           this.line = new this.fabric.Line(
             [this.x1, this.y1, this.x2, this.y2],
             {
               ...this.definedProps
             }
           );
-          this.$parent.item.addWithUpdate(this.line);
-          this.eventBus.$emit("objectCreated", this.id);
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.line);
+          } else {
+            this.canvas.add(this.line);
+          }
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
