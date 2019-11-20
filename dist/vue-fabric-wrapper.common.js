@@ -285,7 +285,7 @@ function fromByteArray (uint8) {
 /* WEBPACK VAR INJECTION */(function(Buffer) {/* build: `node build.js modules=ALL exclude=gestures,accessors requirejs minifier=uglifyjs` */
 /*! Fabric.js Copyright 2008-2015, Printio (Juriy Zaytsev, Maxim Chernyak) */
 
-var fabric = fabric || { version: '3.5.0' };
+var fabric = fabric || { version: '3.5.1' };
 if (true) {
   exports.fabric = fabric;
 }
@@ -7895,12 +7895,9 @@ fabric.ElementsParser = function(elements, callback, options, reviver, parsingOp
           ? fill.toLive(ctx, this)
           : fill;
         if (needsVpt) {
-          ctx.transform(
-            v[0], v[1], v[2], v[3],
-            v[4] + (fill.offsetX || 0),
-            v[5] + (fill.offsetY || 0)
-          );
+          ctx.transform(v[0], v[1], v[2], v[3], v[4], v[5]);
         }
+        ctx.transform(1, 0, 0, 1, fill.offsetX || 0, fill.offsetY || 0);
         var m = fill.gradientTransform || fill.patternTransform;
         m && ctx.transform(m[0], m[1], m[2], m[3], m[4], m[5]);
         ctx.fill();
@@ -10513,7 +10510,7 @@ fabric.PatternBrush = fabric.util.createClass(fabric.PencilBrush, /** @lends fab
 
       transform.newScaleX = scaleX;
       transform.newScaleY = scaleY;
-      if (by === 'x' && target instanceof fabric.Textbox) {
+      if (fabric.Textbox && by === 'x' && target instanceof fabric.Textbox) {
         var w = target.width * (localMouse.x / _dim.x);
         if (w >= target.getMinWidth()) {
           scaled = w !== target.width;
@@ -19971,7 +19968,19 @@ fabric.util.object.extend(fabric.Object.prototype, /** @lends fabric.Object.prot
    * @param {Function} [callback] Callback to invoke when an group instance is created
    */
   fabric.Group.fromObject = function(object, callback) {
-    fabric.util.enlivenObjects(object.objects, function(enlivenedObjects) {
+    var objects = object.objects,
+        options = fabric.util.object.clone(object, true);
+    delete options.objects;
+    if (typeof objects === 'string') {
+      // it has to be an url or something went wrong.
+      fabric.loadSVGFromURL(objects, function (elements) {
+        var group = fabric.util.groupSVGElements(elements, object, objects);
+        group.set(options);
+        callback && callback(group);
+      });
+      return;
+    }
+    fabric.util.enlivenObjects(objects, function(enlivenedObjects) {
       fabric.util.enlivenObjects([object.clipPath], function(enlivedClipPath) {
         var options = fabric.util.object.clone(object, true);
         options.clipPath = enlivedClipPath[0];
@@ -29512,9 +29521,11 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
      * @return {Boolean}
      */
     isEmptyStyles: function(lineIndex) {
-      var offset = 0, nextLineIndex = lineIndex + 1, nextOffset, obj, shouldLimit = false;
-      var map = this._styleMap[lineIndex];
-      var mapNextLine = this._styleMap[lineIndex + 1];
+      if (!this.styles) {
+        return true;
+      }
+      var offset = 0, nextLineIndex = lineIndex + 1, nextOffset, obj, shouldLimit = false,
+          map = this._styleMap[lineIndex], mapNextLine = this._styleMap[lineIndex + 1];
       if (map) {
         lineIndex = map.line;
         offset = map.offset;
@@ -31826,12 +31837,12 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"18d37a24-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3e04979f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=21083c59&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=185dffd9&
+// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=21083c59&
 
 // EXTERNAL MODULE: ./node_modules/fabric/dist/fabric.js
 var fabric = __webpack_require__("7a94");
@@ -31941,10 +31952,9 @@ var canvasEvents = ["object:modified", "object:rotated", "object:scaled", "objec
     var _this = this;
 
     this.fabricWrapper.canvas = new fabric["Canvas"]("c");
-    this.eventBus.$emit("canvasCreated");
     canvasEvents.forEach(function (event) {
       _this.fabricWrapper.canvas.on(event, function (e) {
-        _this.eventBus.$emit(event, e);
+        _this.$emit(event, e);
       });
     });
   },
@@ -32285,7 +32295,7 @@ var watchProp = function watchProp(key, deep) {
     },
     width: Number
   },
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   computed: {
     canvas: function canvas() {
       return this.fabricWrapper.canvas;
@@ -32303,12 +32313,6 @@ var watchProp = function watchProp(key, deep) {
       });
       return obj;
     },
-    item: function item() {
-      var canvasObj = this.canvas.getObjects();
-      var res = [];
-      this.transverseCanvasObjects(canvasObj, "id", this.id, res);
-      return res[0];
-    },
     parentType: function parentType() {
       return this.$parent.type;
     },
@@ -32318,6 +32322,14 @@ var watchProp = function watchProp(key, deep) {
       }
 
       return this.$parent.item;
+    },
+    item: function item() {
+      if (this.parentItem) {
+        var canvasObj = this.canvas.getObjects();
+        var res = [];
+        this.transverseCanvasObjects(canvasObj, "id", this.id, res);
+        return res[0];
+      }
     }
   },
   methods: {
@@ -32336,7 +32348,7 @@ var watchProp = function watchProp(key, deep) {
 
       OBJECT_EVENTS.forEach(function (event) {
         _this.item.on(event, function (e) {
-          _this.eventBus.$emit(event, _objectSpread({
+          _this.$emit(event, _objectSpread({
             id: _this.id
           }, e));
         });
@@ -32350,35 +32362,34 @@ var watchProp = function watchProp(key, deep) {
       });
     },
     createWatchers: function createWatchers() {
+      this.createFabricItemWatchers();
+      this.createPropWatchers();
+    },
+    createFabricItemWatchers: function createFabricItemWatchers() {
       var _this3 = this;
 
       //Setup Watchers for emmit sync option
       EMIT_PROPS.forEach(function (prop) {
         _this3.$watch("item." + prop, watchEmitProp(prop, true));
-      }); //Setup prop watches to sync with fabric
+      });
+    },
+    createPropWatchers: function createPropWatchers() {
+      var _this4 = this;
 
+      //Setup prop watches to sync with fabric
       Object.keys(this.$props).forEach(function (key) {
         //Custom watch check to make sure the mixin also does not genearte a watch
-        if (_typeof(_this3.customWatch) !== ( true ? "undefined" : undefined)) {
-          if (_this3.customWatch.includes(key)) {
+        if (_typeof(_this4.customWatch) !== ( true ? "undefined" : undefined)) {
+          if (_this4.customWatch.includes(key)) {
             return;
           }
         }
 
-        _this3.$watch(key, watchProp(key, true));
+        _this4.$watch(key, watchProp(key, true));
       });
     }
   },
   watch: {},
-  created: function created() {
-    var _this4 = this;
-
-    this.eventBus.$on("objectCreated", function (id) {
-      if (_this4.id === id) {
-        _this4.createWatchers();
-      }
-    });
-  },
   beforeDestroy: function beforeDestroy() {
     this.destroyEvents();
   }
@@ -32422,29 +32433,24 @@ function FabricCirclevue_type_script_lang_js_defineProperty(obj, key, value) { i
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.circle = new this.fabric.Circle(FabricCirclevue_type_script_lang_js_objectSpread({}, this.definedProps));
 
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", function () {
-        _this.circle = new _this.fabric.Circle(FabricCirclevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.circle);
+          } else {
+            this.canvas.add(this.circle);
+          }
 
-        _this.canvas.add(_this.circle);
-
-        _this.eventBus.$emit("objectCreated", _this.id);
-      });
-    }
-
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", function (id) {
-        if (id === _this.$parent.id) {
-          _this.circle = new _this.fabric.Circle(FabricCirclevue_type_script_lang_js_objectSpread({}, _this.definedProps));
-
-          _this.$parent.item.addWithUpdate(_this.circle);
-
-          _this.eventBus.$emit("objectCreated", _this.id);
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
@@ -32482,7 +32488,7 @@ function FabricEllipsevue_type_script_lang_js_defineProperty(obj, key, value) { 
 
 /* harmony default export */ var FabricEllipsevue_type_script_lang_js_ = ({
   name: "fabric-ellipse",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {
@@ -32515,29 +32521,24 @@ function FabricEllipsevue_type_script_lang_js_defineProperty(obj, key, value) { 
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.ellipse = new this.fabric.Ellipse(FabricEllipsevue_type_script_lang_js_objectSpread({}, this.definedProps));
 
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", function () {
-        _this.ellipse = new _this.fabric.Ellipse(FabricEllipsevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.ellipse);
+          } else {
+            this.canvas.add(this.ellipse);
+          }
 
-        _this.canvas.add(_this.ellipse);
-
-        _this.eventBus.$emit("objectCreated", _this.id);
-      });
-    }
-
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", function (id) {
-        if (id === _this.$parent.id) {
-          _this.ellipse = new _this.fabric.Ellipse(FabricEllipsevue_type_script_lang_js_objectSpread({}, _this.definedProps));
-
-          _this.$parent.item.addWithUpdate(_this.ellipse);
-
-          _this.eventBus.$emit("objectCreated", _this.id);
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
@@ -32565,7 +32566,7 @@ var FabricEllipse_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricEllipse = (FabricEllipse_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"18d37a24-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=5e556e25&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3e04979f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=5e556e25&
 var FabricGridvue_type_template_id_5e556e25_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',{attrs:{"id":_vm.id}},[_vm._l((_vm.verticalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'v' + index,attrs:{"id":_vm.id + 'v' + index}},'fabric-line',line,false))}),_vm._l((_vm.horizontalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'h' + index,attrs:{"id":_vm.id + 'h' + index}},'fabric-line',line,false))})],2)}
 var FabricGridvue_type_template_id_5e556e25_staticRenderFns = []
 
@@ -32583,7 +32584,12 @@ var FabricGridvue_type_template_id_5e556e25_staticRenderFns = []
     },
     getObjects: function getObjects(type) {
       var t = type || "";
-      this.item.getObjects(t);
+
+      if (this.item) {
+        return this.item.getObjects(t);
+      }
+
+      return [];
     },
     remove: function remove(obj) {
       this.item.remove(obj);
@@ -32601,7 +32607,7 @@ function FabricGroupvue_type_script_lang_js_defineProperty(obj, key, value) { if
 
 /* harmony default export */ var FabricGroupvue_type_script_lang_js_ = ({
   name: "fabric-group",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject, fabricCollection],
   props: {
     subTargetCheck: {
@@ -32618,18 +32624,25 @@ function FabricGroupvue_type_script_lang_js_defineProperty(obj, key, value) { if
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.group = new this.fabric.Group([], FabricGroupvue_type_script_lang_js_objectSpread({}, this.definedProps));
 
-    this.eventBus.$on("canvasCreated", function () {
-      _this.group = new _this.fabric.Group([], FabricGroupvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.group);
+          } else {
+            this.canvas.add(this.group);
+          }
 
-      _this.canvas.add(_this.group);
-
-      _this.eventBus.$emit("objectCreated", _this.id);
-
-      _this.eventBus.$emit("groupCreated", _this.id);
-    });
+          this.createEvents();
+          this.createWatchers();
+        }
+      },
+      immediate: true
+    }
   },
   methods: {},
   beforeDestroy: function beforeDestroy() {}
@@ -32666,7 +32679,7 @@ function FabricLinevue_type_script_lang_js_defineProperty(obj, key, value) { if 
 
 /* harmony default export */ var FabricLinevue_type_script_lang_js_ = ({
   name: "fabric-line",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     x1: {
@@ -32703,29 +32716,24 @@ function FabricLinevue_type_script_lang_js_defineProperty(obj, key, value) { if 
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.line = new this.fabric.Line([this.x1, this.y1, this.x2, this.y2], FabricLinevue_type_script_lang_js_objectSpread({}, this.definedProps));
 
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", function () {
-        _this.line = new _this.fabric.Line([_this.x1, _this.y1, _this.x2, _this.y2], FabricLinevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.line);
+          } else {
+            this.canvas.add(this.line);
+          }
 
-        _this.canvas.add(_this.line);
-
-        _this.eventBus.$emit("objectCreated", _this.id);
-      });
-    }
-
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", function (id) {
-        if (id === _this.$parent.id) {
-          _this.line = new _this.fabric.Line([_this.x1, _this.y1, _this.x2, _this.y2], FabricLinevue_type_script_lang_js_objectSpread({}, _this.definedProps));
-
-          _this.$parent.item.addWithUpdate(_this.line);
-
-          _this.eventBus.$emit("objectCreated", _this.id);
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
@@ -32865,7 +32873,7 @@ function FabricImageFromURLvue_type_script_lang_js_defineProperty(obj, key, valu
 
 /* harmony default export */ var FabricImageFromURLvue_type_script_lang_js_ = ({
   name: "fabric-image-from-URL",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     url: {
@@ -32874,11 +32882,11 @@ function FabricImageFromURLvue_type_script_lang_js_defineProperty(obj, key, valu
     },
     top: {
       type: Number,
-      default: 80
+      default: 0
     },
     left: {
       type: Number,
-      default: 80
+      default: 0
     }
   },
   data: function data() {
@@ -32890,33 +32898,29 @@ function FabricImageFromURLvue_type_script_lang_js_defineProperty(obj, key, valu
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        var _this = this;
 
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", function () {
-        _this.fabric.Image.fromURL(_this.url, function (img) {
-          _this.image = img;
-
-          _this.canvas.add(_this.image);
-
-          _this.eventBus.$emit("objectCreated", _this.id);
-        }, FabricImageFromURLvue_type_script_lang_js_objectSpread({}, _this.definedProps));
-      });
-    }
-
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", function (id) {
-        if (id === _this.$parent.id) {
-          _this.fabric.Image.fromURL(_this.url, function (img) {
+        if (newValue) {
+          //Parent is created
+          this.fabric.Image.fromURL(this.url, function (img) {
             _this.image = img;
 
-            _this.$parent.item.addWithUpdate(_this.image);
+            if (_this.parentType == "group") {
+              _this.parentItem.addWithUpdate(_this.image);
+            } else {
+              _this.canvas.add(_this.image);
+            }
 
-            _this.eventBus.$emit("objectCreated", _this.id);
-          }, FabricImageFromURLvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+            _this.createEvents();
+
+            _this.createWatchers();
+          }, FabricImageFromURLvue_type_script_lang_js_objectSpread({}, this.definedProps));
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
@@ -32954,7 +32958,7 @@ function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if 
 
 /* harmony default export */ var FabricPathvue_type_script_lang_js_ = ({
   name: "fabric-path",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     path: {
@@ -32980,46 +32984,39 @@ function FabricPathvue_type_script_lang_js_defineProperty(obj, key, value) { if 
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
-
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", function () {
-        _this.pathObj = new _this.fabric.Path(_this.path, FabricPathvue_type_script_lang_js_objectSpread({}, _this.definedProps));
-
-        _this.canvas.add(_this.pathObj);
-
-        _this.eventBus.$emit("objectCreated", _this.id);
-      });
-    }
-
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", function (id) {
-        if (id === _this.$parent.id) {
-          _this.pathObj = new _this.fabric.Path(_this.path, FabricPathvue_type_script_lang_js_objectSpread({}, _this.definedProps));
-
-          _this.$parent.item.addWithUpdate(_this.pathObj);
-
-          _this.eventBus.$emit("objectCreated", _this.id);
-        }
-      });
-    }
-  },
   watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.pathObj = new this.fabric.Path(this.path, FabricPathvue_type_script_lang_js_objectSpread({}, this.definedProps));
+
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.pathObj);
+          } else {
+            this.canvas.add(this.pathObj);
+          }
+
+          this.createEvents();
+          this.createWatchers();
+        }
+      },
+      immediate: true
+    },
     path: function path(newValue) {
       if (this.item) {
-        this.canvas.remove(this.item);
-
-        if (this.$parent.type === "canvas") {
+        if (this.parentType === "canvas") {
+          this.destroyEvents();
+          this.canvas.remove(this.item);
           this.pathObj = new this.fabric.Path(newValue, FabricPathvue_type_script_lang_js_objectSpread({}, this.definedProps));
           this.canvas.add(this.pathObj);
-          this.eventBus.$emit("objectCreated", this.id);
         }
 
         if (this.$parent.type === "group") {
+          this.destroyEvents();
+          this.parentItem.remove(this.item);
           this.pathObj = new this.fabric.Path(newValue, FabricPathvue_type_script_lang_js_objectSpread({}, this.definedProps));
-          this.$parent.item.addWithUpdate(this.pathObj);
-          this.eventBus.$emit("objectCreated", this.id);
+          this.parentItem.addWithUpdate(this.pathObj);
         }
       }
     }
@@ -33060,7 +33057,7 @@ function FabricPolygonvue_type_script_lang_js_defineProperty(obj, key, value) { 
 
 /* harmony default export */ var FabricPolygonvue_type_script_lang_js_ = ({
   name: "fabric-polygon",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     points: {
@@ -33105,29 +33102,24 @@ function FabricPolygonvue_type_script_lang_js_defineProperty(obj, key, value) { 
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.polygon = new this.fabric.Polygon(this.points, FabricPolygonvue_type_script_lang_js_objectSpread({}, this.definedProps));
 
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", function () {
-        _this.polygon = new _this.fabric.Polygon(_this.points, FabricPolygonvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.polygon);
+          } else {
+            this.canvas.add(this.polygon);
+          }
 
-        _this.canvas.add(_this.polygon);
-
-        _this.eventBus.$emit("objectCreated", _this.id);
-      });
-    }
-
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", function (id) {
-        if (id === _this.$parent.id) {
-          _this.polygon = new _this.fabric.Polygon(_this.points, FabricPolygonvue_type_script_lang_js_objectSpread({}, _this.definedProps));
-
-          _this.$parent.item.addWithUpdate(_this.polygon);
-
-          _this.eventBus.$emit("objectCreated", _this.id);
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
@@ -33165,7 +33157,7 @@ function FabricRectanglevue_type_script_lang_js_defineProperty(obj, key, value) 
 
 /* harmony default export */ var FabricRectanglevue_type_script_lang_js_ = ({
   name: "fabric-rect",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {
@@ -33198,29 +33190,24 @@ function FabricRectanglevue_type_script_lang_js_defineProperty(obj, key, value) 
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.rect = new this.fabric.Rect(FabricRectanglevue_type_script_lang_js_objectSpread({}, this.definedProps));
 
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", function () {
-        _this.rect = new _this.fabric.Rect(FabricRectanglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.rect);
+          } else {
+            this.canvas.add(this.rect);
+          }
 
-        _this.canvas.add(_this.rect);
-
-        _this.eventBus.$emit("objectCreated", _this.id);
-      });
-    }
-
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", function (id) {
-        if (id === _this.$parent.id) {
-          _this.rect = new _this.fabric.Rect(FabricRectanglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
-
-          _this.$parent.item.addWithUpdate(_this.rect);
-
-          _this.eventBus.$emit("objectCreated", _this.id);
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
@@ -33258,7 +33245,7 @@ function FabricTextvue_type_script_lang_js_defineProperty(obj, key, value) { if 
 
 /* harmony default export */ var FabricTextvue_type_script_lang_js_ = ({
   name: "fabric-text",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {
@@ -33304,29 +33291,24 @@ function FabricTextvue_type_script_lang_js_defineProperty(obj, key, value) { if 
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.textObj = new this.fabric.Text(this.text, FabricTextvue_type_script_lang_js_objectSpread({}, this.definedProps));
 
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", function () {
-        _this.textObj = new _this.fabric.Text(_this.text, FabricTextvue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.textObj);
+          } else {
+            this.canvas.add(this.textObj);
+          }
 
-        _this.canvas.add(_this.textObj);
-
-        _this.eventBus.$emit("objectCreated", _this.id);
-      });
-    }
-
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", function (id) {
-        if (id === _this.$parent.id) {
-          _this.textObj = new _this.fabric.Text(_this.text, FabricTextvue_type_script_lang_js_objectSpread({}, _this.definedProps));
-
-          _this.$parent.item.addWithUpdate(_this.textObj);
-
-          _this.eventBus.$emit("objectCreated", _this.id);
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
@@ -33364,7 +33346,7 @@ function FabricTrianglevue_type_script_lang_js_defineProperty(obj, key, value) {
 
 /* harmony default export */ var FabricTrianglevue_type_script_lang_js_ = ({
   name: "fabric-triangle",
-  inject: ["eventBus", "fabricWrapper"],
+  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {
@@ -33397,29 +33379,24 @@ function FabricTrianglevue_type_script_lang_js_defineProperty(obj, key, value) {
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
-  created: function created() {
-    var _this = this;
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.triangle = new this.fabric.Triangle(FabricTrianglevue_type_script_lang_js_objectSpread({}, this.definedProps));
 
-    if (this.$parent.type === "canvas") {
-      this.eventBus.$on("canvasCreated", function () {
-        _this.triangle = new _this.fabric.Triangle(FabricTrianglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.triangle);
+          } else {
+            this.canvas.add(this.triangle);
+          }
 
-        _this.canvas.add(_this.triangle);
-
-        _this.eventBus.$emit("objectCreated", _this.id);
-      });
-    }
-
-    if (this.$parent.type === "group") {
-      this.eventBus.$on("groupCreated", function (id) {
-        if (id === _this.$parent.id) {
-          _this.triangle = new _this.fabric.Triangle(FabricTrianglevue_type_script_lang_js_objectSpread({}, _this.definedProps));
-
-          _this.$parent.item.addWithUpdate(_this.triangle);
-
-          _this.eventBus.$emit("objectCreated", _this.id);
+          this.createEvents();
+          this.createWatchers();
         }
-      });
+      },
+      immediate: true
     }
   },
   methods: {},
