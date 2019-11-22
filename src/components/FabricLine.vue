@@ -2,7 +2,6 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-line",
-  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     x1: {

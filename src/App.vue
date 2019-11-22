@@ -181,6 +181,7 @@
       </fabric-group>
       <fabric-polyline :id="342102"></fabric-polyline>
       <fabric-image-from-url :id="342103"></fabric-image-from-url>
+      <fabric-grid :id="567432"></fabric-grid>
     </fabric-canvas>
   </div>
 </template>
@@ -197,7 +198,7 @@ import FabricPolyline from "./components/FabricPolyine";
 import FabricText from "./components/FabricText";
 import FabricTriangle from "./components/FabricTriangle";
 import FabricRectangle from "./components/FabricRectangle";
-
+import FabricGrid from "./components/FabricGrid";
 export default {
   name: "App",
   components: {
@@ -211,7 +212,8 @@ export default {
     FabricPolyline,
     FabricText,
     FabricTriangle,
-    FabricRectangle
+    FabricRectangle,
+    FabricGrid
   },
   data() {
     return {

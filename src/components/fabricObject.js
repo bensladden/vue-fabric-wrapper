@@ -143,13 +143,13 @@ export default {
     visible: { type: Boolean, default: true },
     width: Number
   },
-  inject: ["fabricWrapper"],
+  inject: ["$canvas", "$group", "fabric"],
   computed: {
     canvas() {
-      return this.fabricWrapper.canvas;
+      return this.$canvas();
     },
-    fabric() {
-      return this.fabricWrapper.fabric;
+    group() {
+      return this.$group();
     },
     definedProps() {
       const obj = { ...this.$props };
@@ -161,13 +161,18 @@ export default {
       return obj;
     },
     parentType() {
-      return this.$parent.type;
+      if (this.group) {
+        return "group";
+      }
+      return "canvas";
     },
     parentItem() {
       if (this.parentType == "canvas") {
         return this.canvas;
       }
-      return this.$parent.item;
+      if (this.parentType == "group") {
+        return this.group;
+      }
     },
     item() {
       if (this.parentItem) {

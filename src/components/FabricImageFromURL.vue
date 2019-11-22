@@ -2,7 +2,6 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-image-from-URL",
-  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     url: { type: String, default: "../vue.png" },

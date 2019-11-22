@@ -2,7 +2,6 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-circle",
-  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     top: {

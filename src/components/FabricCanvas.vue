@@ -51,28 +51,25 @@ export default {
   },
   data() {
     return {
-      fabricWrapper: {
-        canvas: null,
-        fabric
-      },
+      canvas: null,
       type: "canvas"
     };
   },
   provide() {
     return {
-      fabricWrapper: this.fabricWrapper
+      $canvas: () => this.canvas,
+      $group: () => null,
+      fabric
     };
   },
-  methods: {},
   mounted() {
-    this.fabricWrapper.canvas = new fabric.Canvas("c");
+    this.canvas = new fabric.Canvas("c");
     canvasEvents.forEach(event => {
-      this.fabricWrapper.canvas.on(event, e => {
+      this.canvas.on(event, e => {
         this.$emit(event, e);
       });
     });
   },
-  watch: {},
   beforeDestroy() {
     canvasEvents.forEach(event => this.canvas.off(event, this.$emit(event)));
   }

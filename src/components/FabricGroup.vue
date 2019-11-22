@@ -3,7 +3,11 @@ import fabricObject from "./fabricObject";
 import fabricCollection from "./fabricCollection";
 export default {
   name: "fabric-group",
-  inject: ["fabricWrapper"],
+  provide() {
+    return {
+      $group: () => this.groupDef
+    };
+  },
   mixins: [fabricObject, fabricCollection],
   props: {
     subTargetCheck: {
@@ -13,7 +17,7 @@ export default {
   },
   data() {
     return {
-      group: null,
+      groupDef: null,
       type: "group"
     };
   },
@@ -25,11 +29,11 @@ export default {
       handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.group = new this.fabric.Group([], { ...this.definedProps });
+          this.groupDef = new this.fabric.Group([], { ...this.definedProps });
           if (this.parentType == "group") {
-            this.parentItem.addWithUpdate(this.group);
+            this.parentItem.addWithUpdate(this.groupDef);
           } else {
-            this.canvas.add(this.group);
+            this.canvas.add(this.groupDef);
           }
           this.createEvents();
           this.createWatchers();
@@ -38,7 +42,6 @@ export default {
       immediate: true
     }
   },
-  methods: {},
   beforeDestroy() {}
 };
 </script>

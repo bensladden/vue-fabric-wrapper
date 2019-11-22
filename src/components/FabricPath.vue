@@ -2,7 +2,6 @@
 import fabricObject from "./fabricObject";
 export default {
   name: "fabric-path",
-  inject: ["fabricWrapper"],
   mixins: [fabricObject],
   props: {
     path: {
@@ -51,7 +50,7 @@ export default {
           });
           this.canvas.add(this.pathObj);
         }
-        if (this.$parent.type === "group") {
+        if (this.parentType === "group") {
           this.destroyEvents();
           this.parentItem.remove(this.item);
           this.pathObj = new this.fabric.Path(newValue, {

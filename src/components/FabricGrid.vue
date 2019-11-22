@@ -21,9 +21,9 @@ import FabricLine from "./FabricLine.vue";
 export default {
   props: {
     id: { type: [Number, String], required: true },
-    gridSize: { type: Number, default: 10 },
-    gridHeight: { type: Number, default: 100 },
-    gridWidth: { type: Number, default: 100 }
+    gridSize: { type: Number, default: 30 },
+    gridHeight: { type: Number, default: 300 },
+    gridWidth: { type: Number, default: 300 }
   },
   components: {
     FabricGroup,
@@ -51,12 +51,18 @@ export default {
         this.verticalLines.push({
           stroke: "#ccc",
           selectable: false,
-          points: [0, i * this.gridSize, this.gridWidth, i * this.gridSize]
+          x1: 0,
+          y1: i * this.gridSize,
+          x2: this.gridWidth,
+          y2: i * this.gridSize
         });
         this.horizontalLines.push({
           stroke: "#ccc",
           selectable: false,
-          points: [i * this.gridSize, 0, i * this.gridSize, this.gridHeight]
+          x1: i * this.gridSize,
+          y1: 0,
+          x2: i * this.gridSize,
+          y2: this.gridHeight
         });
       }
     }
