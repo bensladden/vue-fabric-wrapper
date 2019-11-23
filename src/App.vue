@@ -182,6 +182,7 @@
       <fabric-polyline :id="342102"></fabric-polyline>
       <fabric-image-from-url :id="342103"></fabric-image-from-url>
       <fabric-grid :id="567432"></fabric-grid>
+      <fabric-svg-from-url :id="'ttyuud'"></fabric-svg-from-url>
     </fabric-canvas>
   </div>
 </template>
@@ -196,6 +197,7 @@ import FabricLine from "./components/FabricLine";
 import FabricPolygon from "./components/FabricPolygon";
 import FabricPolyline from "./components/FabricPolyine";
 import FabricText from "./components/FabricText";
+import FabricSvgFromUrl from "./components/FabricSVGFromURL";
 import FabricTriangle from "./components/FabricTriangle";
 import FabricRectangle from "./components/FabricRectangle";
 import FabricGrid from "./components/FabricGrid";
@@ -210,6 +212,7 @@ export default {
     FabricLine,
     FabricPolygon,
     FabricPolyline,
+    FabricSvgFromUrl,
     FabricText,
     FabricTriangle,
     FabricRectangle,
