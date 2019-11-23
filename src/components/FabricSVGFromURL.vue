@@ -1,10 +1,10 @@
 <template>
-  <fabric-group :id="id">
+  <fabric-group v-bind="$props">
     <fabric-path
       v-for="(path, index) in objs"
       :id="id + '_' + index"
       :key="id + '_' + index"
-      :path="path.d"
+      v-bind="path"
     ></fabric-path>
   </fabric-group>
 </template>
@@ -15,14 +15,14 @@ import fabricPath from "./FabricPath";
 
 export default {
   name: "fabric-svg-from-URL",
-  mixins: [fabricObject], //Assists in passing the required props on.
+  inject: ["fabric"],
   components: {
     fabricGroup,
     fabricPath
   },
   props: {
     id: { type: [Number, String], required: true },
-    url: { type: String, default: "../svg/pipe.svg", required: true },
+    url: { type: String, default: "../svg/pipe.svg" },
     top: {
       type: Number,
       default: 80
