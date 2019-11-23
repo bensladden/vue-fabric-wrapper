@@ -40,7 +40,6 @@ export default {
   created() {
     this.fabric.loadSVGFromURL(this.url, (objs, options) => {
       this.objs = objs;
-      console.log("objs", this.objs);
     });
   },
 
