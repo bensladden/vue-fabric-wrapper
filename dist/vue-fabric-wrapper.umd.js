@@ -33257,6 +33257,89 @@ var FabricRectangle_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricRectangle = (FabricRectangle_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"12bfa597-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
+var FabricSVGFromURLvue_type_template_id_803e1144_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({},'fabric-group',_vm.$props,false),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
+var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var FabricSVGFromURLvue_type_script_lang_js_ = ({
+  name: "fabric-svg-from-URL",
+  inject: ["fabric"],
+  components: {
+    fabricGroup: FabricGroup,
+    fabricPath: FabricPath
+  },
+  props: {
+    id: {
+      type: [Number, String],
+      required: true
+    },
+    url: {
+      type: String,
+      default: "../svg/pipe.svg"
+    },
+    top: {
+      type: Number,
+      default: 80
+    },
+    left: {
+      type: Number,
+      default: 80
+    }
+  },
+  data: function data() {
+    return {
+      objs: null
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.fabric.loadSVGFromURL(this.url, function (objs, options) {
+      _this.objs = objs;
+    });
+  },
+  methods: {},
+  beforeDestroy: function beforeDestroy() {}
+});
+// CONCATENATED MODULE: ./src/components/FabricSVGFromURL.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricSVGFromURLvue_type_script_lang_js_ = (FabricSVGFromURLvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricSVGFromURL.vue
+
+
+
+
+
+/* normalize component */
+
+var FabricSVGFromURL_component = normalizeComponent(
+  components_FabricSVGFromURLvue_type_script_lang_js_,
+  FabricSVGFromURLvue_type_template_id_803e1144_render,
+  FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricSVGFromURL = (FabricSVGFromURL_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricText.vue?vue&type=script&lang=js&
 function FabricTextvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -33459,6 +33542,7 @@ var FabricTriangle_component = normalizeComponent(
 
 
 
+
 var VueFabricWrapper = {
   FabricCanvas: FabricCanvas,
   FabricCircle: FabricCircle,
@@ -33471,6 +33555,7 @@ var VueFabricWrapper = {
   FabricPolygon: FabricPolygon,
   FabricPolyline: FabricLine,
   FabricRectangle: FabricRectangle,
+  FabricSVGFromURL: FabricSVGFromURL,
   FabricText: FabricText,
   FabricTriangle: FabricTriangle
 };
@@ -33491,6 +33576,7 @@ Object.keys(VueFabricWrapper).forEach(function (name) {
 /* concated harmony reexport FabricPolygon */__webpack_require__.d(__webpack_exports__, "FabricPolygon", function() { return FabricPolygon; });
 /* concated harmony reexport FabricPolyline */__webpack_require__.d(__webpack_exports__, "FabricPolyline", function() { return FabricLine; });
 /* concated harmony reexport FabricRectangle */__webpack_require__.d(__webpack_exports__, "FabricRectangle", function() { return FabricRectangle; });
+/* concated harmony reexport FabricSVGFromURL */__webpack_require__.d(__webpack_exports__, "FabricSVGFromURL", function() { return FabricSVGFromURL; });
 /* concated harmony reexport FabricText */__webpack_require__.d(__webpack_exports__, "FabricText", function() { return FabricText; });
 /* concated harmony reexport FabricTriangle */__webpack_require__.d(__webpack_exports__, "FabricTriangle", function() { return FabricTriangle; });
 
