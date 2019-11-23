@@ -24,7 +24,7 @@ Stick Man Example: [![Edit Vue Template](https://codesandbox.io/static/img/play-
   Fabric.Polygon,
   Fabric.Polyline,
   Fabric.Rectangle,
-  Fabric.SVGFROMURL,
+  Fabric.SVGFromURL,
   Fabric.Text,
   Fabric.Triangle
 
