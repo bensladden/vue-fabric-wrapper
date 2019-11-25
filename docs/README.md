@@ -1,1 +1,5 @@
-# vue-fabric-Wrapper
+---
+sidebar: false
+---
+
+<Hero />
