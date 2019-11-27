@@ -76,73 +76,73 @@ Root object class from which all 2d shape classes inherit from. In this wrapper 
 | Name | Type               | Required | Default |
 | ---- | ------------------ | -------- | ------- |
 | id | `Number`/`String` | `yes` | |
-| [angle](http://fabricjs.com/docs/fabric.Object.html#angle) } `Number` | no | |
-| [backgroundColor](http://fabricjs.com/docs/fabric.Object.html#backgroundColor) } `String` | no | |
-| [borderColor](http://fabricjs.com/docs/fabric.Object.html#borderColor) } `String` | no | |
-| [borderDashArray](http://fabricjs.com/docs/fabric.Object.html#borderDashArray) } `Array` | no | |
-| [borderOpacityWhenMoving](http://fabricjs.com/docs/fabric.Object.html#borderOpacityWhenMoving) } `Number` | no | |
-| [borderScaleFactor](http://fabricjs.com/docs/fabric.Object.html#borderScaleFactor) } `Number` | no | |
-| [cacheProperties](http://fabricjs.com/docs/fabric.Object.html#cacheProperties) } `Array` | no | |
-| [centeredRotation](http://fabricjs.com/docs/fabric.Object.html#centeredRotation) } `Boolean` | no | `true` |
-| [centeredScaling](http://fabricjs.com/docs/fabric.Object.html#centeredScaling) } `Boolean` | no | `false` |
-| [cornerColor](http://fabricjs.com/docs/fabric.Object.html#cornerColor) } `String` | no | |
-| [cornerDashArray](http://fabricjs.com/docs/fabric.Object.html#cornerDashArray) } `Array` | no | |
-| [cornerSize](http://fabricjs.com/docs/fabric.Object.html#cornerSize) } `Number` | no | |
-| [cornerStrokeColor](http://fabricjs.com/docs/fabric.Object.html#cornerStrokeColor) } `String` | no | |
-| [cornerStyle](http://fabricjs.com/docs/fabric.Object.html#cornerStyle) } `String` | no | |
-| [dirty](http://fabricjs.com/docs/fabric.Object.html#dirty) } `Boolean` | no | `true` |
-| [evented](http://fabricjs.com/docs/fabric.Object.html#evented) } `Boolean` | no | `true` |
-| [excludeFromExport](http://fabricjs.com/docs/fabric.Object.html#excludeFromExport) } `Boolean` | no | `false` |
-| [fill](http://fabricjs.com/docs/fabric.Object.html#fill) } `String` | no | |
-| [fillRule](http://fabricjs.com/docs/fabric.Object.html#fillRule) } `String` | no | |
-| [flipX](http://fabricjs.com/docs/fabric.Object.html#flipX) } `Boolaen` | no | |
-| [flipY](http://fabricjs.com/docs/fabric.Object.html#flipY) } `Boolean` | no | |
-| [globalCompositeOperation](http://fabricjs.com/docs/fabric.Object.html#globalCompositeOperation) } `String` | no | |
-| [hasBorders](http://fabricjs.com/docs/fabric.Object.html#hasBorders) } `Boolean` | no | `true` |
-| [hasControls](http://fabricjs.com/docs/fabric.Object.html#hasControls) } `Boolean` | no | `true` |
-| [hasRotatingPoint](http://fabricjs.com/docs/fabric.Object.html#hasRotatingPoint) } `Boolean` | no | `true` |
-| [height](http://fabricjs.com/docs/fabric.Object.html#height) } `Number` | no |  |
-| [hoverCursor](http://fabricjs.com/docs/fabric.Object.html#hoverCursor) } `String` | no |  |
-| [includeDefaultValues](http://fabricjs.com/docs/fabric.Object.html#includeDefaultValues) } `Boolean` | no | `true`  |
-| [inverted](http://fabricjs.com/docs/fabric.Object.html#inverted) } `Boolean` | no | `false` |
-| [left](http://fabricjs.com/docs/fabric.Object.html#left) } `Number` | no |  |
-| [lockMovementX](http://fabricjs.com/docs/fabric.Object.html#lockMovementX) } `Boolean` | no | `false` |
-| [lockMovementY](http://fabricjs.com/docs/fabric.Object.html#lockMovementY) } `Boolean` | no | `false` |
-| [lockRotation](http://fabricjs.com/docs/fabric.Object.html#lockRotation) } `Boolean` | no | `false` |
-| [lockScalingFlip](http://fabricjs.com/docs/fabric.Object.html#lockScalingFlip) } `Boolean` | no | `false` |
-| [lockScalingX](http://fabricjs.com/docs/fabric.Object.html#lockScalingX) } `Boolean` | no | `false` |
-| [lockScalingY](http://fabricjs.com/docs/fabric.Object.html#lockScalingY) } `Boolean` | no | `false` |
-| [lockUniScaling](http://fabricjs.com/docs/fabric.Object.html#lockUniScaling) } `Boolean` | no | `false` |
-| [minScaleLimit](http://fabricjs.com/docs/fabric.Object.html#minScaleLimit) } `Number` | no |  |
-| [moveCursor](http://fabricjs.com/docs/fabric.Object.html#moveCursor) } `String` | no |  |
-| [noScaleCache](http://fabricjs.com/docs/fabric.Object.html#noScaleCache) } `Boolean` | no | `true` |
-| [objectCaching](http://fabricjs.com/docs/fabric.Object.html#objectCaching) } `Boolean` | no | `true` |
-| [opacity](http://fabricjs.com/docs/fabric.Object.html#opacity) } `Number` | no | |
-| [originX](http://fabricjs.com/docs/fabric.Object.html#originX) } `String` | no | |
-| [originY](http://fabricjs.com/docs/fabric.Object.html#originY) } `String` | no | |
-| [padding](http://fabricjs.com/docs/fabric.Object.html#padding) } `Number` | no | |
-| [paintFirst](http://fabricjs.com/docs/fabric.Object.html#paintFirst) } `String` | no | |
-| [perPixelTargetFind](http://fabricjs.com/docs/fabric.Object.html#perPixelTargetFind) } `Boolean` | no | `false` |
-| [rotatingPointOffset](http://fabricjs.com/docs/fabric.Object.html#rotatingPointOffset) } `Number` | no | |
-| [scaleX](http://fabricjs.com/docs/fabric.Object.html#scaleX) } `Number` | no | |
-| [scaleY](http://fabricjs.com/docs/fabric.Object.html#scaleY) } `Number` | no | |
-| [selectable](http://fabricjs.com/docs/fabric.Object.html#selectable) } `Boolean` | no | `true` |
-| [selectionBackgroundColor](http://fabricjs.com/docs/fabric.Object.html#selectionBackgroundColor) } `String` | no | |
-| [skewX](http://fabricjs.com/docs/fabric.Object.html#skewX) } `Number` | no | |
-| [skewY](http://fabricjs.com/docs/fabric.Object.html#skewY) } `Number` | no | |
-| [stateProperties](http://fabricjs.com/docs/fabric.Object.html#stateProperties) } `Array` | no | |
-| [stroke](http://fabricjs.com/docs/fabric.Object.html#stroke) } `String` | no | |
-| [strokeDashArray](http://fabricjs.com/docs/fabric.Object.html#strokeDashArray) } `Array` | no | |
-| [strokeDashOffset](http://fabricjs.com/docs/fabric.Object.html#strokeDashOffset) } `Number` | no | |
-| [strokeLineCap](http://fabricjs.com/docs/fabric.Object.html#strokeLineCap) } `String` | no | |
-| [strokeLineJoin](http://fabricjs.com/docs/fabric.Object.html#strokeLineJoin) } `String` | no | |
-| [strokeMiterLimit](http://fabricjs.com/docs/fabric.Object.html#strokeMiterLimit) } `Number` | no | |
-| [strokeUniform](http://fabricjs.com/docs/fabric.Object.html#strokeUniform) } `Boolean` | no | |
-| [strokeWidth](http://fabricjs.com/docs/fabric.Object.html#strokeWidth) } `Number` | no | |
-| [top](http://fabricjs.com/docs/fabric.Object.html#top) } `Number` | no | |
-| [transparentCorners](http://fabricjs.com/docs/fabric.Object.html#transparentCorners) } `Boolean` | no | `true`|
-| [visible](http://fabricjs.com/docs/fabric.Object.html#visible) } `Boolean` | no | `true`|
-| [width](http://fabricjs.com/docs/fabric.Object.html#width) } `Number` | no | |
+| [angle](http://fabricjs.com/docs/fabric.Object.html#angle) | `Number` | no | |
+| [backgroundColor](http://fabricjs.com/docs/fabric.Object.html#backgroundColor) | `String` | no | |
+| [borderColor](http://fabricjs.com/docs/fabric.Object.html#borderColor) | `String` | no | |
+| [borderDashArray](http://fabricjs.com/docs/fabric.Object.html#borderDashArray) | `Array` | no | |
+| [borderOpacityWhenMoving](http://fabricjs.com/docs/fabric.Object.html#borderOpacityWhenMoving) | `Number` | no | |
+| [borderScaleFactor](http://fabricjs.com/docs/fabric.Object.html#borderScaleFactor) | `Number` | no | |
+| [cacheProperties](http://fabricjs.com/docs/fabric.Object.html#cacheProperties) | `Array` | no | |
+| [centeredRotation](http://fabricjs.com/docs/fabric.Object.html#centeredRotation) | `Boolean` | no | `true` |
+| [centeredScaling](http://fabricjs.com/docs/fabric.Object.html#centeredScaling) | `Boolean` | no | `false` |
+| [cornerColor](http://fabricjs.com/docs/fabric.Object.html#cornerColor) | `String` | no | |
+| [cornerDashArray](http://fabricjs.com/docs/fabric.Object.html#cornerDashArray) | `Array` | no | |
+| [cornerSize](http://fabricjs.com/docs/fabric.Object.html#cornerSize) | `Number` | no | |
+| [cornerStrokeColor](http://fabricjs.com/docs/fabric.Object.html#cornerStrokeColor) | `String` | no | |
+| [cornerStyle](http://fabricjs.com/docs/fabric.Object.html#cornerStyle) | `String` | no | |
+| [dirty](http://fabricjs.com/docs/fabric.Object.html#dirty) | `Boolean` | no | `true` |
+| [evented](http://fabricjs.com/docs/fabric.Object.html#evented) | `Boolean` | no | `true` |
+| [excludeFromExport](http://fabricjs.com/docs/fabric.Object.html#excludeFromExport) | `Boolean` | no | `false` |
+| [fill](http://fabricjs.com/docs/fabric.Object.html#fill) | `String` | no | |
+| [fillRule](http://fabricjs.com/docs/fabric.Object.html#fillRule) | `String` | no | |
+| [flipX](http://fabricjs.com/docs/fabric.Object.html#flipX) | `Boolaen` | no | |
+| [flipY](http://fabricjs.com/docs/fabric.Object.html#flipY) | `Boolean` | no | |
+| [globalCompositeOperation](http://fabricjs.com/docs/fabric.Object.html#globalCompositeOperation) | `String` | no | |
+| [hasBorders](http://fabricjs.com/docs/fabric.Object.html#hasBorders) | `Boolean` | no | `true` |
+| [hasControls](http://fabricjs.com/docs/fabric.Object.html#hasControls) | `Boolean` | no | `true` |
+| [hasRotatingPoint](http://fabricjs.com/docs/fabric.Object.html#hasRotatingPoint) | `Boolean` | no | `true` |
+| [height](http://fabricjs.com/docs/fabric.Object.html#height) | `Number` | no |  |
+| [hoverCursor](http://fabricjs.com/docs/fabric.Object.html#hoverCursor) | `String` | no |  |
+| [includeDefaultValues](http://fabricjs.com/docs/fabric.Object.html#includeDefaultValues) | `Boolean` | no | `true`  |
+| [inverted](http://fabricjs.com/docs/fabric.Object.html#inverted) | `Boolean` | no | `false` |
+| [left](http://fabricjs.com/docs/fabric.Object.html#left) | `Number` | no |  |
+| [lockMovementX](http://fabricjs.com/docs/fabric.Object.html#lockMovementX) | `Boolean` | no | `false` |
+| [lockMovementY](http://fabricjs.com/docs/fabric.Object.html#lockMovementY) | `Boolean` | no | `false` |
+| [lockRotation](http://fabricjs.com/docs/fabric.Object.html#lockRotation) | `Boolean` | no | `false` |
+| [lockScalingFlip](http://fabricjs.com/docs/fabric.Object.html#lockScalingFlip) | `Boolean` | no | `false` |
+| [lockScalingX](http://fabricjs.com/docs/fabric.Object.html#lockScalingX) | `Boolean` | no | `false` |
+| [lockScalingY](http://fabricjs.com/docs/fabric.Object.html#lockScalingY) | `Boolean` | no | `false` |
+| [lockUniScaling](http://fabricjs.com/docs/fabric.Object.html#lockUniScaling) | `Boolean` | no | `false` |
+| [minScaleLimit](http://fabricjs.com/docs/fabric.Object.html#minScaleLimit) | `Number` | no |  |
+| [moveCursor](http://fabricjs.com/docs/fabric.Object.html#moveCursor) | `String` | no |  |
+| [noScaleCache](http://fabricjs.com/docs/fabric.Object.html#noScaleCache) | `Boolean` | no | `true` |
+| [objectCaching](http://fabricjs.com/docs/fabric.Object.html#objectCaching) | `Boolean` | no | `true` |
+| [opacity](http://fabricjs.com/docs/fabric.Object.html#opacity) | `Number` | no | |
+| [originX](http://fabricjs.com/docs/fabric.Object.html#originX) | `String` | no | |
+| [originY](http://fabricjs.com/docs/fabric.Object.html#originY) | `String` | no | |
+| [padding](http://fabricjs.com/docs/fabric.Object.html#padding) | `Number` | no | |
+| [paintFirst](http://fabricjs.com/docs/fabric.Object.html#paintFirst) | `String` | no | |
+| [perPixelTargetFind](http://fabricjs.com/docs/fabric.Object.html#perPixelTargetFind) | `Boolean` | no | `false` |
+| [rotatingPointOffset](http://fabricjs.com/docs/fabric.Object.html#rotatingPointOffset) | `Number` | no | |
+| [scaleX](http://fabricjs.com/docs/fabric.Object.html#scaleX) | `Number` | no | |
+| [scaleY](http://fabricjs.com/docs/fabric.Object.html#scaleY) | `Number` | no | |
+| [selectable](http://fabricjs.com/docs/fabric.Object.html#selectable) | `Boolean` | no | `true` |
+| [selectionBackgroundColor](http://fabricjs.com/docs/fabric.Object.html#selectionBackgroundColor) | `String` | no | |
+| [skewX](http://fabricjs.com/docs/fabric.Object.html#skewX) | `Number` | no | |
+| [skewY](http://fabricjs.com/docs/fabric.Object.html#skewY) | `Number` | no | |
+| [stateProperties](http://fabricjs.com/docs/fabric.Object.html#stateProperties) | `Array` | no | |
+| [stroke](http://fabricjs.com/docs/fabric.Object.html#stroke) | `String` | no | |
+| [strokeDashArray](http://fabricjs.com/docs/fabric.Object.html#strokeDashArray) | `Array` | no | |
+| [strokeDashOffset](http://fabricjs.com/docs/fabric.Object.html#strokeDashOffset) | `Number` | no | |
+| [strokeLineCap](http://fabricjs.com/docs/fabric.Object.html#strokeLineCap) | `String` | no | |
+| [strokeLineJoin](http://fabricjs.com/docs/fabric.Object.html#strokeLineJoin) | `String` | no | |
+| [strokeMiterLimit](http://fabricjs.com/docs/fabric.Object.html#strokeMiterLimit) | `Number` | no | |
+| [strokeUniform](http://fabricjs.com/docs/fabric.Object.html#strokeUniform) | `Boolean` | no | |
+| [strokeWidth](http://fabricjs.com/docs/fabric.Object.html#strokeWidth) | `Number` | no | |
+| [top](http://fabricjs.com/docs/fabric.Object.html#top) | `Number` | no | |
+| [transparentCorners](http://fabricjs.com/docs/fabric.Object.html#transparentCorners) | `Boolean` | no | `true`|
+| [visible](http://fabricjs.com/docs/fabric.Object.html#visible) | `Boolean` | no | `true`|
+| [width](http://fabricjs.com/docs/fabric.Object.html#width) | `Number` | no | |
 
 ### events
 | Event Name |
@@ -202,9 +202,7 @@ All Fabric.Object Events
 ```
 
 ### props
-All Fabric.Object Props + the following
-| Name | Type               | Required | Default |
-| ---- | ------------------ | -------- | ------- |
+All Fabric.Object Props
 
 ### events
 All Fabric.Object Events
