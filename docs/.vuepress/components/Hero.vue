@@ -6,7 +6,7 @@
     </h1>
     <p style="text-align: center;">A Fabric Wrapper for the Vue Framework</p>
     <div class="box">
-      <router-link class="button" to="/guide/getting-started.html">Get started</router-link>
+      <router-link class="button" to="/guide/">Get started</router-link>
     </div>
   </div>
 </template>
