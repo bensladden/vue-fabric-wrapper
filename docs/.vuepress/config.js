@@ -32,6 +32,7 @@ module.exports = {
 				text: 'API',
 				items: [
 					{ text: 'FabricCanvas', link: '/api/canvas' },
+					{ text: 'FabricObject', link: '/api/objects' },
 					{ text: 'FabricCircle', link: '/api/circle' },
 					{ text: 'FabricEllipse', link: '/api/ellicpse' },
 					{ text: 'FabricGroup', link: '/api/group' },
