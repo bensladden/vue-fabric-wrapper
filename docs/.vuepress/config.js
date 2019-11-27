@@ -24,27 +24,34 @@ module.exports = {
 			{
 				text: 'Guide',
 				items: [
-					{ text: 'Getting Started', link: '/guide/getting-started' },
-					{ text: 'Installation', link: '/guide/installation' },
-					{ text: 'Nuxt Example', link: '/guide/nuxt-example' },
+					{ text: 'Getting Started', link: '/guide/#getting-started' },
+					{ text: 'Setup', link: '/guide/#setup' },
+					{ text: 'How to Use with Vue', link: '/guide/#how-to-use-in-vue' },
+					{ text: 'How to use with Nuxt', link: '/guide/#how-to-use-in-nuxt' },
+					{ text: 'Support', link: '/guide/#show-your-support' },
+					{ text: 'Contributing', link: '/guide/#contributing' },
+					{ text: 'Bug Report', link: '/guide/#bug-report' }
 				]
 			}, {
 				text: 'API',
 				items: [
-					{ text: 'FabricCanvas', link: '/api/canvas' },
-					{ text: 'FabricObject', link: '/api/objects' },
-					{ text: 'FabricCircle', link: '/api/circle' },
-					{ text: 'FabricEllipse', link: '/api/ellicpse' },
-					{ text: 'FabricGroup', link: '/api/group' },
-					{ text: 'FabricImageFromURL', link: '/api/image-from-url' },
+					{ text: 'Canvas', link: '/api/#canvas-component' },
+					{ text: 'Object', link: '/api/#fabric-objects' },
+					{ text: 'Circle', link: '/api/#circle-component' },
+					{ text: 'Ellipse', link: '/api/#ellipse-component' },
+					{ text: 'Group', link: '/api/#group-component' },
+					{ text: 'ImageFromURL', link: '/api/#image-from-url-component' },
+					{ text: 'Line', link: '/api/#line-component' },
+					{ text: 'Path', link: '/api/#path-component' },
+					{ text: 'Polygon', link: '/api/#polygon-component' },
+					{ text: 'Polyline', link: '/api/#polyline-component' },
+					{ text: 'Rectangle', link: '/api/#rectangle-component' },
+					{ text: 'SVGFromURL', link: '/api/#svg-from-url-component' },
+					{ text: 'Triangle', link: '/api/#triangle-component' },
 
 				]
 			}
-		],
-		// sidebar: [{
-		// 	title: 'Introduction',
-		// 	children: ["/"]
-		// }]
+		]
 	},
 	plugins: ['@vuepress/last-updated']
 }

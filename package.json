@@ -10,14 +10,16 @@
 		"canvas",
 		"components"
 	],
-	"version": "0.1.31",
+	"version": "0.2.00",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/bensladden/vue-fabric-wrapper.git"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"docs"
 	],
+	"homepage": "https://vue-fabric-wrapper.netlify.com/",
 	"author": "Ben Sladden",
 	"main": "dist/vue-fabric-wrapper.common.js",
 	"unpkg": "dist/vue-fabric-wrapper.umd.min.js",

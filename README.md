@@ -33,7 +33,7 @@ Stick Man Example: [![Edit Vue Template](https://codesandbox.io/static/img/play-
 $ npm install vue-fabric-wrapper
 ```
 ## 📄 Documents
-Coming Soon!
+[Link](https://vue-fabric-wrapper.netlify.com/)
 
 ## 🚀 How to use in Vue
 
