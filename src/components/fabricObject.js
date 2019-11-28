@@ -38,6 +38,7 @@ const EMIT_PROPS = [
   "top",
   "width"
 ];
+
 //Monitor the fabric Object (item) and emit an update to allow .sync usage
 const watchEmitProp = (key, deep) => ({
   handler(newValue) {
@@ -63,6 +64,7 @@ const watchProp = (key, deep) => ({
   },
   deep
 });
+
 export default {
   name: "fabric-object",
   inheritAttrs: false,
@@ -142,6 +144,7 @@ export default {
     //type :String, not editable
     visible: { type: Boolean, default: true },
     width: Number
+    //AnimationProps
   },
   inject: ["$canvas", "$group", "fabric"],
   computed: {
@@ -231,6 +234,20 @@ export default {
           }
         }
         this.$watch(key, watchProp(key, true));
+      });
+    },
+    animate(key) {
+      this.fabric.util.animate({
+        startValue: this.animateOptions.startValue || this.item.get(key),
+        endValue: eventOptions.endValue,
+        byValue: eventOptions.byValue || 100,
+        duration: eventOptins.duration || 500,
+        onChange: value => {
+          this.item.set(key, value);
+        },
+        onComplete: () => {
+          this.$emit("animationComplete", this.item);
+        }
       });
     }
   },
