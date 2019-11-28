@@ -236,14 +236,15 @@ export default {
         this.$watch(key, watchProp(key, true));
       });
     },
-    animate(key) {
+    animate(key, options) {
       this.fabric.util.animate({
-        startValue: this.animateOptions.startValue || this.item.get(key),
-        endValue: eventOptions.endValue,
-        byValue: eventOptions.byValue || 100,
-        duration: eventOptins.duration || 500,
+        startValue: options.startValue || this.item.get(key),
+        endValue: options.endValue || 100,
+        byValue: options.byValue || 100,
+        duration: options.duration || 500,
         onChange: value => {
           this.item.set(key, value);
+          this.$emit("animationStep", this.item);
         },
         onComplete: () => {
           this.$emit("animationComplete", this.item);
