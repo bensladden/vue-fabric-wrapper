@@ -31837,12 +31837,12 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2f7476fc-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=55b89e14&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0a73ca3c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=950d6a2e&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=55b89e14&
+// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=950d6a2e&
 
 // EXTERNAL MODULE: ./node_modules/fabric/dist/fabric.js
 var fabric = __webpack_require__("7a94");
@@ -31907,7 +31907,9 @@ var fabric = __webpack_require__("7a94");
 //
 //
 //
-var canvasEvents = ["object:modified", "object:rotated", "object:scaled", "object:moved", "object:skewed", "object:rotating", "object:scaling", "object:moving", "object:skewing", "before:transform", "before:selection:cleared", "selection:cleared", "selection:updated", "selection:created", "path:created", "mouse:down", "mouse:move", "mouse:up", "mouse:down:before", "mouse:move:before", "mouse:up:before", "mouse:over", "mouse:out", "mouse:dblclick", "event:dragover", "event:dragenter", "event:dragleave", "event:drop"];
+var canvasEvents = [//Static Canvas events
+"before:render", "after:render", "canvas:cleared", "object:added", "object:removed", //Canvas events
+"object:modified", "object:rotated", "object:scaled", "object:moved", "object:skewed", "object:rotating", "object:scaling", "object:moving", "object:skewing", "before:transform", "before:selection:cleared", "selection:cleared", "selection:updated", "selection:created", "path:created", "mouse:down", "mouse:move", "mouse:up", "mouse:down:before", "mouse:move:before", "mouse:up:before", "mouse:over", "mouse:out", "mouse:dblclick", "event:dragover", "event:dragenter", "event:dragleave", "event:drop"];
 
 
 
@@ -31955,8 +31957,10 @@ var canvasEvents = ["object:modified", "object:rotated", "object:scaled", "objec
 
     this.canvas = new fabric["Canvas"]("c");
     canvasEvents.forEach(function (event) {
+      var vueEvent = event.split(":").join("-");
+
       _this2.canvas.on(event, function (e) {
-        _this2.$emit(event, e);
+        _this2.$emit(vueEvent, e);
       });
     });
   },
@@ -31964,7 +31968,9 @@ var canvasEvents = ["object:modified", "object:rotated", "object:scaled", "objec
     var _this3 = this;
 
     canvasEvents.forEach(function (event) {
-      return _this3.canvas.off(event, _this3.$emit(event));
+      var vueEvent = event.split(":").join("-");
+
+      _this3.canvas.off(event, _this3.$emit(vueEvent));
     });
   }
 });
@@ -32571,7 +32577,7 @@ var FabricEllipse_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricEllipse = (FabricEllipse_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2f7476fc-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=42c0c33b&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0a73ca3c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=42c0c33b&
 var FabricGridvue_type_template_id_42c0c33b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',{attrs:{"id":_vm.id}},[_vm._l((_vm.verticalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'v' + index,attrs:{"id":_vm.id + 'v' + index}},'fabric-line',line,false))}),_vm._l((_vm.horizontalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'h' + index,attrs:{"id":_vm.id + 'h' + index}},'fabric-line',line,false))})],2)}
 var FabricGridvue_type_template_id_42c0c33b_staticRenderFns = []
 
@@ -33248,7 +33254,7 @@ var FabricRectangle_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricRectangle = (FabricRectangle_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2f7476fc-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0a73ca3c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
 var FabricSVGFromURLvue_type_template_id_803e1144_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({},'fabric-group',_vm.$props,false),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
 var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
 
