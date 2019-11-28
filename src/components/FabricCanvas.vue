@@ -7,6 +7,13 @@
 
 <script>
 let canvasEvents = [
+  //Static Canvas events
+  "before:render",
+  "after:render",
+  "canvas:cleared",
+  "object:added",
+  "object:removed",
+  //Canvas events
   "object:modified",
   "object:rotated",
   "object:scaled",
@@ -65,13 +72,17 @@ export default {
   mounted() {
     this.canvas = new fabric.Canvas("c");
     canvasEvents.forEach(event => {
+      let vueEvent = event.split(":").join("-");
       this.canvas.on(event, e => {
-        this.$emit(event, e);
+        this.$emit(vueEvent, e);
       });
     });
   },
   beforeDestroy() {
-    canvasEvents.forEach(event => this.canvas.off(event, this.$emit(event)));
+    canvasEvents.forEach(event => {
+      let vueEvent = event.split(":").join("-");
+      this.canvas.off(event, this.$emit(vueEvent));
+    });
   }
 };
 </script>

@@ -8,7 +8,7 @@
       href="https://codesandbox.io/s/vue-template-rltsr?fontsize=14&hidenavigation=1&theme=dark"
       >here</a
     >
-    <fabric-canvas :height="400" :width="400">
+    <fabric-canvas :height="400" :width="400" @object-moved="objMoved">
       <fabric-line
         :id="'headToBody'"
         :x1="headPosLeft"
@@ -235,6 +235,11 @@ export default {
       rightFootPosLeft: 300,
       rightFootPosTop: 350
     };
+  },
+  methods: {
+    objMoved(e) {
+      console.log("objMoved", e);
+    }
   }
 };
 </script>

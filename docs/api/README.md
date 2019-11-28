@@ -12,7 +12,7 @@ This component contains a slot that all children components are placed.
 ### Example Usage
 ```html
 <fabric-canvas>
-
+	<!-- Insert objects/groups here -->
 </fabric-canvas>
 ```
 
@@ -37,36 +37,37 @@ This component contains a slot that all children components are placed.
 
 ### events
 Fires the following [events](http://fabricjs.com/docs/fabric.Canvas.html#Canvas)
-| Event Name|
-|-----------|
-| object:modified |
-| object:rotated |
-| object:scaled |
-| object:moved |
-| object:skewed |
-| object:rotating |
-| object:scaling |
-| object:moving |
-| object:skewing |
-| before:transform |
-| before:selection:cleared |
-| selection:cleared |
-| selection:updated |
-| selection:created |
-| path:created |
-| mouse:down |
-| mouse:move |
-| mouse:up |
-| mouse:down:before |
-| mouse:move:before |
-| mouse:up :before |
-| mouse:over |
-| mouse:out |
-| mouse:dblclick |
-| event:dragover |
-| event:dragenter |
-| event:dragleave |
-| event:drop |
+Note vue recommends kebab case variables
+| Canvas Event Name | Vue Event |
+|-----------| ------ |
+| object:modified | object-modified  |
+| object:rotated | object-rotated |
+| object:scaled | object-scaled |
+| object:moved | object-moved |
+| object:skewed | object-skewed |
+| object:rotating | object-rotating |
+| object:scaling | object-scaling |
+| object:moving | object-moving |
+| object:skewing | object-skweing |
+| before:transform | before-transform  |
+| before:selection:cleared | before-selection-cleared |
+| selection:cleared | selection-cleared |
+| selection:updated | selection-updated |
+| selection:created | seleciton-created |
+| path:created | path-created |
+| mouse:down | mouse-down |
+| mouse:move | mouse-move |
+| mouse:up | mouse-up |
+| mouse:down:before | moude-down-before |
+| mouse:move:before | mouse-move-before |
+| mouse:up:before | mouse-up-before |
+| mouse:over | mouse-over |
+| mouse:out | mouse-out |
+| mouse:dblclick | mouse-dblclick |
+| event:dragover | event-dragover |
+| event:dragenter | event-dragenter |
+| event:dragleave | event-dragleave |
+| event:drop | event-drop |
 
 ## Fabric Objects
 Root object class from which all 2d shape classes inherit from. In this wrapper the fabricOject acts as a mixin for each shape componet.
