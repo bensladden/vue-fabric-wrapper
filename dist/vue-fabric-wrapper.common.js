@@ -32106,7 +32106,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var OBJECT_EVENTS = ["added", "removed", "selected", "deselected", "modified", "moved", "scaled", "rotated", "skewed", "rotating", "scaling", "moving", "skewing", "mousedown", "mouseup", "mouseover", "mouseout", "mousewheel", "mousedblclick", "dragover", "dragenter", "dragleave", "drop"]; //Props to change via interaction and need to be emitted for prop.sync usage
 
-var EMIT_PROPS = ["angle", "height", "left", "originX", "originY", "scaleX", "scaleY", "skewX", "skewY", "top", "width"]; //Monitor the fabric Object (item) and emit an update to allow .sync usage
+var EMIT_PROPS = ["angle", "height", "left", "originX", "originY", "scaleX", "scaleY", "skewX", "skewY", "top", "width"];
+var animationProps = ["animateStart", "animateKeys", "animateDuration", "animateEasing"]; //Monitor the fabric Object (item) and emit an update to allow .sync usage
 
 var watchEmitProp = function watchEmitProp(key, deep) {
   return {
@@ -32120,7 +32121,7 @@ var watchEmitProp = function watchEmitProp(key, deep) {
     },
     deep: deep
   };
-}; //Monitor the fabric Objects (item) Props and update the item with the changed value
+}; //Monitor the Props and update the item with the changed value
 
 
 var watchProp = function watchProp(key, deep) {
@@ -32300,7 +32301,29 @@ var watchProp = function watchProp(key, deep) {
       type: Boolean,
       default: true
     },
-    width: Number
+    width: Number,
+    //AnimationProps
+    animateStart: {
+      type: Boolean,
+      default: false
+    },
+    animateKeys: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    animateDuration: {
+      type: Number,
+      default: 500
+    },
+    animateEasing: {
+      type: String,
+      default: "",
+      validator: function validator(value) {
+        return ["", "easeInQuad", "easeOutQuad", "easeInOutQuad", "easeInCubic", "easeOutCubic", "easeInOutCubic", "easeInQuart", "easeOutQuart", "easeInOutQuart", "easeInQuint", "easeOutQuint", "easeInOutQuint", "easeInSine", "easeOutSine", "easeInOutSine", "easeInExpo", "easeOutExpo", "easeInOutExpo", "easeInCirc", "easeOutCirc", "easeInOutCirc", "easeInElastic", "easeOutElastic", "easeInOutElastic", "easeInBack", "easeOutBack", "easeInOutBack", "easeInBounce", "easeOutBounce", "easeInOutBounce"].indexOf(value) !== -1;
+      }
+    }
   },
   inject: ["$canvas", "$group", "fabric"],
   computed: {
@@ -32396,13 +32419,53 @@ var watchProp = function watchProp(key, deep) {
           if (_this4.customWatch.includes(key)) {
             return;
           }
+        } //Animation Props have custom watchers
+
+
+        if (animationProps.includes(key)) {
+          return;
         }
 
         _this4.$watch(key, watchProp(key, true));
       });
+    },
+    animate: function animate() {
+      var _this5 = this;
+
+      var easing = {};
+
+      if (this.animationEasing !== "") {
+        easing = {
+          easing: this.fabric.util.ease[this.animationEasing]
+        };
+      }
+
+      this.item.animate(this.animateKeys, _objectSpread({
+        duration: this.animateDuration
+      }, easing, {
+        onChange: function onChange() {
+          _this5.canvas.renderAll();
+
+          _this5.$emit("animationStep", _this5.item);
+        },
+        onComplete: function onComplete() {
+          _this5.$emit("animationComplete", _this5.item);
+        }
+      }));
     }
   },
-  watch: {},
+  watch: {
+    animateStart: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          if (Object.keys(this.animateKeys).length >= 1) {
+            this.animate();
+          }
+        }
+      },
+      immediate: false
+    }
+  },
   beforeDestroy: function beforeDestroy() {
     this.destroyEvents();
   }
