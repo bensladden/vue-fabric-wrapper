@@ -39,6 +39,13 @@ const EMIT_PROPS = [
   "width"
 ];
 
+const animationProps = [
+  "animateStart",
+  "animateKeys",
+  "animateDuration",
+  "animateEasing"
+];
+
 //Monitor the fabric Object (item) and emit an update to allow .sync usage
 const watchEmitProp = (key, deep) => ({
   handler(newValue) {
@@ -50,7 +57,7 @@ const watchEmitProp = (key, deep) => ({
   },
   deep
 });
-//Monitor the fabric Objects (item) Props and update the item with the changed value
+//Monitor the Props and update the item with the changed value
 const watchProp = (key, deep) => ({
   handler(newValue) {
     //If the prop did not cause the update there is no updating the canvas
@@ -143,8 +150,57 @@ export default {
     transparentCorners: { type: Boolean, default: true },
     //type :String, not editable
     visible: { type: Boolean, default: true },
-    width: Number
+    width: Number,
     //AnimationProps
+    animateStart: { type: Boolean, default: false },
+    animateKeys: {
+      type: Object,
+      default: function() {
+        return {};
+      }
+    },
+    animateDuration: { type: Number, default: 500 },
+    animateEasing: {
+      type: String,
+      default: "",
+      validator: function(value) {
+        return (
+          [
+            "",
+            "easeInQuad",
+            "easeOutQuad",
+            "easeInOutQuad",
+            "easeInCubic",
+            "easeOutCubic",
+            "easeInOutCubic",
+            "easeInQuart",
+            "easeOutQuart",
+            "easeInOutQuart",
+            "easeInQuint",
+            "easeOutQuint",
+            "easeInOutQuint",
+            "easeInSine",
+            "easeOutSine",
+            "easeInOutSine",
+            "easeInExpo",
+            "easeOutExpo",
+            "easeInOutExpo",
+            "easeInCirc",
+            "easeOutCirc",
+            "easeInOutCirc",
+            "easeInElastic",
+            "easeOutElastic",
+            "easeInOutElastic",
+            "easeInBack",
+            "easeOutBack",
+            "easeInOutBack",
+            "easeInBounce",
+            "easeOutBounce",
+            "easeInOutBounce"
+          ].indexOf(value) !== -1
+        );
+      }
+    }
   },
   inject: ["$canvas", "$group", "fabric"],
   computed: {
@@ -233,17 +289,23 @@ export default {
             return;
           }
         }
+        //Animation Props have custom watchers
+        if (animationProps.includes(key)) {
+          return;
+        }
         this.$watch(key, watchProp(key, true));
       });
     },
-    animate(key, options) {
-      this.fabric.util.animate({
-        startValue: options.startValue || this.item.get(key),
-        endValue: options.endValue || 100,
-        byValue: options.byValue || 100,
-        duration: options.duration || 500,
-        onChange: value => {
-          this.item.set(key, value);
+    animate() {
+      let easing = {};
+      if (this.animationEasing !== "") {
+        easing = { easing: this.fabric.util.ease[this.animationEasing] };
+      }
+      this.item.animate(this.animateKeys, {
+        duration: this.animateDuration,
+        ...easing,
+        onChange: () => {
+          this.canvas.renderAll();
           this.$emit("animationStep", this.item);
         },
         onComplete: () => {
@@ -252,7 +314,18 @@ export default {
       });
     }
   },
-  watch: {},
+  watch: {
+    animateStart: {
+      handler(newValue) {
+        if (newValue) {
+          if (Object.keys(this.animateKeys).length >= 1) {
+            this.animate();
+          }
+        }
+      },
+      immediate: false
+    }
+  },
   beforeDestroy() {
     this.destroyEvents();
   }
