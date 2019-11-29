@@ -180,10 +180,16 @@
         <fabric-text :id="342104" :text="'hello stick man'"></fabric-text>
       </fabric-group>
       <fabric-polyline :id="342102"></fabric-polyline>
-      <fabric-image-from-url :id="342103"></fabric-image-from-url>
+      <fabric-image-from-url
+        :id="342103"
+        :animateStart="startAnimation"
+        :animateKeys="{ left: 400 }"
+        :animateDuration="2000"
+      ></fabric-image-from-url>
       <fabric-grid :id="567432"></fabric-grid>
       <fabric-svg-from-url :id="'ttyuud'"></fabric-svg-from-url>
     </fabric-canvas>
+    <button @click="startAnimation = true">animate</button>
   </div>
 </template>
 
@@ -220,6 +226,7 @@ export default {
   },
   data() {
     return {
+      startAnimation: false,
       headPosLeft: 250,
       headPosTop: 125,
       bodyPosLeft: 250,
