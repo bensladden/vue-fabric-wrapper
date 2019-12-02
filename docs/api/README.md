@@ -145,14 +145,6 @@ Root object class from which all 2d shape classes inherit from. In this wrapper 
 | [visible](http://fabricjs.com/docs/fabric.Object.html#visible) | `Boolean` | no | `true`|
 | [width](http://fabricjs.com/docs/fabric.Object.html#width) | `Number` | no | |
 
-### Custom props for animation
-| Name | Type               | Required | Default |
-| ---- | ------------------ | -------- | ------- |
-| animateStart | `Boolean` | no | `false` |
-| animateKeys | `Object` | no | `{}` |
-| animateDuration | `Number` | no | `500` |
-| animateEasing | `String` | no | `""` |
-
 ### events
 | Event Name |
 |-----------|
@@ -179,12 +171,6 @@ Root object class from which all 2d shape classes inherit from. In this wrapper 
 | dragenter |
 | dragleave |
 | drop |
-
-### Animation Events
-| Event Name |
-|-----------|
-| animationStep |
-| animationComplete |
 
 ## Circle Component
 [Official Docs Link](http://fabricjs.com/docs/fabric.Circle.html)
@@ -395,3 +381,33 @@ All Fabric.Object Props
 
 ### events
 All Fabric.Object Events
+
+## Fabric Animations
+[Official Docs Link](http://fabricjs.com/docs/fabric.Object.html#animate)
+
+### Example Usage
+```html
+<fabric-canvas>
+	<fabric-triangle :id="'someUUID'">
+        <fabric-animation
+          :animateStart="startAnimation"
+          :animateKeys="{ left: 400 }"
+          :animateDuration="2000"
+        ></fabric-animation>
+	</fabric-triangle>
+</fabric-canvas>
+```
+
+### props
+| Name | Type               | Required | Default |
+| ---- | ------------------ | -------- | ------- |
+| animateStart | `Boolean` | no | `false` |
+| animateKeys | `Object` | no | `{}` |
+| animateDuration | `Number` | no | `500` |
+| animateEasing | `String` | no | `""` |
+
+###  events
+| Event Name |
+|-----------|
+| animationStep |
+| animationComplete |
