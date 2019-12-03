@@ -31846,9 +31846,220 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0a73ca3c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=950d6a2e&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
-var staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricAnimation.vue?vue&type=script&lang=js&
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/* harmony default export */ var FabricAnimationvue_type_script_lang_js_ = ({
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  props: {
+    animateStart: {
+      type: Boolean,
+      default: false
+    },
+    animateKeys: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    animateDuration: {
+      type: Number,
+      default: 500
+    },
+    animateEasing: {
+      type: String,
+      default: "",
+      validator: function validator(value) {
+        return ["", "easeInQuad", "easeOutQuad", "easeInOutQuad", "easeInCubic", "easeOutCubic", "easeInOutCubic", "easeInQuart", "easeOutQuart", "easeInOutQuart", "easeInQuint", "easeOutQuint", "easeInOutQuint", "easeInSine", "easeOutSine", "easeInOutSine", "easeInExpo", "easeOutExpo", "easeInOutExpo", "easeInCirc", "easeOutCirc", "easeInOutCirc", "easeInElastic", "easeOutElastic", "easeInOutElastic", "easeInBack", "easeOutBack", "easeInOutBack", "easeInBounce", "easeOutBounce", "easeInOutBounce"].indexOf(value) !== -1;
+      }
+    }
+  },
+  inject: ["$canvas", "fabric", "$item"],
+  computed: {
+    canvas: function canvas() {
+      return this.$canvas();
+    },
+    item: function item() {
+      return this.$item();
+    },
+    definedProps: function definedProps() {
+      var obj = _objectSpread({}, this.$props);
+
+      Object.keys(obj).forEach(function (key) {
+        if (obj[key] === undefined) {
+          delete obj[key];
+        }
+      });
+      return obj;
+    }
+  },
+  watch: {
+    animateStart: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          if (Object.keys(this.animateKeys).length >= 1) {
+            this.animate();
+          }
+        }
+      },
+      immediate: false
+    }
+  },
+  methods: {
+    animate: function animate() {
+      var _this = this;
+
+      var easing = {};
+
+      if (this.animationEasing !== "") {
+        easing = {
+          easing: this.fabric.util.ease[this.animationEasing]
+        };
+      }
+
+      this.item.animate(this.animateKeys, _objectSpread({
+        duration: this.animateDuration
+      }, easing, {
+        onChange: function onChange() {
+          _this.canvas.renderAll();
+
+          _this.$emit("animationStep", _this.item);
+        },
+        onComplete: function onComplete() {
+          _this.$emit("animationComplete", _this.item);
+
+          _this.$emit("update:animationStart", false);
+        }
+      }));
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/FabricAnimation.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricAnimationvue_type_script_lang_js_ = (FabricAnimationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// CONCATENATED MODULE: ./src/components/FabricAnimation.vue
+var render, staticRenderFns
+
+
+
+
+/* normalize component */
+
+var component = normalizeComponent(
+  components_FabricAnimationvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricAnimation = (component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"209b1437-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=950d6a2e&
+var FabricCanvasvue_type_template_id_950d6a2e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":"c","width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
+var FabricCanvasvue_type_template_id_950d6a2e_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=950d6a2e&
@@ -31988,101 +32199,6 @@ var canvasEvents = [//Static Canvas events
 // EXTERNAL MODULE: ./src/components/FabricCanvas.vue?vue&type=style&index=0&lang=css&
 var FabricCanvasvue_type_style_index_0_lang_css_ = __webpack_require__("6101");
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
 // CONCATENATED MODULE: ./src/components/FabricCanvas.vue
 
 
@@ -32092,10 +32208,10 @@ function normalizeComponent (
 
 /* normalize component */
 
-var component = normalizeComponent(
+var FabricCanvas_component = normalizeComponent(
   components_FabricCanvasvue_type_script_lang_js_,
-  render,
-  staticRenderFns,
+  FabricCanvasvue_type_template_id_950d6a2e_render,
+  FabricCanvasvue_type_template_id_950d6a2e_staticRenderFns,
   false,
   null,
   null,
@@ -32103,20 +32219,19 @@ var component = normalizeComponent(
   
 )
 
-/* harmony default export */ var FabricCanvas = (component.exports);
+/* harmony default export */ var FabricCanvas = (FabricCanvas_component.exports);
 // CONCATENATED MODULE: ./src/components/fabricObject.js
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function fabricObject_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function fabricObject_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { fabricObject_ownKeys(source, true).forEach(function (key) { fabricObject_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { fabricObject_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function fabricObject_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var OBJECT_EVENTS = ["added", "removed", "selected", "deselected", "modified", "moved", "scaled", "rotated", "skewed", "rotating", "scaling", "moving", "skewing", "mousedown", "mouseup", "mouseover", "mouseout", "mousewheel", "mousedblclick", "dragover", "dragenter", "dragleave", "drop"]; //Props to change via interaction and need to be emitted for prop.sync usage
 
-var EMIT_PROPS = ["angle", "height", "left", "originX", "originY", "scaleX", "scaleY", "skewX", "skewY", "top", "width"];
-var animationProps = ["animateStart", "animateKeys", "animateDuration", "animateEasing"]; //Monitor the fabric Object (item) and emit an update to allow .sync usage
+var EMIT_PROPS = ["angle", "height", "left", "originX", "originY", "scaleX", "scaleY", "skewX", "skewY", "top", "width"]; //Monitor the fabric Object (item) and emit an update to allow .sync usage
 
 var watchEmitProp = function watchEmitProp(key, deep) {
   return {
@@ -32310,31 +32425,18 @@ var watchProp = function watchProp(key, deep) {
       type: Boolean,
       default: true
     },
-    width: Number,
-    //AnimationProps
-    animateStart: {
-      type: Boolean,
-      default: false
-    },
-    animateKeys: {
-      type: Object,
-      default: function _default() {
-        return {};
-      }
-    },
-    animateDuration: {
-      type: Number,
-      default: 500
-    },
-    animateEasing: {
-      type: String,
-      default: "",
-      validator: function validator(value) {
-        return ["", "easeInQuad", "easeOutQuad", "easeInOutQuad", "easeInCubic", "easeOutCubic", "easeInOutCubic", "easeInQuart", "easeOutQuart", "easeInOutQuart", "easeInQuint", "easeOutQuint", "easeInOutQuint", "easeInSine", "easeOutSine", "easeInOutSine", "easeInExpo", "easeOutExpo", "easeInOutExpo", "easeInCirc", "easeOutCirc", "easeInOutCirc", "easeInElastic", "easeOutElastic", "easeInOutElastic", "easeInBack", "easeOutBack", "easeInOutBack", "easeInBounce", "easeOutBounce", "easeInOutBounce"].indexOf(value) !== -1;
-      }
-    }
+    width: Number
   },
   inject: ["$canvas", "$group", "fabric"],
+  provide: function provide() {
+    var _this = this;
+
+    return {
+      $item: function $item() {
+        return _this.item;
+      }
+    };
+  },
   computed: {
     canvas: function canvas() {
       return this.$canvas();
@@ -32343,7 +32445,7 @@ var watchProp = function watchProp(key, deep) {
       return this.$group();
     },
     definedProps: function definedProps() {
-      var obj = _objectSpread({}, this.$props);
+      var obj = fabricObject_objectSpread({}, this.$props);
 
       Object.keys(obj).forEach(function (key) {
         if (obj[key] === undefined) {
@@ -32389,21 +32491,21 @@ var watchProp = function watchProp(key, deep) {
       }
     },
     createEvents: function createEvents() {
-      var _this = this;
+      var _this2 = this;
 
       OBJECT_EVENTS.forEach(function (event) {
-        _this.item.on(event, function (e) {
-          _this.$emit(event, _objectSpread({
-            id: _this.id
+        _this2.item.on(event, function (e) {
+          _this2.$emit(event, fabricObject_objectSpread({
+            id: _this2.id
           }, e));
         });
       });
     },
     destroyEvents: function destroyEvents() {
-      var _this2 = this;
+      var _this3 = this;
 
       OBJECT_EVENTS.forEach(function (event) {
-        _this2.item.off(event);
+        _this3.item.off(event);
       });
     },
     createWatchers: function createWatchers() {
@@ -32411,68 +32513,27 @@ var watchProp = function watchProp(key, deep) {
       this.createPropWatchers();
     },
     createFabricItemWatchers: function createFabricItemWatchers() {
-      var _this3 = this;
+      var _this4 = this;
 
       //Setup Watchers for emmit sync option
       EMIT_PROPS.forEach(function (prop) {
-        _this3.$watch("item." + prop, watchEmitProp(prop, true));
+        _this4.$watch("item." + prop, watchEmitProp(prop, true));
       });
     },
     createPropWatchers: function createPropWatchers() {
-      var _this4 = this;
+      var _this5 = this;
 
       //Setup prop watches to sync with fabric
       Object.keys(this.$props).forEach(function (key) {
         //Custom watch check to make sure the mixin also does not genearte a watch
-        if (_typeof(_this4.customWatch) !== ( true ? "undefined" : undefined)) {
-          if (_this4.customWatch.includes(key)) {
+        if (_typeof(_this5.customWatch) !== ( true ? "undefined" : undefined)) {
+          if (_this5.customWatch.includes(key)) {
             return;
           }
-        } //Animation Props have custom watchers
-
-
-        if (animationProps.includes(key)) {
-          return;
         }
 
-        _this4.$watch(key, watchProp(key, true));
+        _this5.$watch(key, watchProp(key, true));
       });
-    },
-    animate: function animate() {
-      var _this5 = this;
-
-      var easing = {};
-
-      if (this.animationEasing !== "") {
-        easing = {
-          easing: this.fabric.util.ease[this.animationEasing]
-        };
-      }
-
-      this.item.animate(this.animateKeys, _objectSpread({
-        duration: this.animateDuration
-      }, easing, {
-        onChange: function onChange() {
-          _this5.canvas.renderAll();
-
-          _this5.$emit("animationStep", _this5.item);
-        },
-        onComplete: function onComplete() {
-          _this5.$emit("animationComplete", _this5.item);
-        }
-      }));
-    }
-  },
-  watch: {
-    animateStart: {
-      handler: function handler(newValue) {
-        if (newValue) {
-          if (Object.keys(this.animateKeys).length >= 1) {
-            this.animate();
-          }
-        }
-      },
-      immediate: false
     }
   },
   beforeDestroy: function beforeDestroy() {
@@ -32649,7 +32710,192 @@ var FabricEllipse_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricEllipse = (FabricEllipse_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0a73ca3c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=42c0c33b&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGradient.vue?vue&type=script&lang=js&
+function FabricGradientvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricGradientvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricGradientvue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { FabricGradientvue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricGradientvue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function FabricGradientvue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var FabricGradientvue_type_script_lang_js_watchProp = function watchProp(key, deep) {
+  return {
+    handler: function handler(newValue) {
+      this.updategradient();
+    },
+    deep: deep
+  };
+};
+
+/* harmony default export */ var FabricGradientvue_type_script_lang_js_ = ({
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  props: {
+    gradientKey: {
+      type: String,
+      default: "fill"
+    },
+    offsetX: {
+      type: Number,
+      default: 0
+    },
+    offsetY: {
+      type: Number,
+      default: 0
+    },
+    gradientTransform: {
+      type: Array,
+      default: null
+    },
+    gradientUnits: {
+      type: String,
+      default: "pixels",
+      validator: function validator(value) {
+        return ["percentage", "pixels"].indexOf(value) !== -1;
+      }
+    },
+    gradientType: {
+      type: String,
+      default: "linear",
+      validator: function validator(value) {
+        return ["linear", "radial"].indexOf(value) !== -1;
+      }
+    },
+    x1: {
+      type: Number,
+      default: 0
+    },
+    y1: {
+      type: Number,
+      default: 0
+    },
+    x2: {
+      type: Number,
+      default: 0
+    },
+    y2: {
+      type: Number,
+      default: 0
+    },
+    r1: {
+      type: Number,
+      default: 0
+    },
+    r2: {
+      type: Number,
+      default: 0
+    },
+    colorStops: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+  inject: ["$canvas", "fabric", "$item"],
+  computed: {
+    canvas: function canvas() {
+      return this.$canvas();
+    },
+    item: function item() {
+      return this.$item();
+    },
+    definedProps: function definedProps() {
+      var obj = FabricGradientvue_type_script_lang_js_objectSpread({}, this.$props);
+
+      Object.keys(obj).forEach(function (key) {
+        if (obj[key] === undefined) {
+          delete obj[key];
+        }
+      });
+      return obj;
+    },
+    options: function options() {
+      var coords = {};
+
+      if (this.gradientType === "linear") {
+        coords = {
+          x1: this.x1,
+          x2: this.x2,
+          y1: this.y1,
+          y2: this.y2
+        };
+      } else {
+        coords = {
+          r1: this.r1,
+          r2: this.r2
+        };
+      }
+
+      var opts = FabricGradientvue_type_script_lang_js_objectSpread({
+        type: this.gradientType
+      }, coords, {
+        colorStops: this.colorStops,
+        gradientUnits: this.gradientUnits,
+        offsetX: this.offsetX,
+        offsetY: this.offsetY
+      });
+
+      if (this.gradientTransform) {
+        opts.gradientTransform = this.gradientTransform;
+      }
+
+      return opts;
+    },
+    validOptions: function validOptions() {
+      if (!Object.keys(this.colorStops).length) {
+        return false;
+      }
+
+      return true;
+    }
+  },
+  watch: {
+    validOptions: function validOptions(newValue) {
+      this.updategradient();
+    },
+    item: function item(newValue) {
+      this.updategradient();
+    }
+  },
+  methods: {
+    updategradient: function updategradient() {
+      if (this.validOptions && this.item) {
+        this.item.setGradient(this.gradientKey, this.options);
+      }
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    Object.keys(this.$props).forEach(function (key) {
+      _this.$watch(key, FabricGradientvue_type_script_lang_js_watchProp(key, true));
+    });
+  }
+});
+// CONCATENATED MODULE: ./src/components/FabricGradient.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricGradientvue_type_script_lang_js_ = (FabricGradientvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricGradient.vue
+var FabricGradient_render, FabricGradient_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricGradient_component = normalizeComponent(
+  components_FabricGradientvue_type_script_lang_js_,
+  FabricGradient_render,
+  FabricGradient_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricGradient = (FabricGradient_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"209b1437-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=42c0c33b&
 var FabricGridvue_type_template_id_42c0c33b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',{attrs:{"id":_vm.id}},[_vm._l((_vm.verticalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'v' + index,attrs:{"id":_vm.id + 'v' + index}},'fabric-line',line,false))}),_vm._l((_vm.horizontalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'h' + index,attrs:{"id":_vm.id + 'h' + index}},'fabric-line',line,false))})],2)}
 var FabricGridvue_type_template_id_42c0c33b_staticRenderFns = []
 
@@ -33326,7 +33572,7 @@ var FabricRectangle_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricRectangle = (FabricRectangle_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0a73ca3c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"209b1437-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
 var FabricSVGFromURLvue_type_template_id_803e1144_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({},'fabric-group',_vm.$props,false),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
 var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
 
@@ -33612,10 +33858,14 @@ var FabricTriangle_component = normalizeComponent(
 
 
 
+
+
 var VueFabricWrapper = {
+  FabricAnimation: FabricAnimation,
   FabricCanvas: FabricCanvas,
   FabricCircle: FabricCircle,
   FabricEllipse: FabricEllipse,
+  FabricGradient: FabricGradient,
   FabricGrid: FabricGrid,
   FabricGroup: FabricGroup,
   FabricImageFromURL: FabricImageFromURL,
@@ -33634,9 +33884,11 @@ Object.keys(VueFabricWrapper).forEach(function (name) {
 /* harmony default export */ var components = (VueFabricWrapper);
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+/* concated harmony reexport FabricAnimation */__webpack_require__.d(__webpack_exports__, "FabricAnimation", function() { return FabricAnimation; });
 /* concated harmony reexport FabricCanvas */__webpack_require__.d(__webpack_exports__, "FabricCanvas", function() { return FabricCanvas; });
 /* concated harmony reexport FabricCircle */__webpack_require__.d(__webpack_exports__, "FabricCircle", function() { return FabricCircle; });
 /* concated harmony reexport FabricEllipse */__webpack_require__.d(__webpack_exports__, "FabricEllipse", function() { return FabricEllipse; });
+/* concated harmony reexport FabricGradient */__webpack_require__.d(__webpack_exports__, "FabricGradient", function() { return FabricGradient; });
 /* concated harmony reexport FabricGrid */__webpack_require__.d(__webpack_exports__, "FabricGrid", function() { return FabricGrid; });
 /* concated harmony reexport FabricGroup */__webpack_require__.d(__webpack_exports__, "FabricGroup", function() { return FabricGroup; });
 /* concated harmony reexport FabricImageFromURL */__webpack_require__.d(__webpack_exports__, "FabricImageFromURL", function() { return FabricImageFromURL; });
