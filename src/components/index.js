@@ -1,7 +1,10 @@
 import Vue from "vue";
+
+import FabricAnimation from "./FabricAnimation.vue";
 import FabricCanvas from "./FabricCanvas.vue";
 import FabricCircle from "./FabricCircle.vue";
 import FabricEllipse from "./FabricEllipse.vue";
+import FabricGradient from "./FabricGradient.vue";
 import FabricGrid from "./FabricGrid.vue";
 import FabricGroup from "./FabricGroup.vue";
 import FabricImageFromURL from "./FabricImageFromURL.vue";
@@ -15,40 +18,44 @@ import FabricText from "./FabricText.vue";
 import FabricTriangle from "./FabricTriangle.vue";
 
 const VueFabricWrapper = {
-	FabricCanvas,
-	FabricCircle,
-	FabricEllipse,
-	FabricGrid,
-	FabricGroup,
-	FabricImageFromURL,
-	FabricLine,
-	FabricPath,
-	FabricPolygon,
-	FabricPolyline,
-	FabricRectangle,
-	FabricSVGFromURL,
-	FabricText,
-	FabricTriangle
+  FabricAnimation,
+  FabricCanvas,
+  FabricCircle,
+  FabricEllipse,
+  FabricGradient,
+  FabricGrid,
+  FabricGroup,
+  FabricImageFromURL,
+  FabricLine,
+  FabricPath,
+  FabricPolygon,
+  FabricPolyline,
+  FabricRectangle,
+  FabricSVGFromURL,
+  FabricText,
+  FabricTriangle
 };
 
 Object.keys(VueFabricWrapper).forEach(name => {
-	Vue.component(name, VueFabricWrapper[name]);
+  Vue.component(name, VueFabricWrapper[name]);
 });
 
 export default VueFabricWrapper;
 export {
-	FabricCanvas,
-	FabricCircle,
-	FabricEllipse,
-	FabricGrid,
-	FabricGroup,
-	FabricImageFromURL,
-	FabricLine,
-	FabricPath,
-	FabricPolygon,
-	FabricPolyline,
-	FabricRectangle,
-	FabricSVGFromURL,
-	FabricText,
-	FabricTriangle
+  FabricAnimation,
+  FabricCanvas,
+  FabricCircle,
+  FabricEllipse,
+  FabricGradient,
+  FabricGrid,
+  FabricGroup,
+  FabricImageFromURL,
+  FabricLine,
+  FabricPath,
+  FabricPolygon,
+  FabricPolyline,
+  FabricRectangle,
+  FabricSVGFromURL,
+  FabricText,
+  FabricTriangle
 };

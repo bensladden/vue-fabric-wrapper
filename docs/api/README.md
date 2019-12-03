@@ -145,14 +145,6 @@ Root object class from which all 2d shape classes inherit from. In this wrapper 
 | [visible](http://fabricjs.com/docs/fabric.Object.html#visible) | `Boolean` | no | `true`|
 | [width](http://fabricjs.com/docs/fabric.Object.html#width) | `Number` | no | |
 
-### Custom props for animation
-| Name | Type               | Required | Default |
-| ---- | ------------------ | -------- | ------- |
-| animateStart | `Boolean` | no | `false` |
-| animateKeys | `Object` | no | `{}` |
-| animateDuration | `Number` | no | `500` |
-| animateEasing | `String` | no | `""` |
-
 ### events
 | Event Name |
 |-----------|
@@ -179,12 +171,6 @@ Root object class from which all 2d shape classes inherit from. In this wrapper 
 | dragenter |
 | dragleave |
 | drop |
-
-### Animation Events
-| Event Name |
-|-----------|
-| animationStep |
-| animationComplete |
 
 ## Circle Component
 [Official Docs Link](http://fabricjs.com/docs/fabric.Circle.html)
@@ -395,3 +381,73 @@ All Fabric.Object Props
 
 ### events
 All Fabric.Object Events
+
+## Fabric Animations
+[Official Docs Link](http://fabricjs.com/docs/fabric.Object.html#animate)
+
+### Example Usage
+```html
+<fabric-canvas>
+	<fabric-triangle :id="'someUUID'">
+        <fabric-animation
+          :animateStart="startAnimation"
+          :animateKeys="{ left: 400 }"
+          :animateDuration="2000"
+        ></fabric-animation>
+	</fabric-triangle>
+</fabric-canvas>
+```
+
+### props
+| Name | Type               | Required | Default |
+| ---- | ------------------ | -------- | ------- |
+| animateStart | `Boolean` | no | `false` |
+| animateKeys | `Object` | no | `{}` |
+| animateDuration | `Number` | no | `500` |
+| animateEasing | `String` | no | `""` |
+
+###  events
+| Event Name |
+|-----------|
+| animationStep |
+| animationComplete |
+
+## Fabric Gradient
+[Official Docs Link](http://fabricjs.com/docs/fabric.Gradient.html)
+
+### Example Usage
+```html
+<fabric-canvas>
+	<fabric-triangle :id="'someUUID'">
+         <fabric-gradient
+            :x1="0"
+            :x2="0"
+            :y1="0"
+            :y2="1"
+            :gradientUnits="'percentage'"
+            :colorStops="{ 0: '#000', 1: '#fff' }"
+        ></fabric-gradient>
+	</fabric-triangle>
+</fabric-canvas>
+```
+
+### props
+| Name | Type               | Required | Default |
+| ---- | ------------------ | -------- | ------- |
+| gradientKey | `String` | no | `"fill"` |
+| offsetX | `Number` | no | `0` |
+| offsetY | `Number` | no | `0` |
+| offsetX | `Number` | no | `0` |
+| gradientTransform | `Array` | no | `null` |
+| gradientUnits | `String` | no | `"pixels"` |
+| gradientType | `String` | no | `"linear"` |
+| x1 | `Number` | no | `0` |
+| y1 | `Number` | no | `0` |
+| x2 | `Number` | no | `0` |
+| y2 | `Number` | no | `0` |
+| r1 | `Number` | no | `0` |
+| r2 | `Number` | no | `0` |
+| colorStops | `Object` | no | `{}` |
+
+###  events
+None
