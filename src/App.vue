@@ -176,7 +176,16 @@
         :originY="'center'"
       ></fabric-rectangle>
       <fabric-group :id="3421">
-        <fabric-polygon :id="342101"></fabric-polygon>
+        <fabric-polygon :id="342101">
+          <fabric-gradient
+            :x1="0"
+            :x2="0"
+            :y1="0"
+            :y2="1"
+            :gradientUnits="'percentage'"
+            :colorStops="{ 0: '#000', 1: '#fff' }"
+          ></fabric-gradient>
+        </fabric-polygon>
         <fabric-text :id="342104" :text="'hello stick man'"></fabric-text>
       </fabric-group>
       <fabric-polyline :id="342102"></fabric-polyline>
@@ -199,6 +208,7 @@ import FabricAnimation from "./components/FabricAnimation";
 import FabricCanvas from "./components/FabricCanvas";
 import FabricCircle from "./components/FabricCircle";
 import FabricEllipse from "./components/FabricEllipse";
+import FabricGradient from "./components/FabricGradient.vue";
 import FabricGroup from "./components/FabricGroup";
 import FabricImageFromUrl from "./components/FabricImageFromURL";
 import FabricLine from "./components/FabricLine";
@@ -216,6 +226,7 @@ export default {
     FabricCanvas,
     FabricCircle,
     FabricEllipse,
+    FabricGradient,
     FabricGroup,
     FabricImageFromUrl,
     FabricLine,

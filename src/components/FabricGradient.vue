@@ -1,4 +1,11 @@
 <script>
+const watchProp = (key, deep) => ({
+  handler(newValue) {
+    this.updategradient();
+  },
+  deep
+});
+
 export default {
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
@@ -67,22 +74,45 @@ export default {
           r2: this.r2
         };
       }
-      return {
+      let opts = {
         type: this.gradientType,
-        coords: coords,
+        ...coords,
         colorStops: this.colorStops,
         gradientUnits: this.gradientUnits,
-        gradientTransform: this.gradientTransform,
         offsetX: this.offsetX,
         offsetY: this.offsetY
       };
+      if (this.gradientTransform) {
+        opts.gradientTransform = this.gradientTransform;
+      }
+      return opts;
+    },
+    validOptions() {
+      if (!Object.keys(this.colorStops).length) {
+        return false;
+      }
+      return true;
     }
   },
-  watch: {},
-  methods: {
-    updateGradiant() {
-      this.item.setGradient(this.gradientKey, this.options);
+  watch: {
+    validOptions(newValue) {
+      this.updategradient();
+    },
+    item(newValue) {
+      this.updategradient();
     }
+  },
+  methods: {
+    updategradient() {
+      if (this.validOptions && this.item) {
+        this.item.setGradient(this.gradientKey, this.options);
+      }
+    }
+  },
+  mounted() {
+    Object.keys(this.$props).forEach(key => {
+      this.$watch(key, watchProp(key, true));
+    });
   }
 };
 </script>

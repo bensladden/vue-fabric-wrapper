@@ -411,3 +411,43 @@ All Fabric.Object Events
 |-----------|
 | animationStep |
 | animationComplete |
+
+## Fabric Gradient
+[Official Docs Link](http://fabricjs.com/docs/fabric.Gradient.html)
+
+### Example Usage
+```html
+<fabric-canvas>
+	<fabric-triangle :id="'someUUID'">
+         <fabric-gradient
+            :x1="0"
+            :x2="0"
+            :y1="0"
+            :y2="1"
+            :gradientUnits="'percentage'"
+            :colorStops="{ 0: '#000', 1: '#fff' }"
+        ></fabric-gradient>
+	</fabric-triangle>
+</fabric-canvas>
+```
+
+### props
+| Name | Type               | Required | Default |
+| ---- | ------------------ | -------- | ------- |
+| gradientKey | `String` | no | `"fill"` |
+| offsetX | `Number` | no | `0` |
+| offsetY | `Number` | no | `0` |
+| offsetX | `Number` | no | `0` |
+| gradientTransform | `Array` | no | `null` |
+| gradientUnits | `String` | no | `"pixels"` |
+| gradientType | `String` | no | `"linear"` |
+| x1 | `Number` | no | `0` |
+| y1 | `Number` | no | `0` |
+| x2 | `Number` | no | `0` |
+| y2 | `Number` | no | `0` |
+| r1 | `Number` | no | `0` |
+| r2 | `Number` | no | `0` |
+| colorStops | `Object` | no | `{}` |
+
+###  events
+None

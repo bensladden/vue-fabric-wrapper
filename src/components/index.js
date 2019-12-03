@@ -4,6 +4,7 @@ import FabricAnimation from "./FabricAnimation.vue";
 import FabricCanvas from "./FabricCanvas.vue";
 import FabricCircle from "./FabricCircle.vue";
 import FabricEllipse from "./FabricEllipse.vue";
+import FabricGradient from "./FabricGradient.vue";
 import FabricGrid from "./FabricGrid.vue";
 import FabricGroup from "./FabricGroup.vue";
 import FabricImageFromURL from "./FabricImageFromURL.vue";
@@ -21,6 +22,7 @@ const VueFabricWrapper = {
   FabricCanvas,
   FabricCircle,
   FabricEllipse,
+  FabricGradient,
   FabricGrid,
   FabricGroup,
   FabricImageFromURL,
@@ -44,6 +46,7 @@ export {
   FabricCanvas,
   FabricCircle,
   FabricEllipse,
+  FabricGradient,
   FabricGrid,
   FabricGroup,
   FabricImageFromURL,
