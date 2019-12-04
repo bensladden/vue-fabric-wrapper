@@ -185,6 +185,11 @@
             :gradientUnits="'percentage'"
             :colorStops="{ 0: '#000', 1: '#fff' }"
           ></fabric-gradient>
+          <fabric-shadow
+            :offsetX="25"
+            :offsetY="25"
+            :color="'rgba(0,0,0,.3)'"
+          ></fabric-shadow>
         </fabric-polygon>
         <fabric-text :id="342104" :text="'hello stick man'"></fabric-text>
       </fabric-group>
@@ -218,7 +223,9 @@ import FabricText from "./components/FabricText";
 import FabricSvgFromUrl from "./components/FabricSVGFromURL";
 import FabricTriangle from "./components/FabricTriangle";
 import FabricRectangle from "./components/FabricRectangle";
+import FabricShadow from "./components/FabricShadow";
 import FabricGrid from "./components/FabricGrid";
+
 export default {
   name: "App",
   components: {
@@ -236,6 +243,7 @@ export default {
     FabricText,
     FabricTriangle,
     FabricRectangle,
+    FabricShadow,
     FabricGrid
   },
   data() {
