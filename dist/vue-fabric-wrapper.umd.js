@@ -32717,15 +32717,6 @@ function FabricGradientvue_type_script_lang_js_objectSpread(target) { for (var i
 
 function FabricGradientvue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var FabricGradientvue_type_script_lang_js_watchProp = function watchProp(key, deep) {
-  return {
-    handler: function handler(newValue) {
-      this.updategradient();
-    },
-    deep: deep
-  };
-};
-
 /* harmony default export */ var FabricGradientvue_type_script_lang_js_ = ({
   render: function render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
@@ -32851,11 +32842,15 @@ var FabricGradientvue_type_script_lang_js_watchProp = function watchProp(key, de
     }
   },
   watch: {
-    validOptions: function validOptions(newValue) {
-      this.updategradient();
-    },
     item: function item(newValue) {
       this.updategradient();
+    },
+    $props: {
+      handler: function handler() {
+        this.updategradient();
+      },
+      deep: true,
+      immediate: true
     }
   },
   methods: {
@@ -32864,13 +32859,6 @@ var FabricGradientvue_type_script_lang_js_watchProp = function watchProp(key, de
         this.item.setGradient(this.gradientKey, this.options);
       }
     }
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    Object.keys(this.$props).forEach(function (key) {
-      _this.$watch(key, FabricGradientvue_type_script_lang_js_watchProp(key, true));
-    });
   }
 });
 // CONCATENATED MODULE: ./src/components/FabricGradient.vue?vue&type=script&lang=js&
@@ -33572,6 +33560,122 @@ var FabricRectangle_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricRectangle = (FabricRectangle_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricShadow.vue?vue&type=script&lang=js&
+function FabricShadowvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricShadowvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricShadowvue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { FabricShadowvue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricShadowvue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function FabricShadowvue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var FabricShadowvue_type_script_lang_js_watchProp = function watchProp(key, deep) {
+  return {
+    handler: function handler(newValue) {
+      this.applyshadow();
+    },
+    deep: deep
+  };
+};
+
+/* harmony default export */ var FabricShadowvue_type_script_lang_js_ = ({
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  props: {
+    affectStroke: {
+      type: Boolean,
+      default: false
+    },
+    blur: {
+      type: Number,
+      default: 0
+    },
+    color: {
+      type: String,
+      default: "rgb(0,0,0)"
+    },
+    includeDefaultValues: {
+      type: Boolean,
+      default: true
+    },
+    nonScaling: {
+      type: Boolean,
+      default: false
+    },
+    offsetX: {
+      type: Number,
+      default: 0
+    },
+    offsetY: {
+      type: Number,
+      default: 0
+    }
+  },
+  inject: ["$canvas", "fabric", "$item"],
+  computed: {
+    canvas: function canvas() {
+      return this.$canvas();
+    },
+    item: function item() {
+      return this.$item();
+    },
+    definedProps: function definedProps() {
+      var obj = FabricShadowvue_type_script_lang_js_objectSpread({}, this.$props);
+
+      Object.keys(obj).forEach(function (key) {
+        if (obj[key] === undefined) {
+          delete obj[key];
+        }
+      });
+      return obj;
+    }
+  },
+  watch: {
+    $props: {
+      handler: function handler() {
+        this.applyshadow();
+      },
+      deep: true,
+      immediate: true
+    },
+    item: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          this.applyshadow();
+        }
+      },
+      immediate: true
+    }
+  },
+  methods: {
+    applyshadow: function applyshadow() {
+      if (this.item) {
+        this.item.setShadow(FabricShadowvue_type_script_lang_js_objectSpread({}, this.definedProps));
+      }
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/FabricShadow.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricShadowvue_type_script_lang_js_ = (FabricShadowvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricShadow.vue
+var FabricShadow_render, FabricShadow_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricShadow_component = normalizeComponent(
+  components_FabricShadowvue_type_script_lang_js_,
+  FabricShadow_render,
+  FabricShadow_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricShadow = (FabricShadow_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"209b1437-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
 var FabricSVGFromURLvue_type_template_id_803e1144_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({},'fabric-group',_vm.$props,false),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
 var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
@@ -33860,6 +33964,7 @@ var FabricTriangle_component = normalizeComponent(
 
 
 
+
 var VueFabricWrapper = {
   FabricAnimation: FabricAnimation,
   FabricCanvas: FabricCanvas,
@@ -33874,6 +33979,7 @@ var VueFabricWrapper = {
   FabricPolygon: FabricPolygon,
   FabricPolyline: FabricLine,
   FabricRectangle: FabricRectangle,
+  FabricShadow: FabricShadow,
   FabricSVGFromURL: FabricSVGFromURL,
   FabricText: FabricText,
   FabricTriangle: FabricTriangle
@@ -33897,6 +34003,7 @@ Object.keys(VueFabricWrapper).forEach(function (name) {
 /* concated harmony reexport FabricPolygon */__webpack_require__.d(__webpack_exports__, "FabricPolygon", function() { return FabricPolygon; });
 /* concated harmony reexport FabricPolyline */__webpack_require__.d(__webpack_exports__, "FabricPolyline", function() { return FabricLine; });
 /* concated harmony reexport FabricRectangle */__webpack_require__.d(__webpack_exports__, "FabricRectangle", function() { return FabricRectangle; });
+/* concated harmony reexport FabricShadow */__webpack_require__.d(__webpack_exports__, "FabricShadow", function() { return FabricShadow; });
 /* concated harmony reexport FabricSVGFromURL */__webpack_require__.d(__webpack_exports__, "FabricSVGFromURL", function() { return FabricSVGFromURL; });
 /* concated harmony reexport FabricText */__webpack_require__.d(__webpack_exports__, "FabricText", function() { return FabricText; });
 /* concated harmony reexport FabricTriangle */__webpack_require__.d(__webpack_exports__, "FabricTriangle", function() { return FabricTriangle; });

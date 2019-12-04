@@ -13,6 +13,7 @@ import FabricPath from "./FabricPath.vue";
 import FabricPolygon from "./FabricPolygon.vue";
 import FabricPolyline from "./FabricLine.vue";
 import FabricRectangle from "./FabricRectangle.vue";
+import FabricShadow from "./FabricShadow.vue";
 import FabricSVGFromURL from "./FabricSVGFromURL";
 import FabricText from "./FabricText.vue";
 import FabricTriangle from "./FabricTriangle.vue";
@@ -31,6 +32,7 @@ const VueFabricWrapper = {
   FabricPolygon,
   FabricPolyline,
   FabricRectangle,
+  FabricShadow,
   FabricSVGFromURL,
   FabricText,
   FabricTriangle
@@ -55,6 +57,7 @@ export {
   FabricPolygon,
   FabricPolyline,
   FabricRectangle,
+  FabricShadow,
   FabricSVGFromURL,
   FabricText,
   FabricTriangle
