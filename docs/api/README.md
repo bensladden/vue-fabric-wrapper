@@ -435,19 +435,48 @@ All Fabric.Object Events
 | Name | Type               | Required | Default |
 | ---- | ------------------ | -------- | ------- |
 | gradientKey | `String` | no | `"fill"` |
-| offsetX | `Number` | no | `0` |
-| offsetY | `Number` | no | `0` |
-| offsetX | `Number` | no | `0` |
-| gradientTransform | `Array` | no | `null` |
-| gradientUnits | `String` | no | `"pixels"` |
-| gradientType | `String` | no | `"linear"` |
-| x1 | `Number` | no | `0` |
-| y1 | `Number` | no | `0` |
-| x2 | `Number` | no | `0` |
-| y2 | `Number` | no | `0` |
-| r1 | `Number` | no | `0` |
-| r2 | `Number` | no | `0` |
-| colorStops | `Object` | no | `{}` |
+| [offsetX](http://fabricjs.com/docs/fabric.Gradient.html#offsetX) | `Number` | no | `0` |
+| [offsetY](http://fabricjs.com/docs/fabric.Gradient.html#offsetY) | `Number` | no | `0` |
+| [gradientTransform](http://fabricjs.com/docs/fabric.Gradient.html#gradientTransform) | `Array` | no | `null` |
+| [gradientUnits](http://fabricjs.com/docs/fabric.Gradient.html#gradientUnits) | `String` | no | `"pixels"` |
+| [gradientType](http://fabricjs.com/docs/fabric.Gradient.html#gradientType) | `String` | no | `"linear"` |
+| [x1](http://fabricjs.com/docs/fabric.Gradient.html#x1) | `Number` | no | `0` |
+| [y1](http://fabricjs.com/docs/fabric.Gradient.html#y1) | `Number` | no | `0` |
+| [x2](http://fabricjs.com/docs/fabric.Gradient.html#x2) | `Number` | no | `0` |
+| [y2](http://fabricjs.com/docs/fabric.Gradient.html#y2) | `Number` | no | `0` |
+| [r1](http://fabricjs.com/docs/fabric.Gradient.html#r1) | `Number` | no | `0` |
+| [r2](http://fabricjs.com/docs/fabric.Gradient.html#r2) | `Number` | no | `0` |
+| [colorStops](http://fabricjs.com/docs/fabric.Gradient.html#colorStops) | `Object` | no | `{}` |
+
+###  events
+None
+
+## Shadow
+[Official Docs Link](http://fabricjs.com/docs/fabric.Shadow.html)
+
+### Example Usage
+```html
+<fabric-canvas>
+	<fabric-triangle :id="'someUUID'">
+         <fabric-shadow
+			:offsetX="25"
+            :offsetY="25"
+            :color="'rgba(0,0,0,.3)'"
+        ></fabric-shadow>
+	</fabric-triangle>
+</fabric-canvas>
+```
+
+### props
+| Name | Type               | Required | Default |
+| ---- | ------------------ | -------- | ------- |
+| [affectStroke](http://fabricjs.com/docs/fabric.Shadow.html#affectStroke) | `Boolean` | no | `false` |
+| [blur](http://fabricjs.com/docs/fabric.Shadow.html#blur) | `Number` | no | `0` |
+| [color](http://fabricjs.com/docs/fabric.Shadow.html#color) | `String` | no | `"rgb(0,0,0)"` |
+| [includeDefaultValues](http://fabricjs.com/docs/fabric.Shadow.html#includeDefaultValues) | `Boolean` | no | `true` |
+| [nonScaling](http://fabricjs.com/docs/fabric.Shadow.html#nonScaling) | `Boolean` | no | `false` |
+| [offsetX](http://fabricjs.com/docs/fabric.Shadow.html#offsetX) | `Number` | no | `0` |
+| [offsetY](http://fabricjs.com/docs/fabric.Shadow.html#offsetY) | `Number` | no | `0` |
 
 ###  events
 None

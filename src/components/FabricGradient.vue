@@ -1,11 +1,4 @@
 <script>
-const watchProp = (key, deep) => ({
-  handler(newValue) {
-    this.updategradient();
-  },
-  deep
-});
-
 export default {
   render(h) {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
@@ -95,11 +88,15 @@ export default {
     }
   },
   watch: {
-    validOptions(newValue) {
-      this.updategradient();
-    },
     item(newValue) {
       this.updategradient();
+    },
+    $props: {
+      handler() {
+        this.updategradient();
+      },
+      deep: true,
+      immediate: true
     }
   },
   methods: {
@@ -108,11 +105,6 @@ export default {
         this.item.setGradient(this.gradientKey, this.options);
       }
     }
-  },
-  mounted() {
-    Object.keys(this.$props).forEach(key => {
-      this.$watch(key, watchProp(key, true));
-    });
   }
 };
 </script>
