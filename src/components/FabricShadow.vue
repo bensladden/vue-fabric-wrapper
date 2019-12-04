@@ -57,7 +57,6 @@ export default {
   methods: {
     applyshadow() {
       if (this.item) {
-        console.log("apply shadow");
         this.item.setShadow({ ...this.definedProps });
       }
     }
