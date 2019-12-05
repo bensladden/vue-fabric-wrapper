@@ -48,6 +48,9 @@ module.exports = {
 					{ text: 'Rectangle', link: '/api/#rectangle-component' },
 					{ text: 'SVGFromURL', link: '/api/#svg-from-url-component' },
 					{ text: 'Triangle', link: '/api/#triangle-component' },
+					{ text: 'Gradients', link: '/api/#gradient-component' },
+					{ text: 'Animations', link: '/api/#animation-component' },
+					{ text: 'Shadows', link: '/api/#shadow-component' },
 
 				]
 			}

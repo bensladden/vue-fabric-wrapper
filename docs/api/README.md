@@ -382,7 +382,7 @@ All Fabric.Object Props
 ### events
 All Fabric.Object Events
 
-## Fabric Animations
+## Animation Component
 [Official Docs Link](http://fabricjs.com/docs/fabric.Object.html#animate)
 
 ### Example Usage
@@ -412,7 +412,7 @@ All Fabric.Object Events
 | animationStep |
 | animationComplete |
 
-## Fabric Gradient
+## Gradient Component
 [Official Docs Link](http://fabricjs.com/docs/fabric.Gradient.html)
 
 ### Example Usage
@@ -451,7 +451,7 @@ All Fabric.Object Events
 ###  events
 None
 
-## Shadow
+## Shadow Component
 [Official Docs Link](http://fabricjs.com/docs/fabric.Shadow.html)
 
 ### Example Usage
