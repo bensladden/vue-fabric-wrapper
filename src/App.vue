@@ -1,180 +1,11 @@
 <template>
   <div id="app">
-    <h1>Vue Fabric Wrapper: Stick Man</h1>
-    Original Demo:
-    <a href="http://fabricjs.com/stickman">here</a>
-    <br />See Demo in CodeSandbox
-    <a
-      href="https://codesandbox.io/s/vue-template-rltsr?fontsize=14&hidenavigation=1&theme=dark"
-      >here</a
-    >
+    <h1>Vue Fabric Wrapper: Examples</h1>
+    <h2>StickMan</h2>
+    <stick-man />
+    <h2>Animation</h2>
+    <animation />
     <fabric-canvas :height="400" :width="400" @object-moved="objMoved">
-      <fabric-line
-        :id="'headToBody'"
-        :x1="headPosLeft"
-        :y1="headPosTop"
-        :x2="bodyPosLeft"
-        :y2="bodyPosTop"
-        :fill="'red'"
-        :stroke="'red'"
-        :strokeWidth="5"
-        :selectable="false"
-        :evented="false"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-line>
-      <fabric-line
-        :id="'bodyToWaist'"
-        :x1="bodyPosLeft"
-        :y1="bodyPosTop"
-        :x2="waistPosLeft"
-        :y2="waistPosTop"
-        :fill="'red'"
-        :stroke="'red'"
-        :strokeWidth="5"
-        :selectable="false"
-        :evented="false"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-line>
-      <fabric-line
-        :id="'bodyToLeftArm'"
-        :x1="bodyPosLeft"
-        :y1="bodyPosTop"
-        :x2="leftHandPosLeft"
-        :y2="leftHandPosTop"
-        :fill="'red'"
-        :stroke="'red'"
-        :strokeWidth="5"
-        :selectable="false"
-        :evented="false"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-line>
-      <fabric-line
-        :id="'bodyToRightArm'"
-        :x1="bodyPosLeft"
-        :y1="bodyPosTop"
-        :x2="rightHandPosLeft"
-        :y2="rightHandPosTop"
-        :fill="'red'"
-        :stroke="'red'"
-        :strokeWidth="5"
-        :selectable="false"
-        :evented="false"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-line>
-      <fabric-line
-        :id="'waistToLeftFoot'"
-        :x1="leftFootPosLeft"
-        :y1="leftFootPosTop"
-        :x2="waistPosLeft"
-        :y2="waistPosTop"
-        :fill="'red'"
-        :stroke="'red'"
-        :strokeWidth="5"
-        :selectable="false"
-        :evented="false"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-line>
-      <fabric-line
-        :id="'waistToRightFoot'"
-        :x1="rightFootPosLeft"
-        :y1="rightFootPosTop"
-        :x2="waistPosLeft"
-        :y2="waistPosTop"
-        :fill="'red'"
-        :stroke="'red'"
-        :strokeWidth="5"
-        :selectable="false"
-        :evented="false"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-line>
-      <fabric-circle
-        :id="'head'"
-        :left.sync="headPosLeft"
-        :top.sync="headPosTop"
-        :strokeWidth="5"
-        :radius="12"
-        :fill="'#fff'"
-        :stroke="'#666'"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-circle>
-      <fabric-ellipse
-        :id="'body'"
-        :left.sync="bodyPosLeft"
-        :top.sync="bodyPosTop"
-        :strokeWidth="5"
-        :rx="12"
-        :ry="24"
-        :fill="'#fff'"
-        :stroke="'#666'"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-ellipse>
-      <fabric-circle
-        :id="'waist'"
-        :left.sync="waistPosLeft"
-        :top.sync="waistPosTop"
-        :strokeWidth="5"
-        :radius="12"
-        :fill="'#fff'"
-        :stroke="'#666'"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-circle>
-      <fabric-triangle
-        :id="'leftHand'"
-        :left.sync="leftHandPosLeft"
-        :top.sync="leftHandPosTop"
-        :strokeWidth="5"
-        :width="24"
-        :height="24"
-        :fill="'#fff'"
-        :stroke="'#666'"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-triangle>
-      <fabric-triangle
-        :id="'rightHand'"
-        :left.sync="rightHandPosLeft"
-        :top.sync="rightHandPosTop"
-        :strokeWidth="5"
-        :width="24"
-        :height="24"
-        :fill="'#fff'"
-        :stroke="'#666'"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-triangle>
-      <fabric-rectangle
-        :id="'leftFoot'"
-        :left.sync="leftFootPosLeft"
-        :top.sync="leftFootPosTop"
-        :strokeWidth="5"
-        :width="36"
-        :height="24"
-        :fill="'#fff'"
-        :stroke="'#666'"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-rectangle>
-      <fabric-rectangle
-        :id="'rightFoot'"
-        :left.sync="rightFootPosLeft"
-        :top.sync="rightFootPosTop"
-        :strokeWidth="5"
-        :width="36"
-        :height="24"
-        :fill="'#fff'"
-        :stroke="'#666'"
-        :originX="'center'"
-        :originY="'center'"
-      ></fabric-rectangle>
       <fabric-group :id="3421">
         <fabric-polygon :id="342101">
           <fabric-gradient
@@ -194,21 +25,15 @@
         <fabric-text :id="342104" :text="'hello stick man'"></fabric-text>
       </fabric-group>
       <fabric-polyline :id="342102"></fabric-polyline>
-      <fabric-image-from-url :id="342103">
-        <fabric-animation
-          :animateStart="startAnimation"
-          :animateKeys="{ left: 400 }"
-          :animateDuration="2000"
-        ></fabric-animation>
-      </fabric-image-from-url>
       <fabric-grid :id="567432"></fabric-grid>
       <fabric-svg-from-url :id="'ttyuud'"></fabric-svg-from-url>
     </fabric-canvas>
-    <button @click="startAnimation = true">animate</button>
   </div>
 </template>
 
 <script>
+import StickMan from "./examples/StickMan";
+import Animation from "./examples/Animation";
 import FabricAnimation from "./components/FabricAnimation";
 import FabricCanvas from "./components/FabricCanvas";
 import FabricCircle from "./components/FabricCircle";
@@ -229,20 +54,15 @@ import FabricGrid from "./components/FabricGrid";
 export default {
   name: "App",
   components: {
-    FabricAnimation,
+    StickMan,
+    Animation,
     FabricCanvas,
-    FabricCircle,
-    FabricEllipse,
     FabricGradient,
     FabricGroup,
-    FabricImageFromUrl,
-    FabricLine,
     FabricPolygon,
     FabricPolyline,
     FabricSvgFromUrl,
     FabricText,
-    FabricTriangle,
-    FabricRectangle,
     FabricShadow,
     FabricGrid
   },
@@ -272,8 +92,23 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+$blue: #007bff;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #28a745;
+$teal: #20c997;
+$cyan: #17a2b8;
+$white: #fff;
+$gray: #6c757d;
+$gray-dark: #343a40;
+$light: #f8f9fa;
+$dark: #343a40;
 
-<style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -281,5 +116,35 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-outline-blue {
+  color: $blue;
+  border-color: $blue;
+}
+
+.btn-outline-blue:hover {
+  color: $white;
+  background-color: $blue;
 }
 </style>

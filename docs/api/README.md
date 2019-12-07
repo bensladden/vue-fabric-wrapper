@@ -20,6 +20,7 @@ This component contains a slot that all children components are placed.
 
 | Name | Type               | Required | Default |
 | ---- | ------------------ | -------- | ------- |
+| id | `String` | no | `"c"` |
 |[allowAutoScrolling](http://fabricjs.com/docs/fabric.Canvas.html#allowTouchScrolling) | `Boolean` | no | `false` |
 |[backgroundColor](http://fabricjs.com/docs/fabric.Canvas.html#backgroundColor) | `String` | no | `""` |
 |[backgroundVpt](http://fabricjs.com/docs/fabric.Canvas.html#backgroundVpt) | `Boolean` | no | `true` |
@@ -401,7 +402,7 @@ All Fabric.Object Events
 ### props
 | Name | Type               | Required | Default |
 | ---- | ------------------ | -------- | ------- |
-| animateStart | `Boolean` | no | `false` |
+| start | `Boolean` | no | `false` |
 | animateKeys | `Object` | no | `{}` |
 | animateDuration | `Number` | no | `500` |
 | animateEasing | `String` | no | `""` |
@@ -409,8 +410,8 @@ All Fabric.Object Events
 ###  events
 | Event Name |
 |-----------|
-| animationStep |
-| animationComplete |
+| step |
+| complete |
 
 ## Gradient Component
 [Official Docs Link](http://fabricjs.com/docs/fabric.Gradient.html)
