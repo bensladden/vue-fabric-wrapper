@@ -6,6 +6,20 @@ module.exports = {
 	markdown: {
 		lineNumbers: true,
 	},
+	configureWebpack: {
+		module: {
+			rules: [
+				{
+					test: /fabric(\.min)?\.js$/,
+					use: "exports-loader?fabric"
+				}
+			]
+		},
+		node: {
+			global: true
+		},
+		externals: ['canvas']
+	},
 	chainWebpack: (config) => {
 		config.plugin('version-env').use(webpack.EnvironmentPlugin, [
 			{
@@ -52,6 +66,11 @@ module.exports = {
 					{ text: 'Animations', link: '/api/#animation-component' },
 					{ text: 'Shadows', link: '/api/#shadow-component' },
 
+				]
+			}, {
+				text: 'Examples',
+				items: [
+					{ text: "StickMan", link: '/examples/#stick-man' }
 				]
 			}
 		]
