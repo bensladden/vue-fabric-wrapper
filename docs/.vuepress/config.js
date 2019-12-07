@@ -17,7 +17,8 @@ module.exports = {
 		},
 		node: {
 			global: true
-		}
+		},
+		externals: ['canvas']
 	},
 	chainWebpack: (config) => {
 		config.plugin('version-env').use(webpack.EnvironmentPlugin, [
