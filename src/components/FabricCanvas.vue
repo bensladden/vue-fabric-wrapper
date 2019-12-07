@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas id="c" :width="width" :height="height"></canvas>
+    <canvas :id="id" :width="width" :height="height"></canvas>
     <slot></slot>
   </div>
 </template>
@@ -52,6 +52,7 @@ export default {
   name: "FabricCanvas",
   mixins: [fabricStaticCanvas],
   props: {
+    id: { type: String, required: false, default: "c" },
     backgroundColor: { type: String, required: false, default: "" },
     width: { type: Number, required: false, default: 600 },
     height: { type: Number, required: false, default: 400 }
@@ -70,7 +71,7 @@ export default {
     };
   },
   mounted() {
-    this.canvas = new fabric.Canvas("c");
+    this.canvas = new fabric.Canvas(this.id);
     canvasEvents.forEach(event => {
       let vueEvent = event.split(":").join("-");
       this.canvas.on(event, e => {

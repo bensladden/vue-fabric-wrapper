@@ -4,7 +4,7 @@ export default {
     return this.$slots.default ? h("div", this.$slots.default) : undefined;
   },
   props: {
-    animateStart: { type: Boolean, default: false },
+    start: { type: Boolean, default: false },
     animateKeys: {
       type: Object,
       default: function() {
@@ -73,7 +73,7 @@ export default {
     }
   },
   watch: {
-    animateStart: {
+    start: {
       handler(newValue) {
         if (newValue) {
           if (Object.keys(this.animateKeys).length >= 1) {
@@ -95,11 +95,11 @@ export default {
         ...easing,
         onChange: () => {
           this.canvas.renderAll();
-          this.$emit("animationStep", this.item);
+          this.$emit("step", this.item);
         },
         onComplete: () => {
-          this.$emit("animationComplete", this.item);
-          this.$emit("update:animationStart", false);
+          this.$emit("complete", this.item);
+          this.$emit("update:start", false);
         }
       });
     }
