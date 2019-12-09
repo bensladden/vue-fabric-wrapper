@@ -16,9 +16,9 @@
         ></fabric-animation>
       </fabric-image>
     </fabric-canvas>
-    <button class="btn btn-outline-blue" @click="startAnimation = true">
-      animate
-    </button>
+    <b-button variant="outline-primary" @click="startAnimation = true"
+      >animate</b-button
+    >
   </div>
 </template>
 

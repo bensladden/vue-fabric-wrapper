@@ -243,5 +243,10 @@ export default {
   },
   beforeDestroy() {
     this.destroyEvents();
+    if (this.parentType == "group") {
+      this.group.removeWithUpdate(this.item);
+    } else {
+      this.canvas.remove(this.item);
+    }
   }
 };

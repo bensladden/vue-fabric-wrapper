@@ -43,20 +43,22 @@ export default {
       return parseInt(this.gridHeight / this.gridSize);
     }
   },
+  watch: {
+    $props: {
+      handler() {
+        this.setup();
+      },
+      deep: true,
+      immediate: true
+    }
+  },
   methods: {
-    setup() {
+    async setup() {
       this.horizontalLines = [];
       this.verticalLines = [];
+      await this.$nextTick();
       for (let i = 0; i < this.numberofVerticalLines; i++) {
         this.verticalLines.push({
-          stroke: "#ccc",
-          selectable: false,
-          x1: 0,
-          y1: i * this.gridSize,
-          x2: this.gridWidth,
-          y2: i * this.gridSize
-        });
-        this.horizontalLines.push({
           stroke: "#ccc",
           selectable: false,
           x1: i * this.gridSize,
@@ -65,10 +67,17 @@ export default {
           y2: this.gridHeight
         });
       }
+      for (let i = 0; i < this.numberofHorizontalLines; i++) {
+        this.horizontalLines.push({
+          stroke: "#ccc",
+          selectable: false,
+          x1: 0,
+          y1: i * this.gridSize,
+          x2: this.gridWidth,
+          y2: i * this.gridSize
+        });
+      }
     }
-  },
-  created() {
-    this.setup();
   }
 };
 </script>
