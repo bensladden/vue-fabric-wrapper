@@ -55,8 +55,8 @@ export default {
   data() {
     return {
       gridSize: 20,
-      gridHeight: 250,
-      gridWidth: 200
+      gridHeight: 400,
+      gridWidth: 400
     };
   },
   methods: {}

@@ -1,5 +1,13 @@
 <template>
-  <fabric-group :id="id">
+  <div>
+    <fabric-rectangle
+      :id="id + 'rect'"
+      :width="gridWidth"
+      :height="gridHeight"
+      :stroke="'#ccc'"
+      :fill="'transparent'"
+      :selectable="false"
+    ></fabric-rectangle>
     <fabric-line
       v-for="(line, index) in verticalLines"
       v-bind="line"
@@ -12,12 +20,12 @@
       :id="id + 'h' + index"
       :key="id + 'h' + index"
     ></fabric-line>
-  </fabric-group>
+  </div>
 </template>
 
 <script>
-import FabricGroup from "./FabricGroup.vue";
 import FabricLine from "./FabricLine.vue";
+import FabricRectangle from "./FabricRectangle.vue";
 export default {
   props: {
     id: { type: [Number, String], required: true },
@@ -26,8 +34,8 @@ export default {
     gridWidth: { type: Number, default: 300 }
   },
   components: {
-    FabricGroup,
-    FabricLine
+    FabricLine,
+    FabricRectangle
   },
   data() {
     return {
@@ -57,7 +65,7 @@ export default {
       this.horizontalLines = [];
       this.verticalLines = [];
       await this.$nextTick();
-      for (let i = 0; i < this.numberofVerticalLines; i++) {
+      for (let i = 1; i < this.numberofVerticalLines; i++) {
         this.verticalLines.push({
           stroke: "#ccc",
           selectable: false,
@@ -67,7 +75,7 @@ export default {
           y2: this.gridHeight
         });
       }
-      for (let i = 0; i < this.numberofHorizontalLines; i++) {
+      for (let i = 1; i < this.numberofHorizontalLines; i++) {
         this.horizontalLines.push({
           stroke: "#ccc",
           selectable: false,
