@@ -35363,7 +35363,7 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricAnimation = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"406795be-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=7fe3d742&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1ea7b720-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=7fe3d742&
 var FabricCanvasvue_type_template_id_7fe3d742_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":_vm.id,"width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
 var FabricCanvasvue_type_template_id_7fe3d742_staticRenderFns = []
 
@@ -36240,17 +36240,345 @@ var FabricGradient_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricGradient = (FabricGradient_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"406795be-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=6c083dc6&
-var FabricGridvue_type_template_id_6c083dc6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',{attrs:{"id":_vm.id}},[_vm._l((_vm.verticalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'v' + index,attrs:{"id":_vm.id + 'v' + index}},'fabric-line',line,false))}),_vm._l((_vm.horizontalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'h' + index,attrs:{"id":_vm.id + 'h' + index}},'fabric-line',line,false))})],2)}
-var FabricGridvue_type_template_id_6c083dc6_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1ea7b720-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=template&id=61c43839&
+var FabricGridvue_type_template_id_61c43839_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('fabric-rectangle',{attrs:{"id":_vm.id + 'rect',"width":_vm.gridWidth,"height":_vm.gridHeight,"stroke":'#ccc',"fill":'transparent',"selectable":false}}),_vm._l((_vm.verticalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'v' + index,attrs:{"id":_vm.id + 'v' + index}},'fabric-line',line,false))}),_vm._l((_vm.horizontalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'h' + index,attrs:{"id":_vm.id + 'h' + index}},'fabric-line',line,false))})],2)}
+var FabricGridvue_type_template_id_61c43839_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FabricGrid.vue?vue&type=template&id=6c083dc6&
+// CONCATENATED MODULE: ./src/components/FabricGrid.vue?vue&type=template&id=61c43839&
 
 // EXTERNAL MODULE: ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__("4795");
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLine.vue?vue&type=script&lang=js&
+function FabricLinevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricLinevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricLinevue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { FabricLinevue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricLinevue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function FabricLinevue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ var FabricLinevue_type_script_lang_js_ = ({
+  name: "fabric-line",
+  mixins: [fabricObject],
+  props: {
+    x1: {
+      type: Number,
+      default: 0
+    },
+    y1: {
+      type: Number,
+      default: 0
+    },
+    x2: {
+      type: Number,
+      default: 1
+    },
+    y2: {
+      type: Number,
+      default: 1
+    },
+    fill: {
+      type: String,
+      default: "red"
+    },
+    stroke: {
+      type: String,
+      default: "red"
+    }
+  },
+  data: function data() {
+    return {
+      line: null,
+      type: "line"
+    };
+  },
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.line = new this.fabric.Line([this.x1, this.y1, this.x2, this.y2], FabricLinevue_type_script_lang_js_objectSpread({}, this.definedProps));
+
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.line);
+          } else {
+            this.canvas.add(this.line);
+          }
+
+          this.createEvents();
+          this.createWatchers();
+        }
+      },
+      immediate: true
+    }
+  },
+  methods: {},
+  beforeDestroy: function beforeDestroy() {}
+});
+// CONCATENATED MODULE: ./src/components/FabricLine.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricLinevue_type_script_lang_js_ = (FabricLinevue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricLine.vue
+var FabricLine_render, FabricLine_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricLine_component = normalizeComponent(
+  components_FabricLinevue_type_script_lang_js_,
+  FabricLine_render,
+  FabricLine_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricLine = (FabricLine_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricRectangle.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+
+
+
+function FabricRectanglevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricRectanglevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricRectanglevue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricRectanglevue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+/* harmony default export */ var FabricRectanglevue_type_script_lang_js_ = ({
+  name: "fabric-rect",
+  mixins: [fabricObject],
+  props: {
+    top: {
+      type: Number,
+      default: 0
+    },
+    left: {
+      type: Number,
+      default: 0
+    },
+    width: {
+      type: Number,
+      default: 50
+    },
+    height: {
+      type: Number,
+      default: 50
+    },
+    fill: {
+      type: String,
+      default: "red"
+    }
+  },
+  data: function data() {
+    return {
+      rect: null,
+      type: "rect"
+    };
+  },
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        if (newValue) {
+          //Parent is created
+          this.rect = new this.fabric.Rect(FabricRectanglevue_type_script_lang_js_objectSpread({}, this.definedProps));
+
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.rect);
+          } else {
+            this.canvas.add(this.rect);
+          }
+
+          this.createEvents();
+          this.createWatchers();
+        }
+      },
+      immediate: true
+    }
+  },
+  methods: {},
+  beforeDestroy: function beforeDestroy() {}
+});
+// CONCATENATED MODULE: ./src/components/FabricRectangle.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricRectanglevue_type_script_lang_js_ = (FabricRectanglevue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricRectangle.vue
+var FabricRectangle_render, FabricRectangle_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricRectangle_component = normalizeComponent(
+  components_FabricRectanglevue_type_script_lang_js_,
+  FabricRectangle_render,
+  FabricRectangle_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricRectangle = (FabricRectangle_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ var FabricGridvue_type_script_lang_js_ = ({
+  props: {
+    id: {
+      type: [Number, String],
+      required: true
+    },
+    gridSize: {
+      type: Number,
+      default: 30
+    },
+    gridHeight: {
+      type: Number,
+      default: 300
+    },
+    gridWidth: {
+      type: Number,
+      default: 300
+    }
+  },
+  components: {
+    FabricLine: FabricLine,
+    FabricRectangle: FabricRectangle
+  },
+  data: function data() {
+    return {
+      horizontalLines: [],
+      verticalLines: []
+    };
+  },
+  computed: {
+    numberofVerticalLines: function numberofVerticalLines() {
+      return parseInt(this.gridWidth / this.gridSize);
+    },
+    numberofHorizontalLines: function numberofHorizontalLines() {
+      return parseInt(this.gridHeight / this.gridSize);
+    }
+  },
+  watch: {
+    $props: {
+      handler: function handler() {
+        this.setup();
+      },
+      deep: true,
+      immediate: true
+    }
+  },
+  methods: {
+    setup: function setup() {
+      var i, _i;
+
+      return regenerator_default.a.async(function setup$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              this.horizontalLines = [];
+              this.verticalLines = [];
+              _context.next = 4;
+              return regenerator_default.a.awrap(this.$nextTick());
+
+            case 4:
+              for (i = 1; i < this.numberofVerticalLines; i++) {
+                this.verticalLines.push({
+                  stroke: "#ccc",
+                  selectable: false,
+                  x1: i * this.gridSize,
+                  y1: 0,
+                  x2: i * this.gridSize,
+                  y2: this.gridHeight
+                });
+              }
+
+              for (_i = 1; _i < this.numberofHorizontalLines; _i++) {
+                this.horizontalLines.push({
+                  stroke: "#ccc",
+                  selectable: false,
+                  x1: 0,
+                  y1: _i * this.gridSize,
+                  x2: this.gridWidth,
+                  y2: _i * this.gridSize
+                });
+              }
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/components/FabricGrid.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricGridvue_type_script_lang_js_ = (FabricGridvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricGrid.vue
+
+
+
+
+
+/* normalize component */
+
+var FabricGrid_component = normalizeComponent(
+  components_FabricGridvue_type_script_lang_js_,
+  FabricGridvue_type_template_id_61c43839_render,
+  FabricGridvue_type_template_id_61c43839_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricGrid = (FabricGrid_component.exports);
 // CONCATENATED MODULE: ./src/components/fabricCollection.js
 /* harmony default export */ var fabricCollection = ({
   name: "fabric-collection",
@@ -36361,231 +36689,6 @@ var FabricGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricGroup = (FabricGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLine.vue?vue&type=script&lang=js&
-function FabricLinevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricLinevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricLinevue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { FabricLinevue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricLinevue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function FabricLinevue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-/* harmony default export */ var FabricLinevue_type_script_lang_js_ = ({
-  name: "fabric-line",
-  mixins: [fabricObject],
-  props: {
-    x1: {
-      type: Number,
-      default: 0
-    },
-    y1: {
-      type: Number,
-      default: 0
-    },
-    x2: {
-      type: Number,
-      default: 1
-    },
-    y2: {
-      type: Number,
-      default: 1
-    },
-    fill: {
-      type: String,
-      default: "red"
-    },
-    stroke: {
-      type: String,
-      default: "red"
-    }
-  },
-  data: function data() {
-    return {
-      line: null,
-      type: "line"
-    };
-  },
-  render: function render(h) {
-    return this.$slots.default ? h("div", this.$slots.default) : undefined;
-  },
-  watch: {
-    parentItem: {
-      handler: function handler(newValue) {
-        if (newValue) {
-          //Parent is created
-          this.line = new this.fabric.Line([this.x1, this.y1, this.x2, this.y2], FabricLinevue_type_script_lang_js_objectSpread({}, this.definedProps));
-
-          if (this.parentType == "group") {
-            this.parentItem.addWithUpdate(this.line);
-          } else {
-            this.canvas.add(this.line);
-          }
-
-          this.createEvents();
-          this.createWatchers();
-        }
-      },
-      immediate: true
-    }
-  },
-  methods: {},
-  beforeDestroy: function beforeDestroy() {}
-});
-// CONCATENATED MODULE: ./src/components/FabricLine.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_FabricLinevue_type_script_lang_js_ = (FabricLinevue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/FabricLine.vue
-var FabricLine_render, FabricLine_staticRenderFns
-
-
-
-
-/* normalize component */
-
-var FabricLine_component = normalizeComponent(
-  components_FabricLinevue_type_script_lang_js_,
-  FabricLine_render,
-  FabricLine_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var FabricLine = (FabricLine_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGrid.vue?vue&type=script&lang=js&
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ var FabricGridvue_type_script_lang_js_ = ({
-  props: {
-    id: {
-      type: [Number, String],
-      required: true
-    },
-    gridSize: {
-      type: Number,
-      default: 30
-    },
-    gridHeight: {
-      type: Number,
-      default: 300
-    },
-    gridWidth: {
-      type: Number,
-      default: 300
-    }
-  },
-  components: {
-    FabricGroup: FabricGroup,
-    FabricLine: FabricLine
-  },
-  data: function data() {
-    return {
-      horizontalLines: [],
-      verticalLines: []
-    };
-  },
-  computed: {
-    numberofVerticalLines: function numberofVerticalLines() {
-      return parseInt(this.gridWidth / this.gridSize);
-    },
-    numberofHorizontalLines: function numberofHorizontalLines() {
-      return parseInt(this.gridHeight / this.gridSize);
-    }
-  },
-  watch: {
-    $props: {
-      handler: function handler() {
-        this.setup();
-      },
-      deep: true,
-      immediate: true
-    }
-  },
-  methods: {
-    setup: function setup() {
-      var i, _i;
-
-      return regenerator_default.a.async(function setup$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              this.horizontalLines = [];
-              this.verticalLines = [];
-              _context.next = 4;
-              return regenerator_default.a.awrap(this.$nextTick());
-
-            case 4:
-              for (i = 0; i < this.numberofVerticalLines; i++) {
-                this.verticalLines.push({
-                  stroke: "#ccc",
-                  selectable: false,
-                  x1: i * this.gridSize,
-                  y1: 0,
-                  x2: i * this.gridSize,
-                  y2: this.gridHeight
-                });
-              }
-
-              for (_i = 0; _i < this.numberofHorizontalLines; _i++) {
-                this.horizontalLines.push({
-                  stroke: "#ccc",
-                  selectable: false,
-                  x1: 0,
-                  y1: _i * this.gridSize,
-                  x2: this.gridWidth,
-                  y2: _i * this.gridSize
-                });
-              }
-
-            case 6:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, null, this);
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/components/FabricGrid.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_FabricGridvue_type_script_lang_js_ = (FabricGridvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/FabricGrid.vue
-
-
-
-
-
-/* normalize component */
-
-var FabricGrid_component = normalizeComponent(
-  components_FabricGridvue_type_script_lang_js_,
-  FabricGridvue_type_template_id_6c083dc6_render,
-  FabricGridvue_type_template_id_6c083dc6_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var FabricGrid = (FabricGrid_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricImageFromURL.vue?vue&type=script&lang=js&
 
 
@@ -36889,101 +36992,6 @@ var FabricPolygon_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricPolygon = (FabricPolygon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricRectangle.vue?vue&type=script&lang=js&
-
-
-
-
-
-
-
-
-
-
-function FabricRectanglevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricRectanglevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricRectanglevue_type_script_lang_js_ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricRectanglevue_type_script_lang_js_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-
-/* harmony default export */ var FabricRectanglevue_type_script_lang_js_ = ({
-  name: "fabric-rect",
-  mixins: [fabricObject],
-  props: {
-    top: {
-      type: Number,
-      default: 0
-    },
-    left: {
-      type: Number,
-      default: 0
-    },
-    width: {
-      type: Number,
-      default: 50
-    },
-    height: {
-      type: Number,
-      default: 50
-    },
-    fill: {
-      type: String,
-      default: "red"
-    }
-  },
-  data: function data() {
-    return {
-      rect: null,
-      type: "rect"
-    };
-  },
-  render: function render(h) {
-    return this.$slots.default ? h("div", this.$slots.default) : undefined;
-  },
-  watch: {
-    parentItem: {
-      handler: function handler(newValue) {
-        if (newValue) {
-          //Parent is created
-          this.rect = new this.fabric.Rect(FabricRectanglevue_type_script_lang_js_objectSpread({}, this.definedProps));
-
-          if (this.parentType == "group") {
-            this.parentItem.addWithUpdate(this.rect);
-          } else {
-            this.canvas.add(this.rect);
-          }
-
-          this.createEvents();
-          this.createWatchers();
-        }
-      },
-      immediate: true
-    }
-  },
-  methods: {},
-  beforeDestroy: function beforeDestroy() {}
-});
-// CONCATENATED MODULE: ./src/components/FabricRectangle.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_FabricRectanglevue_type_script_lang_js_ = (FabricRectanglevue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/FabricRectangle.vue
-var FabricRectangle_render, FabricRectangle_staticRenderFns
-
-
-
-
-/* normalize component */
-
-var FabricRectangle_component = normalizeComponent(
-  components_FabricRectanglevue_type_script_lang_js_,
-  FabricRectangle_render,
-  FabricRectangle_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var FabricRectangle = (FabricRectangle_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricShadow.vue?vue&type=script&lang=js&
 
 
@@ -37108,7 +37116,7 @@ var FabricShadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricShadow = (FabricShadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"406795be-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"1ea7b720-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
 var FabricSVGFromURLvue_type_template_id_803e1144_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({},'fabric-group',_vm.$props,false),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
 var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
 
