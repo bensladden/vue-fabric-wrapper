@@ -1,42 +1,30 @@
 <template>
   <div>
     <fabric-canvas :id="'gridtesting'" :height="400" :width="400">
-      <fabric-grid
+      <fabric-line-grid
         :id="'gridtesting1'"
         :gridSize="gridSize"
         :gridHeight="gridHeight"
         :gridWidth="gridWidth"
-      ></fabric-grid>
+      ></fabric-line-grid>
     </fabric-canvas>
     <b-container>
       <b-row>
         <b-col>Grid Size:</b-col>
         <b-col>
-          <b-form-input
-            type="number"
-            v-model.number="gridSize"
-            min="10"
-          ></b-form-input>
+          <b-form-input type="number" v-model.number="gridSize" min="10"></b-form-input>
         </b-col>
       </b-row>
       <b-row>
         <b-col>Grid Height:</b-col>
         <b-col>
-          <b-form-input
-            type="number"
-            v-model.number="gridHeight"
-            min="100"
-          ></b-form-input>
+          <b-form-input type="number" v-model.number="gridHeight" min="100"></b-form-input>
         </b-col>
       </b-row>
       <b-row>
         <b-col>Grid Width:</b-col>
         <b-col>
-          <b-form-input
-            type="number"
-            v-model.number="gridWidth"
-            min="100"
-          ></b-form-input>
+          <b-form-input type="number" v-model.number="gridWidth" min="100"></b-form-input>
         </b-col>
       </b-row>
     </b-container>
@@ -50,7 +38,7 @@ export default {
   name: "Grid",
   components: {
     FabricCanvas: vueFabricWrapper.FabricCanvas,
-    FabricGrid: vueFabricWrapper.FabricGrid
+    FabricLineGrid: vueFabricWrapper.FabricLineGrid
   },
   data() {
     return {

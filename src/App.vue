@@ -5,8 +5,10 @@
     <stick-man />
     <h2>Animation</h2>
     <animation />
-    <h2>Grid</h2>
-    <grid />
+    <h2>Line Grid</h2>
+    <line-grid />
+    <h2>Dot Grid</h2>
+    <dot-grid />
     <fabric-canvas :height="400" :width="400" @object-moved="objMoved">
       <fabric-group :id="3421">
         <fabric-polygon :id="342101">
@@ -18,11 +20,7 @@
             :gradientUnits="'percentage'"
             :colorStops="{ 0: '#000', 1: '#fff' }"
           ></fabric-gradient>
-          <fabric-shadow
-            :offsetX="25"
-            :offsetY="25"
-            :color="'rgba(0,0,0,.3)'"
-          ></fabric-shadow>
+          <fabric-shadow :offsetX="25" :offsetY="25" :color="'rgba(0,0,0,.3)'"></fabric-shadow>
         </fabric-polygon>
         <fabric-text :id="342104" :text="'hello stick man'"></fabric-text>
       </fabric-group>
@@ -35,7 +33,8 @@
 <script>
 import StickMan from "./examples/StickMan";
 import Animation from "./examples/Animation";
-import Grid from "./examples/Grid";
+import LineGrid from "./examples/LineGrid";
+import DotGrid from "./examples/DotGrid";
 import FabricAnimation from "./components/FabricAnimation";
 import FabricCanvas from "./components/FabricCanvas";
 import FabricCircle from "./components/FabricCircle";
@@ -57,7 +56,8 @@ export default {
   components: {
     StickMan,
     Animation,
-    Grid,
+    LineGrid,
+    DotGrid,
     FabricCanvas,
     FabricGradient,
     FabricGroup,
