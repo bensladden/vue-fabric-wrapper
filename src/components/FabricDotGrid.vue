@@ -42,22 +42,22 @@
     <fabric-line
       :id="id + 'topGuideLine'"
       :visible="showTopGuideLine"
-      :stroke="'rgba(102,153,255,0.5)'"
       :x1="0"
       :y1="objectMovingTop"
       :x2="gridWidth"
       :y2="objectMovingTop"
+      :stroke="'rgba(102,153,255,0.5)'"
       :selectable="false"
     ></fabric-line>
     <fabric-line
       :id="id + 'bottomGuideLine'"
-      :opacity="showBottomGuideLine && objectMoving ? 0 : 1"
-      :stroke="'rgba(102,153,255,0.5)'"
+      :visible="showBottomGuideLine"
       :x1="0"
       :y1="objectMovingTop + objectMovingHeight"
-      :x2="showBottomGuideLine && objectMoving ? gridWidth : 0"
+      :x2="gridWidth"
       :y2="objectMovingTop + objectMovingHeight"
       :selectable="false"
+      :stroke="'rgba(102,153,255,0.5)'"
     ></fabric-line>
   </div>
 </template>
@@ -72,8 +72,8 @@ export default {
     gridSize: { type: Number, default: 30 },
     gridHeight: { type: Number, default: 300 },
     gridWidth: { type: Number, default: 300 },
-    showGuideLines: { type: Boolean, default: false },
-    snappable: { type: Boolean, default: false }
+    showGuideLines: { type: Boolean, default: true },
+    snappable: { type: Boolean, default: true }
   },
   components: {
     FabricCircle,
