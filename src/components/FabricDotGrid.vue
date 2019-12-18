@@ -20,28 +20,28 @@
       :selectable="false"
     ></fabric-circle>
     <fabric-line
-      :id="id + 'leftGridLine'"
-      :opacity="showLeftGridLine && objectMoving ? 0 : 1"
-      :stroke="'rgba(102,153,255,0.5)'"
+      :id="id + 'leftGuideLine'"
+      :visible="showLeftGuideLine"
       :x1="objectMovingLeft"
       :y1="0"
       :x2="objectMovingLeft"
       :y2="gridHeight"
+      :stroke="'rgba(102,153,255,0.5)'"
       :selectable="false"
     ></fabric-line>
     <fabric-line
-      :id="id + 'rightGridLine'"
-      :opacity="showRightGridLine && objectMoving ? 0 : 1"
-      :stroke="'rgba(102,153,255,0.5)'"
+      :id="id + 'rightGuideLine'"
+      :visible="showRightGuideLine"
       :x1="objectMovingLeft + objectMovingWidth"
       :y1="0"
       :x2="objectMovingLeft + objectMovingWidth"
       :y2="gridHeight"
+      :stroke="'rgba(102,153,255,0.5)'"
       :selectable="false"
     ></fabric-line>
     <fabric-line
-      :id="id + 'topGridLine'"
-      :opacity="showTopGridLine && objectMoving ? 0 : 1"
+      :id="id + 'topGuideLine'"
+      :visible="showTopGuideLine"
       :stroke="'rgba(102,153,255,0.5)'"
       :x1="0"
       :y1="objectMovingTop"
@@ -50,12 +50,12 @@
       :selectable="false"
     ></fabric-line>
     <fabric-line
-      :id="id + 'bottomGridLine'"
-      :opacity="showBottomGridLine && objectMoving ? 0 : 1"
+      :id="id + 'bottomGuideLine'"
+      :opacity="showBottomGuideLine && objectMoving ? 0 : 1"
       :stroke="'rgba(102,153,255,0.5)'"
       :x1="0"
       :y1="objectMovingTop + objectMovingHeight"
-      :x2="gridWidth"
+      :x2="showBottomGuideLine && objectMoving ? gridWidth : 0"
       :y2="objectMovingTop + objectMovingHeight"
       :selectable="false"
     ></fabric-line>
@@ -85,15 +85,14 @@ export default {
     return {
       dots: [],
       objectMoving: false,
-      objectMovingId: 0,
       objectMovingLeft: 0,
       objectMovingTop: 0,
       objectMovingHeight: 0,
       objectMovingWidth: 0,
-      showLeftGridLine: false,
-      showRightGridLine: false,
-      showTopGridLine: false,
-      showBottomGridLine: false
+      showLeftGuideLine: false,
+      showRightGuideLine: false,
+      showTopGuideLine: false,
+      showBottomGuideLine: false
     };
   },
   computed: {
@@ -129,14 +128,17 @@ export default {
         if (newValue) {
           this.canvas.on("object:moved", () => {
             this.objectMoving = false;
+            this.showLeftGuideLine = false;
+            this.showRightGuideLine = false;
+            this.showTopGuideLine = false;
+            this.showBottomGuideLine = false;
             this.objectMovingLeft = 0;
             this.objectMovingTop = 0;
             this.objectMovingHeight = 0;
             this.objectMovingWidth = 0;
-            this.objectMovingId = 0;
           });
           this.canvas.on("object:moving", e => {
-            this.trackMove(e);
+            this.checkSnap(e);
           });
         }
       },
@@ -145,7 +147,6 @@ export default {
   },
   methods: {
     async setup() {
-      console.log("dot setup called");
       this.dots = [];
       await this.$nextTick();
       for (let i = 1; i < this.rows; i++) {
@@ -154,42 +155,65 @@ export default {
         }
       }
     },
-    trackMove(e) {
+    checkSnap(e) {
+      let snapThres = 4;
       this.objectMoving = true;
       this.objectMovingLeft = e.target.left;
       this.objectMovingTop = e.target.top;
-      this.objectMovingHeight = e.target.height;
-      this.objectMovingWidth = e.target.width;
-      this.objectMovingId = e.target.id;
-
-      if (this.objectMovingLeft % this.gridSize && this.showGuideLines) {
-        this.showLeftGridLine = true;
-      } else {
-        this.showLeftGridLine = false;
-      }
-
+      this.objectMovingHeight = e.target.height * e.target.scaleY;
+      this.objectMovingWidth = e.target.width * e.target.scaleX;
+      //Check Top Left Snapping
       if (
-        (this.objectMovingLeft + this.objectMovingWidth) % this.gridSize &&
-        this.showGuideLines
+        Math.round((e.target.left / this.gridSize) * snapThres) % snapThres ==
+          0 &&
+        Math.round((e.target.top / this.gridSize) * snapThres) % snapThres == 0
       ) {
-        this.showRightGridLine = true;
+        e.target.set({
+          left: Math.round(e.target.left / this.gridSize) * this.gridSize,
+          top: Math.round(e.target.top / this.gridSize) * this.gridSize
+        });
+        if (this.showGuideLines) {
+          this.showTopGuideLine = true;
+          this.showLeftGuideLine = true;
+        }
       } else {
-        this.showRightGridLine = false;
+        this.showTopGuideLine = false;
+        this.showLeftGuideLine = false;
       }
-
-      if (this.objectMovingTop % this.gridSize && this.showGuideLines) {
-        this.showTopGridLine = true;
-      } else {
-        this.showTopGridLine = false;
-      }
-
+      //Check Bottom Right Snapping
       if (
-        (this.objectMovingTop + this.objectMovingHeight) % this.gridSize &&
-        this.showGuideLines
+        Math.round(
+          ((e.target.left + this.objectMovingWidth) / this.gridSize) * snapThres
+        ) %
+          snapThres ==
+          0 &&
+        Math.round(
+          ((e.target.top + this.objectMovingHeight) / this.gridSize) * snapThres
+        ) %
+          snapThres ==
+          0
       ) {
-        this.showBottomGridLine = true;
+        e.target.set({
+          left:
+            Math.round(
+              (e.target.left + this.objectMovingWidth) / this.gridSize
+            ) *
+              this.gridSize -
+            this.objectMovingWidth,
+          top:
+            Math.round(
+              (e.target.top + this.objectMovingHeight) / this.gridSize
+            ) *
+              this.gridSize -
+            this.objectMovingHeight
+        });
+        if (this.showGuideLines) {
+          this.showBottomGuideLine = true;
+          this.showRightGuideLine = true;
+        }
       } else {
-        this.showBottomGridLine = false;
+        this.showBottomGuideLine = false;
+        this.showRightGuideLine = false;
       }
     }
   }
