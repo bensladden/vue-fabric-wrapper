@@ -230,7 +230,7 @@ export default {
 </template>
 </ExampleViewer>
 
-## Dot-Snappable-Grid
+## Dot Snappable Grid
 
 <ExampleViewer>
 <div>
