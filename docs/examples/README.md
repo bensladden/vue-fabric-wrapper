@@ -229,3 +229,51 @@ export default {
 </ClientOnly>
 </template>
 </ExampleViewer>
+
+## Dot-Snappable-Grid
+
+<ExampleViewer>
+<div>
+
+```vue
+<template>
+    <fabric-canvas :id="'gridtesting2'" :height="400" :width="400">
+      <fabric-dot-grid
+        :id="'gridtesting2'"
+        :gridSize="gridSize"
+        :gridHeight="gridHeight"
+        :gridWidth="gridWidth"
+      ></fabric-dot-grid>
+      <fabric-rectangle :id="'rectGridTesting2'"></fabric-rectangle>
+    </fabric-canvas>
+</template>
+
+<script>
+import vueFabricWrapper from "vue-fabric-wrapper";
+
+export default {
+  name: "Grid",
+  components: {
+    FabricCanvas: vueFabricWrapper.FabricCanvas,
+    FabricRectangle: vueFabricWrapper.FabricRectangle,
+    FabricDotGrid: vueFabricWrapper.FabricDotGrid
+  },
+  data() {
+    return {
+      gridSize: 40,
+      gridHeight: 400,
+      gridWidth: 400
+    };
+  },
+  methods: {}
+};
+</script>
+```
+
+</div>
+<template v-slot:result>
+<ClientOnly>
+<DotGrid/>
+</ClientOnly>
+</template>
+</ExampleViewer>

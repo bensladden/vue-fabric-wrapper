@@ -127,15 +127,7 @@ export default {
       handler(newValue) {
         if (newValue) {
           this.canvas.on("object:moved", () => {
-            this.objectMoving = false;
-            this.showLeftGuideLine = false;
-            this.showRightGuideLine = false;
-            this.showTopGuideLine = false;
-            this.showBottomGuideLine = false;
-            this.objectMovingLeft = 0;
-            this.objectMovingTop = 0;
-            this.objectMovingHeight = 0;
-            this.objectMovingWidth = 0;
+            this.finishMove();
           });
           this.canvas.on("object:moving", e => {
             this.checkSnap(e);
@@ -232,59 +224,17 @@ export default {
       } else {
         this.showBottomGuideLine = false;
       }
-      //Check Top Left Snapping
-      //   if (
-      //     Math.round((e.target.left / this.gridSize) * snapThres) % snapThres ==
-      //       0 &&
-      //     Math.round((e.target.top / this.gridSize) * snapThres) % snapThres == 0
-      //   ) {
-      //     e.target.set({
-      //       left: Math.round(e.target.left / this.gridSize) * this.gridSize,
-      //       top: Math.round(e.target.top / this.gridSize) * this.gridSize
-      //     });
-      //     if (this.showGuideLines) {
-      //       this.showTopGuideLine = true;
-      //       this.showLeftGuideLine = true;
-      //     }
-      //   } else {
-      //     this.showTopGuideLine = false;
-      //     this.showLeftGuideLine = false;
-      //   }
-      //Check Bottom Right Snapping
-      //   if (
-      //     Math.round(
-      //       ((e.target.left + this.objectMovingWidth) / this.gridSize) * snapThres
-      //     ) %
-      //       snapThres ==
-      //       0 &&
-      //     Math.round(
-      //       ((e.target.top + this.objectMovingHeight) / this.gridSize) * snapThres
-      //     ) %
-      //       snapThres ==
-      //       0
-      //   ) {
-      //     e.target.set({
-      //       left:
-      //         Math.round(
-      //           (e.target.left + this.objectMovingWidth) / this.gridSize
-      //         ) *
-      //           this.gridSize -
-      //         this.objectMovingWidth,
-      //       top:
-      //         Math.round(
-      //           (e.target.top + this.objectMovingHeight) / this.gridSize
-      //         ) *
-      //           this.gridSize -
-      //         this.objectMovingHeight
-      //     });
-      //     if (this.showGuideLines) {
-      //       this.showBottomGuideLine = true;
-      //       this.showRightGuideLine = true;
-      //     }
-      //   } else {
-      //     this.showBottomGuideLine = false;
-      //     this.showRightGuideLine = false;
-      //   }
+    },
+    finishMove() {
+      this.objectMoving = false;
+      this.showLeftGuideLine = false;
+      this.showRightGuideLine = false;
+      this.showTopGuideLine = false;
+      this.showBottomGuideLine = false;
+      this.objectMovingLeft = 0;
+      this.objectMovingTop = 0;
+      this.objectMovingHeight = 0;
+      this.objectMovingWidth = 0;
     }
   }
 };
