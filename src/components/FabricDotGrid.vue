@@ -162,59 +162,129 @@ export default {
       this.objectMovingTop = e.target.top;
       this.objectMovingHeight = e.target.height * e.target.scaleY;
       this.objectMovingWidth = e.target.width * e.target.scaleX;
-      //Check Top Left Snapping
+
       if (
         Math.round((e.target.left / this.gridSize) * snapThres) % snapThres ==
-          0 &&
-        Math.round((e.target.top / this.gridSize) * snapThres) % snapThres == 0
+        0
       ) {
-        e.target.set({
-          left: Math.round(e.target.left / this.gridSize) * this.gridSize,
-          top: Math.round(e.target.top / this.gridSize) * this.gridSize
-        });
+        e.target.set(
+          "left",
+          Math.round(e.target.left / this.gridSize) * this.gridSize
+        );
         if (this.showGuideLines) {
-          this.showTopGuideLine = true;
           this.showLeftGuideLine = true;
         }
       } else {
-        this.showTopGuideLine = false;
         this.showLeftGuideLine = false;
       }
-      //Check Bottom Right Snapping
+
+      if (
+        Math.round((e.target.top / this.gridSize) * snapThres) % snapThres ==
+        0
+      ) {
+        e.target.set(
+          "top",
+          Math.round(e.target.top / this.gridSize) * this.gridSize
+        );
+        if (this.showGuideLines) {
+          this.showTopGuideLine = true;
+        }
+      } else {
+        this.showTopGuideLine = false;
+      }
+
       if (
         Math.round(
           ((e.target.left + this.objectMovingWidth) / this.gridSize) * snapThres
         ) %
           snapThres ==
-          0 &&
+        0
+      ) {
+        e.target.set(
+          "left",
+          Math.round((e.target.left + this.objectMovingWidth) / this.gridSize) *
+            this.gridSize -
+            this.objectMovingWidth
+        );
+        if (this.showGuideLines) {
+          this.showRightGuideLine = true;
+        }
+      } else {
+        this.showRightGuideLine = false;
+      }
+
+      if (
         Math.round(
           ((e.target.top + this.objectMovingHeight) / this.gridSize) * snapThres
         ) %
           snapThres ==
-          0
+        0
       ) {
-        e.target.set({
-          left:
-            Math.round(
-              (e.target.left + this.objectMovingWidth) / this.gridSize
-            ) *
-              this.gridSize -
-            this.objectMovingWidth,
-          top:
-            Math.round(
-              (e.target.top + this.objectMovingHeight) / this.gridSize
-            ) *
-              this.gridSize -
+        e.target.set(
+          "top",
+          Math.round((e.target.top + this.objectMovingHeight) / this.gridSize) *
+            this.gridSize -
             this.objectMovingHeight
-        });
+        );
         if (this.showGuideLines) {
           this.showBottomGuideLine = true;
-          this.showRightGuideLine = true;
         }
       } else {
         this.showBottomGuideLine = false;
-        this.showRightGuideLine = false;
       }
+      //Check Top Left Snapping
+      //   if (
+      //     Math.round((e.target.left / this.gridSize) * snapThres) % snapThres ==
+      //       0 &&
+      //     Math.round((e.target.top / this.gridSize) * snapThres) % snapThres == 0
+      //   ) {
+      //     e.target.set({
+      //       left: Math.round(e.target.left / this.gridSize) * this.gridSize,
+      //       top: Math.round(e.target.top / this.gridSize) * this.gridSize
+      //     });
+      //     if (this.showGuideLines) {
+      //       this.showTopGuideLine = true;
+      //       this.showLeftGuideLine = true;
+      //     }
+      //   } else {
+      //     this.showTopGuideLine = false;
+      //     this.showLeftGuideLine = false;
+      //   }
+      //Check Bottom Right Snapping
+      //   if (
+      //     Math.round(
+      //       ((e.target.left + this.objectMovingWidth) / this.gridSize) * snapThres
+      //     ) %
+      //       snapThres ==
+      //       0 &&
+      //     Math.round(
+      //       ((e.target.top + this.objectMovingHeight) / this.gridSize) * snapThres
+      //     ) %
+      //       snapThres ==
+      //       0
+      //   ) {
+      //     e.target.set({
+      //       left:
+      //         Math.round(
+      //           (e.target.left + this.objectMovingWidth) / this.gridSize
+      //         ) *
+      //           this.gridSize -
+      //         this.objectMovingWidth,
+      //       top:
+      //         Math.round(
+      //           (e.target.top + this.objectMovingHeight) / this.gridSize
+      //         ) *
+      //           this.gridSize -
+      //         this.objectMovingHeight
+      //     });
+      //     if (this.showGuideLines) {
+      //       this.showBottomGuideLine = true;
+      //       this.showRightGuideLine = true;
+      //     }
+      //   } else {
+      //     this.showBottomGuideLine = false;
+      //     this.showRightGuideLine = false;
+      //   }
     }
   }
 };
