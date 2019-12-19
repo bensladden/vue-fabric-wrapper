@@ -70,7 +70,8 @@ module.exports = {
 			}, {
 				text: 'Examples',
 				items: [
-					{ text: "StickMan", link: '/examples/#stick-man' }
+					{ text: "StickMan", link: '/examples/#stick-man' },
+					{ text: "Dot Snappable Grid", link: '/examples/#Dot-Snappable-Grid' }
 				]
 			}
 		]

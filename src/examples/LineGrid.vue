@@ -7,6 +7,7 @@
         :gridHeight="gridHeight"
         :gridWidth="gridWidth"
       ></fabric-line-grid>
+      <fabric-rectangle :id="'rectGridTesting1'"></fabric-rectangle>
     </fabric-canvas>
     <b-container>
       <b-row>

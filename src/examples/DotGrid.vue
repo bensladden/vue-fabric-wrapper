@@ -7,6 +7,7 @@
         :gridHeight="gridHeight"
         :gridWidth="gridWidth"
       ></fabric-dot-grid>
+      <fabric-rectangle :id="'rectGridTesting2'"></fabric-rectangle>
     </fabric-canvas>
     <b-container>
       <b-row>
@@ -38,11 +39,12 @@ export default {
   name: "Grid",
   components: {
     FabricCanvas: vueFabricWrapper.FabricCanvas,
+    FabricRectangle: vueFabricWrapper.FabricRectangle,
     FabricDotGrid: vueFabricWrapper.FabricDotGrid
   },
   data() {
     return {
-      gridSize: 20,
+      gridSize: 40,
       gridHeight: 400,
       gridWidth: 400
     };
