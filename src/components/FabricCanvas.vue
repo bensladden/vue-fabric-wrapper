@@ -38,10 +38,10 @@ let canvasEvents = [
   "mouse:over",
   "mouse:out",
   "mouse:dblclick",
-  "event:dragover",
-  "event:dragenter",
-  "event:dragleave",
-  "event:drop"
+  "dragover",
+  "dragenter",
+  "dragleave",
+  "drop"
 ];
 
 import * as fabric from "fabric";

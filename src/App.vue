@@ -9,7 +9,12 @@
     <line-grid />
     <h2>Dot Grid</h2>
     <dot-grid />
-    <fabric-canvas :height="400" :width="400" @object-moved="objMoved">
+    <fabric-canvas
+      :height="400"
+      :width="400"
+      @object-moved="objMoved"
+      @drop="objDropped"
+    >
       <fabric-group :id="3421">
         <fabric-polygon :id="342101">
           <fabric-gradient
@@ -20,13 +25,18 @@
             :gradientUnits="'percentage'"
             :colorStops="{ 0: '#000', 1: '#fff' }"
           ></fabric-gradient>
-          <fabric-shadow :offsetX="25" :offsetY="25" :color="'rgba(0,0,0,.3)'"></fabric-shadow>
+          <fabric-shadow
+            :offsetX="25"
+            :offsetY="25"
+            :color="'rgba(0,0,0,.3)'"
+          ></fabric-shadow>
         </fabric-polygon>
         <fabric-text :id="342104" :text="'hello stick man'"></fabric-text>
       </fabric-group>
       <fabric-polyline :id="342102"></fabric-polyline>
       <fabric-svg-from-url :id="'ttyuud'"></fabric-svg-from-url>
     </fabric-canvas>
+    <div id="drag1" @dragstart="dragStart" class="draggable" draggable></div>
   </div>
 </template>
 
@@ -89,6 +99,15 @@ export default {
   methods: {
     objMoved(e) {
       console.log("objMoved", e);
+    },
+    objDropped(e) {
+      // eslint-disable-next-line no-console
+      console.log(e);
+    },
+    dragStart(e) {
+      // eslint-disable-next-line no-console
+      console.log(e);
+      e.dataTransfer.setData("text/plain", "mmmmmeeeee");
     }
   }
 };
@@ -101,5 +120,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.draggable {
+  display: inline-block;
+  width: 100px;
+  background-color: purple;
+  height: 100px;
 }
 </style>
