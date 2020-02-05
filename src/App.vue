@@ -15,6 +15,7 @@
       @object-moved="objMoved"
       @drop="objDropped"
     >
+      <fabric-background-image :id="345667"></fabric-background-image>
       <fabric-group :id="3421">
         <fabric-polygon :id="342101">
           <fabric-gradient
@@ -46,6 +47,7 @@ import Animation from "./examples/Animation";
 import LineGrid from "./examples/LineGrid";
 import DotGrid from "./examples/DotGrid";
 import FabricAnimation from "./components/FabricAnimation";
+import FabricBackgroundImage from "./components/FabricBackgroundImage";
 import FabricCanvas from "./components/FabricCanvas";
 import FabricCircle from "./components/FabricCircle";
 import FabricEllipse from "./components/FabricEllipse";
@@ -68,6 +70,7 @@ export default {
     Animation,
     LineGrid,
     DotGrid,
+    FabricBackgroundImage,
     FabricCanvas,
     FabricGradient,
     FabricGroup,
