@@ -215,7 +215,9 @@ export default {
     },
     destroyEvents() {
       OBJECT_EVENTS.forEach(event => {
-        this.item.off(event);
+        if (this.item) {
+          this.item.off(event);
+        }
       });
     },
     createWatchers() {

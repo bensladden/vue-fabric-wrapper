@@ -14,6 +14,8 @@
       :width="400"
       @object-moved="objMoved"
       @drop="objDropped"
+      @after-render="afterRender"
+      @canvas-updated="canvasUpdated"
     >
       <fabric-background-image :id="345667"></fabric-background-image>
       <fabric-group :id="3421">
@@ -38,6 +40,8 @@
       <fabric-svg-from-url :id="'ttyuud'"></fabric-svg-from-url>
     </fabric-canvas>
     <div id="drag1" @dragstart="dragStart" class="draggable" draggable></div>
+    {{ canvas }}
+    <button @click="setText">image</button>{{ image }}
   </div>
 </template>
 
@@ -96,7 +100,9 @@ export default {
       leftFootPosLeft: 200,
       leftFootPosTop: 350,
       rightFootPosLeft: 300,
-      rightFootPosTop: 350
+      rightFootPosTop: 350,
+      canvas: null,
+      image: ""
     };
   },
   methods: {
@@ -111,6 +117,18 @@ export default {
       // eslint-disable-next-line no-console
       console.log(e);
       e.dataTransfer.setData("text/plain", "mmmmmeeeee");
+    },
+    afterRender(e) {
+      console.log(e);
+    },
+    canvasUpdated(c) {
+      this.canvas = c;
+    },
+    setText() {
+      this.image = this.canvas.toDataURL({
+        format: "jpeg",
+        quality: 0.8
+      });
     }
   }
 };

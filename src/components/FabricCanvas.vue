@@ -84,6 +84,15 @@ export default {
       let vueEvent = event.split(":").join("-");
       this.canvas.off(event, this.$emit(vueEvent));
     });
+  },
+  watch: {
+    canvas: {
+      handler(newValue) {
+        this.$emit("canvas-updated", this.canvas);
+      },
+      deep: true,
+      initial: true
+    }
   }
 };
 </script>

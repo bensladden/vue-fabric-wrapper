@@ -714,28 +714,6 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ "2532":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var notARegExp = __webpack_require__("5a34");
-var requireObjectCoercible = __webpack_require__("1d80");
-var correctIsRegExpLogic = __webpack_require__("ab13");
-
-// `String.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-string.prototype.includes
-$({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {
-  includes: function includes(searchString /* , position = 0 */) {
-    return !!~String(requireObjectCoercible(this))
-      .indexOf(notARegExp(searchString), arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-
-/***/ }),
-
 /***/ "2626":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1097,25 +1075,6 @@ module.exports = function (a, b) {
 
 /***/ }),
 
-/***/ "44e7":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("861d");
-var classof = __webpack_require__("c6b6");
-var wellKnownSymbol = __webpack_require__("b622");
-
-var MATCH = wellKnownSymbol('match');
-
-// `IsRegExp` abstract operation
-// https://tc39.github.io/ecma262/#sec-isregexp
-module.exports = function (it) {
-  var isRegExp;
-  return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
-};
-
-
-/***/ }),
-
 /***/ "4795":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1325,20 +1284,6 @@ module.exports = {
   // `String.prototype.trim` method
   // https://tc39.github.io/ecma262/#sec-string.prototype.trim
   trim: createMethod(3)
-};
-
-
-/***/ }),
-
-/***/ "5a34":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isRegExp = __webpack_require__("44e7");
-
-module.exports = function (it) {
-  if (isRegExp(it)) {
-    throw TypeError("The method doesn't accept regular expressions");
-  } return it;
 };
 
 
@@ -32977,28 +32922,6 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
 
 /***/ }),
 
-/***/ "ab13":
-/***/ (function(module, exports, __webpack_require__) {
-
-var wellKnownSymbol = __webpack_require__("b622");
-
-var MATCH = wellKnownSymbol('match');
-
-module.exports = function (METHOD_NAME) {
-  var regexp = /./;
-  try {
-    '/./'[METHOD_NAME](regexp);
-  } catch (e) {
-    try {
-      regexp[MATCH] = false;
-      return '/./'[METHOD_NAME](regexp);
-    } catch (f) { /* empty */ }
-  } return false;
-};
-
-
-/***/ }),
-
 /***/ "ae40":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35259,32 +35182,6 @@ module.exports = function (object, names) {
 
 /***/ }),
 
-/***/ "caad":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var $includes = __webpack_require__("4d64").includes;
-var addToUnscopables = __webpack_require__("44d2");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
-
-var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
-
-// `Array.prototype.includes` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.includes
-$({ target: 'Array', proto: true, forced: !USES_TO_LENGTH }, {
-  includes: function includes(el /* , fromIndex = 0 */) {
-    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
-addToUnscopables('includes');
-
-
-/***/ }),
-
 /***/ "cc12":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -36672,71 +36569,14 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricAnimation = (component.exports);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
-var es_array_includes = __webpack_require__("caad");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
-var es_string_includes = __webpack_require__("2532");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
-var es_symbol_description = __webpack_require__("e01a");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
-var es_symbol_iterator = __webpack_require__("d28b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
-var es_array_iterator = __webpack_require__("e260");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
-var es_object_to_string = __webpack_require__("d3b7");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
-var es_string_iterator = __webpack_require__("3ca3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
-var web_dom_collections_iterator = __webpack_require__("ddb0");
-
-// CONCATENATED MODULE: ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/helpers/esm/typeof.js
-
-
-
-
-
-
-
-
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    _typeof = function _typeof(obj) {
-      return _typeof2(obj);
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
-    };
-  }
-
-  return _typeof(obj);
-}
 // CONCATENATED MODULE: ./src/components/fabricObject.js
-
-
-
-
-
-
-
-
-
-
-
-
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function fabricObject_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function fabricObject_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { fabricObject_ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { fabricObject_ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function fabricObject_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { fabricObject_ownKeys(Object(source), true).forEach(function (key) { fabricObject_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { fabricObject_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function fabricObject_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var OBJECT_EVENTS = ["added", "removed", "selected", "deselected", "modified", "moved", "scaled", "rotated", "skewed", "rotating", "scaling", "moving", "skewing", "mousedown", "mouseup", "mouseover", "mouseout", "mousewheel", "mousedblclick", "dragover", "dragenter", "dragleave", "drop"]; //Props to change via interaction and need to be emitted for prop.sync usage
 
@@ -37014,7 +36854,9 @@ var watchProp = function watchProp(key, deep) {
       var _this3 = this;
 
       OBJECT_EVENTS.forEach(function (event) {
-        _this3.item.off(event);
+        if (_this3.item) {
+          _this3.item.off(event);
+        }
       });
     },
     createWatchers: function createWatchers() {
@@ -37141,12 +36983,12 @@ var FabricBackgroundImage_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricBackgroundImage = (FabricBackgroundImage_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"70eeb35d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=2fd8f47c&
-var FabricCanvasvue_type_template_id_2fd8f47c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":_vm.id,"width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
-var FabricCanvasvue_type_template_id_2fd8f47c_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"70eeb35d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=72d8ad1e&
+var FabricCanvasvue_type_template_id_72d8ad1e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":_vm.id,"width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
+var FabricCanvasvue_type_template_id_72d8ad1e_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=2fd8f47c&
+// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=72d8ad1e&
 
 // EXTERNAL MODULE: ./node_modules/fabric/dist/fabric.js
 var fabric = __webpack_require__("7a94");
@@ -37282,6 +37124,15 @@ var canvasEvents = [//Static Canvas events
 
       _this3.canvas.off(event, _this3.$emit(vueEvent));
     });
+  },
+  watch: {
+    canvas: {
+      handler: function handler(newValue) {
+        this.$emit("canvas-updated", this.canvas);
+      },
+      deep: true,
+      initial: true
+    }
   }
 });
 // CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=script&lang=js&
@@ -37300,8 +37151,8 @@ var FabricCanvasvue_type_style_index_0_lang_css_ = __webpack_require__("6101");
 
 var FabricCanvas_component = normalizeComponent(
   components_FabricCanvasvue_type_script_lang_js_,
-  FabricCanvasvue_type_template_id_2fd8f47c_render,
-  FabricCanvasvue_type_template_id_2fd8f47c_staticRenderFns,
+  FabricCanvasvue_type_template_id_72d8ad1e_render,
+  FabricCanvasvue_type_template_id_72d8ad1e_staticRenderFns,
   false,
   null,
   null,
@@ -38186,6 +38037,9 @@ var es_parse_int = __webpack_require__("e25e");
 // EXTERNAL MODULE: ./node_modules/regenerator-runtime/runtime.js
 var runtime = __webpack_require__("96cf");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
+var es_object_to_string = __webpack_require__("d3b7");
+
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("e6cf");
 
@@ -38227,6 +38081,45 @@ function asyncToGenerator_asyncToGenerator(fn) {
       _next(undefined);
     });
   };
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
+var es_symbol_description = __webpack_require__("e01a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
+var es_symbol_iterator = __webpack_require__("d28b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
+var es_array_iterator = __webpack_require__("e260");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
+var es_string_iterator = __webpack_require__("3ca3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__("ddb0");
+
+// CONCATENATED MODULE: ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/helpers/esm/typeof.js
+
+
+
+
+
+
+
+
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function typeof_typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    typeof_typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    typeof_typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return typeof_typeof(obj);
 }
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLineGrid.vue?vue&type=script&lang=js&
 
@@ -38359,7 +38252,7 @@ function asyncToGenerator_asyncToGenerator(fn) {
       return this.$canvas();
     },
     canvasExists: function canvasExists() {
-      if (_typeof(this.canvas) === ( true ? "undefined" : undefined)) {
+      if (typeof_typeof(this.canvas) === ( true ? "undefined" : undefined)) {
         return false;
       }
 
