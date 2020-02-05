@@ -36663,175 +36663,6 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricAnimation = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"70eeb35d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=2fd8f47c&
-var FabricCanvasvue_type_template_id_2fd8f47c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":_vm.id,"width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
-var FabricCanvasvue_type_template_id_2fd8f47c_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=2fd8f47c&
-
-// EXTERNAL MODULE: ./node_modules/fabric/dist/fabric.js
-var fabric = __webpack_require__("7a94");
-
-// CONCATENATED MODULE: ./src/components/fabricStaticCanvas.js
-
-//const OBJECT_EVENTS = ["before:render", "after:render", "canvas:cleared", "object:added", "object:removed"];
-/* harmony default export */ var fabricStaticCanvas = ({
-  name: "fabric-static-canvas",
-  props: {
-    allowTouchScrolling: Boolean,
-    backgroundColor: String,
-    //backgroundImage :fabric.Image,
-    backgroundVpt: {
-      type: Boolean,
-      default: true
-    },
-    //clipPath :fabric.Object,
-    controlsAboveOverlay: Boolean,
-    enableRetinaScaling: {
-      type: Boolean,
-      default: true
-    },
-    FX_DURATION: {
-      type: Number,
-      default: 500
-    },
-    imageSmoothingEnabled: {
-      type: Boolean,
-      default: true
-    },
-    includeDefaultValues: {
-      type: Boolean,
-      default: true
-    },
-    overlayColor: String,
-    //overlayImage :fabric.Image,
-    overlayVpt: {
-      type: Boolean,
-      default: true
-    },
-    renderOnAddRemove: {
-      type: Boolean,
-      default: true
-    },
-    skipOffscreen: {
-      type: Boolean,
-      default: true
-    },
-    stateful: Boolean,
-    svgViewportTransformation: {
-      type: Boolean,
-      default: true
-    },
-    viewportTransform: Array
-  }
-});
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-//
-//
-var canvasEvents = [//Static Canvas events
-"before:render", "after:render", "canvas:cleared", "object:added", "object:removed", //Canvas events
-"object:modified", "object:rotated", "object:scaled", "object:moved", "object:skewed", "object:rotating", "object:scaling", "object:moving", "object:skewing", "before:transform", "before:selection:cleared", "selection:cleared", "selection:updated", "selection:created", "path:created", "mouse:down", "mouse:move", "mouse:up", "mouse:down:before", "mouse:move:before", "mouse:up:before", "mouse:over", "mouse:out", "mouse:dblclick", "dragover", "dragenter", "dragleave", "drop"];
-
-
-
-/* harmony default export */ var FabricCanvasvue_type_script_lang_js_ = ({
-  name: "FabricCanvas",
-  mixins: [fabricStaticCanvas],
-  props: {
-    id: {
-      type: String,
-      required: false,
-      default: "c"
-    },
-    backgroundColor: {
-      type: String,
-      required: false,
-      default: ""
-    },
-    width: {
-      type: Number,
-      required: false,
-      default: 600
-    },
-    height: {
-      type: Number,
-      required: false,
-      default: 400
-    }
-  },
-  data: function data() {
-    return {
-      canvas: null,
-      type: "canvas"
-    };
-  },
-  provide: function provide() {
-    var _this = this;
-
-    return {
-      $canvas: function $canvas() {
-        return _this.canvas;
-      },
-      $group: function $group() {
-        return null;
-      },
-      fabric: fabric
-    };
-  },
-  mounted: function mounted() {
-    var _this2 = this;
-
-    this.canvas = new fabric["Canvas"](this.id);
-    canvasEvents.forEach(function (event) {
-      var vueEvent = event.split(":").join("-");
-
-      _this2.canvas.on(event, function (e) {
-        _this2.$emit(vueEvent, e);
-      });
-    });
-  },
-  beforeDestroy: function beforeDestroy() {
-    var _this3 = this;
-
-    canvasEvents.forEach(function (event) {
-      var vueEvent = event.split(":").join("-");
-
-      _this3.canvas.off(event, _this3.$emit(vueEvent));
-    });
-  }
-});
-// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_FabricCanvasvue_type_script_lang_js_ = (FabricCanvasvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/FabricCanvas.vue?vue&type=style&index=0&lang=css&
-var FabricCanvasvue_type_style_index_0_lang_css_ = __webpack_require__("6101");
-
-// CONCATENATED MODULE: ./src/components/FabricCanvas.vue
-
-
-
-
-
-
-/* normalize component */
-
-var FabricCanvas_component = normalizeComponent(
-  components_FabricCanvasvue_type_script_lang_js_,
-  FabricCanvasvue_type_template_id_2fd8f47c_render,
-  FabricCanvasvue_type_template_id_2fd8f47c_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var FabricCanvas = (FabricCanvas_component.exports);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
 var es_array_includes = __webpack_require__("caad");
 
@@ -37215,6 +37046,261 @@ var watchProp = function watchProp(key, deep) {
     }
   }
 });
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricBackgroundImage.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+
+
+
+function FabricBackgroundImagevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function FabricBackgroundImagevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricBackgroundImagevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricBackgroundImagevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+/* harmony default export */ var FabricBackgroundImagevue_type_script_lang_js_ = ({
+  name: "fabric-BackgroundImage",
+  mixins: [fabricObject],
+  props: {
+    url: {
+      type: String,
+      default: "../vue.png"
+    },
+    top: {
+      type: Number,
+      default: 0
+    },
+    left: {
+      type: Number,
+      default: 0
+    }
+  },
+  data: function data() {
+    return {
+      image: null,
+      type: "image"
+    };
+  },
+  render: function render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
+  watch: {
+    parentItem: {
+      handler: function handler(newValue) {
+        var _this = this;
+
+        if (newValue) {
+          //Parent is created
+          this.fabric.Image.fromURL(this.url, function (img) {
+            _this.image = img;
+
+            _this.canvas.setBackgroundImage(_this.image, function () {
+              _this.canvas.renderAll();
+            });
+          }, FabricBackgroundImagevue_type_script_lang_js_objectSpread({}, this.definedProps));
+        }
+      },
+      immediate: true
+    }
+  },
+  methods: {},
+  beforeDestroy: function beforeDestroy() {}
+});
+// CONCATENATED MODULE: ./src/components/FabricBackgroundImage.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricBackgroundImagevue_type_script_lang_js_ = (FabricBackgroundImagevue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/components/FabricBackgroundImage.vue
+var FabricBackgroundImage_render, FabricBackgroundImage_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var FabricBackgroundImage_component = normalizeComponent(
+  components_FabricBackgroundImagevue_type_script_lang_js_,
+  FabricBackgroundImage_render,
+  FabricBackgroundImage_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricBackgroundImage = (FabricBackgroundImage_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"70eeb35d-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=2fd8f47c&
+var FabricCanvasvue_type_template_id_2fd8f47c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":_vm.id,"width":_vm.width,"height":_vm.height}}),_vm._t("default")],2)}
+var FabricCanvasvue_type_template_id_2fd8f47c_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=template&id=2fd8f47c&
+
+// EXTERNAL MODULE: ./node_modules/fabric/dist/fabric.js
+var fabric = __webpack_require__("7a94");
+
+// CONCATENATED MODULE: ./src/components/fabricStaticCanvas.js
+
+//const OBJECT_EVENTS = ["before:render", "after:render", "canvas:cleared", "object:added", "object:removed"];
+/* harmony default export */ var fabricStaticCanvas = ({
+  name: "fabric-static-canvas",
+  props: {
+    allowTouchScrolling: Boolean,
+    backgroundColor: String,
+    //backgroundImage :fabric.Image,
+    backgroundVpt: {
+      type: Boolean,
+      default: true
+    },
+    //clipPath :fabric.Object,
+    controlsAboveOverlay: Boolean,
+    enableRetinaScaling: {
+      type: Boolean,
+      default: true
+    },
+    FX_DURATION: {
+      type: Number,
+      default: 500
+    },
+    imageSmoothingEnabled: {
+      type: Boolean,
+      default: true
+    },
+    includeDefaultValues: {
+      type: Boolean,
+      default: true
+    },
+    overlayColor: String,
+    //overlayImage :fabric.Image,
+    overlayVpt: {
+      type: Boolean,
+      default: true
+    },
+    renderOnAddRemove: {
+      type: Boolean,
+      default: true
+    },
+    skipOffscreen: {
+      type: Boolean,
+      default: true
+    },
+    stateful: Boolean,
+    svgViewportTransformation: {
+      type: Boolean,
+      default: true
+    },
+    viewportTransform: Array
+  }
+});
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+var canvasEvents = [//Static Canvas events
+"before:render", "after:render", "canvas:cleared", "object:added", "object:removed", //Canvas events
+"object:modified", "object:rotated", "object:scaled", "object:moved", "object:skewed", "object:rotating", "object:scaling", "object:moving", "object:skewing", "before:transform", "before:selection:cleared", "selection:cleared", "selection:updated", "selection:created", "path:created", "mouse:down", "mouse:move", "mouse:up", "mouse:down:before", "mouse:move:before", "mouse:up:before", "mouse:over", "mouse:out", "mouse:dblclick", "dragover", "dragenter", "dragleave", "drop"];
+
+
+
+/* harmony default export */ var FabricCanvasvue_type_script_lang_js_ = ({
+  name: "FabricCanvas",
+  mixins: [fabricStaticCanvas],
+  props: {
+    id: {
+      type: String,
+      required: false,
+      default: "c"
+    },
+    backgroundColor: {
+      type: String,
+      required: false,
+      default: ""
+    },
+    width: {
+      type: Number,
+      required: false,
+      default: 600
+    },
+    height: {
+      type: Number,
+      required: false,
+      default: 400
+    }
+  },
+  data: function data() {
+    return {
+      canvas: null,
+      type: "canvas"
+    };
+  },
+  provide: function provide() {
+    var _this = this;
+
+    return {
+      $canvas: function $canvas() {
+        return _this.canvas;
+      },
+      $group: function $group() {
+        return null;
+      },
+      fabric: fabric
+    };
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.canvas = new fabric["Canvas"](this.id);
+    canvasEvents.forEach(function (event) {
+      var vueEvent = event.split(":").join("-");
+
+      _this2.canvas.on(event, function (e) {
+        _this2.$emit(vueEvent, e);
+      });
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    var _this3 = this;
+
+    canvasEvents.forEach(function (event) {
+      var vueEvent = event.split(":").join("-");
+
+      _this3.canvas.off(event, _this3.$emit(vueEvent));
+    });
+  }
+});
+// CONCATENATED MODULE: ./src/components/FabricCanvas.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_FabricCanvasvue_type_script_lang_js_ = (FabricCanvasvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/FabricCanvas.vue?vue&type=style&index=0&lang=css&
+var FabricCanvasvue_type_style_index_0_lang_css_ = __webpack_require__("6101");
+
+// CONCATENATED MODULE: ./src/components/FabricCanvas.vue
+
+
+
+
+
+
+/* normalize component */
+
+var FabricCanvas_component = normalizeComponent(
+  components_FabricCanvasvue_type_script_lang_js_,
+  FabricCanvasvue_type_template_id_2fd8f47c_render,
+  FabricCanvasvue_type_template_id_2fd8f47c_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var FabricCanvas = (FabricCanvas_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCircle.vue?vue&type=script&lang=js&
 
 
@@ -39279,8 +39365,10 @@ var FabricTriangle_component = normalizeComponent(
 
 
 
+
 var VueFabricWrapper = {
   FabricAnimation: FabricAnimation,
+  FabricBackgroundImage: FabricBackgroundImage,
   FabricCanvas: FabricCanvas,
   FabricCircle: FabricCircle,
   FabricDotGrid: FabricDotGrid,
@@ -39306,6 +39394,7 @@ Object.keys(VueFabricWrapper).forEach(function (name) {
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 /* concated harmony reexport FabricAnimation */__webpack_require__.d(__webpack_exports__, "FabricAnimation", function() { return FabricAnimation; });
+/* concated harmony reexport FabricBackgroundImage */__webpack_require__.d(__webpack_exports__, "FabricBackgroundImage", function() { return FabricBackgroundImage; });
 /* concated harmony reexport FabricCanvas */__webpack_require__.d(__webpack_exports__, "FabricCanvas", function() { return FabricCanvas; });
 /* concated harmony reexport FabricCircle */__webpack_require__.d(__webpack_exports__, "FabricCircle", function() { return FabricCircle; });
 /* concated harmony reexport FabricDotGrid */__webpack_require__.d(__webpack_exports__, "FabricDotGrid", function() { return FabricDotGrid; });
