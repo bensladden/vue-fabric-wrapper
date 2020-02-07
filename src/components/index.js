@@ -11,6 +11,7 @@ import FabricLineGrid from "./FabricLineGrid.vue";
 import FabricGroup from "./FabricGroup.vue";
 import FabricImageFromURL from "./FabricImageFromURL.vue";
 import FabricLine from "./FabricLine.vue";
+import FabricOverlayImage from "./FabricOverlayImage.vue";
 import FabricPath from "./FabricPath.vue";
 import FabricPolygon from "./FabricPolygon.vue";
 import FabricPolyline from "./FabricLine.vue";
@@ -32,6 +33,7 @@ const VueFabricWrapper = {
   FabricGroup,
   FabricImageFromURL,
   FabricLine,
+  FabricOverlayImage,
   FabricPath,
   FabricPolygon,
   FabricPolyline,
@@ -59,6 +61,7 @@ export {
   FabricGroup,
   FabricImageFromURL,
   FabricLine,
+  FabricOverlayImage,
   FabricPath,
   FabricPolygon,
   FabricPolyline,

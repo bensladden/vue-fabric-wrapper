@@ -18,7 +18,7 @@ export default {
     overlayVpt: { type: Boolean, default: true },
     renderOnAddRemove: { type: Boolean, default: true },
     skipOffscreen: { type: Boolean, default: true },
-    stateful: Boolean,
+    stateful: { type: Boolean, default: true },
     svgViewportTransformation: { type: Boolean, default: true },
     viewportTransform: Array
   }

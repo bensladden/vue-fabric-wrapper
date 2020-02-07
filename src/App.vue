@@ -10,6 +10,7 @@
     <h2>Dot Grid</h2>
     <dot-grid />
     <fabric-canvas
+      :id="'events'"
       :height="400"
       :width="400"
       @object-moved="objMoved"
@@ -42,6 +43,10 @@
     <div id="drag1" @dragstart="dragStart" class="draggable" draggable></div>
     {{ canvas }}
     <button @click="setText">image</button>{{ image }}
+    <fabric-canvas>
+      <fabric-svg-from-url :id="'ttyuud'"></fabric-svg-from-url>
+      <fabric-overlay-image :id="3455667"></fabric-overlay-image>
+    </fabric-canvas>
   </div>
 </template>
 
@@ -52,6 +57,7 @@ import LineGrid from "./examples/LineGrid";
 import DotGrid from "./examples/DotGrid";
 import FabricAnimation from "./components/FabricAnimation";
 import FabricBackgroundImage from "./components/FabricBackgroundImage";
+import FabricOverlayImage from "./components/FabricOverlayImage";
 import FabricCanvas from "./components/FabricCanvas";
 import FabricCircle from "./components/FabricCircle";
 import FabricEllipse from "./components/FabricEllipse";
@@ -75,6 +81,7 @@ export default {
     LineGrid,
     DotGrid,
     FabricBackgroundImage,
+    FabricOverlayImage,
     FabricCanvas,
     FabricGradient,
     FabricGroup,

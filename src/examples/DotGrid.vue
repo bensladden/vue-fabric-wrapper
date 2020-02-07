@@ -1,11 +1,15 @@
 <template>
   <div>
-    <fabric-canvas :id="'gridtesting2'" :height="400" :width="400">
+    <fabric-canvas
+      :id="'gridtesting2'"
+      :height.sync="gridHeight"
+      :width.sync="gridWidth"
+    >
       <fabric-dot-grid
         :id="'gridtesting2'"
         :gridSize="gridSize"
-        :gridHeight="gridHeight"
-        :gridWidth="gridWidth"
+        :gridHeight.sync="gridHeight"
+        :gridWidth.sync="gridWidth"
       ></fabric-dot-grid>
       <fabric-rectangle :id="'rectGridTesting2'"></fabric-rectangle>
     </fabric-canvas>
@@ -13,19 +17,31 @@
       <b-row>
         <b-col>Grid Size:</b-col>
         <b-col>
-          <b-form-input type="number" v-model.number="gridSize" min="10"></b-form-input>
+          <b-form-input
+            type="number"
+            v-model.number="gridSize"
+            min="10"
+          ></b-form-input>
         </b-col>
       </b-row>
       <b-row>
         <b-col>Grid Height:</b-col>
         <b-col>
-          <b-form-input type="number" v-model.number="gridHeight" min="100"></b-form-input>
+          <b-form-input
+            type="number"
+            v-model.number="gridHeight"
+            min="100"
+          ></b-form-input>
         </b-col>
       </b-row>
       <b-row>
         <b-col>Grid Width:</b-col>
         <b-col>
-          <b-form-input type="number" v-model.number="gridWidth" min="100"></b-form-input>
+          <b-form-input
+            type="number"
+            v-model.number="gridWidth"
+            min="100"
+          ></b-form-input>
         </b-col>
       </b-row>
     </b-container>
