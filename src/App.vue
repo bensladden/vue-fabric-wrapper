@@ -44,9 +44,10 @@
     {{ canvas }}
     <button @click="setText">image</button>{{ image }}
     <fabric-canvas>
-      <fabric-svg-from-url :id="'ttyuud'"></fabric-svg-from-url>
+      <fabric-svg-from-url :id="'ttyuud' + newId"></fabric-svg-from-url>
       <fabric-overlay-image :id="3455667"></fabric-overlay-image>
     </fabric-canvas>
+    <b-form-input v-model="newId"></b-form-input>
   </div>
 </template>
 
@@ -94,22 +95,9 @@ export default {
   data() {
     return {
       startAnimation: false,
-      headPosLeft: 250,
-      headPosTop: 125,
-      bodyPosLeft: 250,
-      bodyPosTop: 175,
-      waistPosLeft: 250,
-      waistPosTop: 250,
-      leftHandPosLeft: 175,
-      leftHandPosTop: 225,
-      rightHandPosLeft: 325,
-      rightHandPosTop: 225,
-      leftFootPosLeft: 200,
-      leftFootPosTop: 350,
-      rightFootPosLeft: 300,
-      rightFootPosTop: 350,
+      image: "",
       canvas: null,
-      image: ""
+      newId: "hello"
     };
   },
   methods: {

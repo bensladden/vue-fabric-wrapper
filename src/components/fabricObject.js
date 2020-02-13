@@ -54,6 +54,13 @@ const watchEmitProp = (key, deep) => ({
 const watchProp = (key, deep) => ({
   handler(newValue) {
     //If the prop did not cause the update there is no updating the canvas
+    if (typeof this.item == "undefined") {
+      return;
+    }
+    if (key === "id") {
+      this.item.id = newValue;
+      return;
+    }
     if (this.item.get(key) === newValue) {
       return;
     }
@@ -246,9 +253,13 @@ export default {
   beforeDestroy() {
     this.destroyEvents();
     if (this.parentType == "group") {
-      this.group.removeWithUpdate(this.item);
+      if (this.group) {
+        this.group.removeWithUpdate(this.item);
+      }
     } else {
-      this.canvas.remove(this.item);
+      if (this.canvas) {
+        this.canvas.remove(this.item);
+      }
     }
   }
 };
