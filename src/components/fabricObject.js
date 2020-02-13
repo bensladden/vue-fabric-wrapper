@@ -39,6 +39,22 @@ const EMIT_PROPS = [
   "width"
 ];
 
+//Props that require a render once changed
+const REQUIRE_RENDER = [
+  "angle",
+  "height",
+  "left",
+  "originX",
+  "originY",
+  "scaleX",
+  "scaleY",
+  "skewX",
+  "skewY",
+  "top",
+  "width",
+  "visible"
+];
+
 //Monitor the fabric Object (item) and emit an update to allow .sync usage
 const watchEmitProp = (key, deep) => ({
   handler(newValue) {
@@ -65,7 +81,7 @@ const watchProp = (key, deep) => ({
       return;
     }
     this.item.set(key, newValue);
-    if (EMIT_PROPS.includes(key)) {
+    if (REQUIRE_RENDER.includes(key)) {
       this.canvas.renderAll();
     }
   },
