@@ -178,6 +178,13 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 /***/ }),
 
+/***/ "0620":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "06cf":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1527,10 +1534,10 @@ module.exports = function (bitmap, value) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FabricCanvas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("c04a");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FabricCanvas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FabricCanvas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_lib_index_js_vue_loader_options_FabricCanvas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0620");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_lib_index_js_vue_loader_options_FabricCanvas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_lib_index_js_vue_loader_options_FabricCanvas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FabricCanvas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_cli_service_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_cli_service_node_modules_vue_loader_lib_index_js_vue_loader_options_FabricCanvas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -35466,13 +35473,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "c04a":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
 /***/ "c04e":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35490,27 +35490,6 @@ module.exports = function (input, PREFERRED_STRING) {
   if (!PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
   throw TypeError("Can't convert object to primitive value");
 };
-
-
-/***/ }),
-
-/***/ "c20d":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var trim = __webpack_require__("58a8").trim;
-var whitespaces = __webpack_require__("5899");
-
-var $parseInt = global.parseInt;
-var hex = /^[+-]?0[Xx]/;
-var FORCED = $parseInt(whitespaces + '08') !== 8 || $parseInt(whitespaces + '0x16') !== 22;
-
-// `parseInt` method
-// https://tc39.github.io/ecma262/#sec-parseint-string-radix
-module.exports = FORCED ? function parseInt(string, radix) {
-  var S = trim(String(string));
-  return $parseInt(S, (radix >>> 0) || (hex.test(S) ? 16 : 10));
-} : $parseInt;
 
 
 /***/ }),
@@ -36178,21 +36157,6 @@ module.exports = !fails(function () {
   function F() { /* empty */ }
   F.prototype.constructor = null;
   return Object.getPrototypeOf(new F()) !== F.prototype;
-});
-
-
-/***/ }),
-
-/***/ "e25e":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("23e7");
-var parseIntImplementation = __webpack_require__("c20d");
-
-// `parseInt` method
-// https://tc39.github.io/ecma262/#sec-parseint-string-radix
-$({ global: true, forced: parseInt != parseIntImplementation }, {
-  parseInt: parseIntImplementation
 });
 
 
@@ -36914,12 +36878,6 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
-var es_symbol = __webpack_require__("a4d3");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
-var es_array_filter = __webpack_require__("4de4");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
 var es_array_for_each = __webpack_require__("4160");
 
@@ -36929,19 +36887,25 @@ var es_array_index_of = __webpack_require__("c975");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__("a9e3");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
-var es_object_get_own_property_descriptor = __webpack_require__("e439");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js
-var es_object_get_own_property_descriptors = __webpack_require__("dbb4");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
 var es_object_keys = __webpack_require__("b64b");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
 var web_dom_collections_for_each = __webpack_require__("159b");
 
-// CONCATENATED MODULE: ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/helpers/esm/defineProperty.js
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
+var es_symbol = __webpack_require__("a4d3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
+var es_array_filter = __webpack_require__("4de4");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
+var es_object_get_own_property_descriptor = __webpack_require__("e439");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js
+var es_object_get_own_property_descriptors = __webpack_require__("dbb4");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -36956,7 +36920,7 @@ function _defineProperty(obj, key, value) {
 
   return obj;
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricAnimation.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js
 
 
 
@@ -36966,11 +36930,45 @@ function _defineProperty(obj, key, value) {
 
 
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricAnimation.vue?vue&type=script&lang=js&
 
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
 
 /* harmony default export */ var FabricAnimationvue_type_script_lang_js_ = ({
   render: function render(h) {
@@ -37008,7 +37006,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       return this.$item();
     },
     definedProps: function definedProps() {
-      var obj = _objectSpread({}, this.$props);
+      var obj = _objectSpread2({}, this.$props);
 
       Object.keys(obj).forEach(function (key) {
         if (obj[key] === undefined) {
@@ -37042,7 +37040,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
         };
       }
 
-      this.item.animate(this.animateKeys, _objectSpread({
+      this.item.animate(this.animateKeys, _objectSpread2({
         duration: this.animateDuration
       }, easing, {
         onChange: function onChange() {
@@ -37061,7 +37059,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 });
 // CONCATENATED MODULE: ./src/components/FabricAnimation.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_FabricAnimationvue_type_script_lang_js_ = (FabricAnimationvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
@@ -37200,25 +37198,24 @@ var es_string_iterator = __webpack_require__("3ca3");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
 var web_dom_collections_iterator = __webpack_require__("ddb0");
 
-// CONCATENATED MODULE: ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/helpers/esm/typeof.js
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
 
 
 
 
 
 
-
-
-function _typeof2(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
 
 function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
-      return _typeof2(obj);
+      return typeof obj;
     };
   } else {
     _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
     };
   }
 
@@ -37232,15 +37229,6 @@ function _typeof(obj) {
 
 
 
-
-
-
-
-
-
-function fabricObject_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function fabricObject_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { fabricObject_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { fabricObject_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var OBJECT_EVENTS = ["added", "removed", "selected", "deselected", "modified", "moved", "scaled", "rotated", "skewed", "rotating", "scaling", "moving", "skewing", "mousedown", "mouseup", "mouseover", "mouseout", "mousewheel", "mousedblclick", "dragover", "dragenter", "dragleave", "drop"]; //Props to change via interaction and need to be emitted for prop.sync usage
 
@@ -37265,6 +37253,15 @@ var watchProp = function watchProp(key, deep) {
   return {
     handler: function handler(newValue) {
       //If the prop did not cause the update there is no updating the canvas
+      if (typeof this.item == "undefined") {
+        return;
+      }
+
+      if (key === "id") {
+        this.item.id = newValue;
+        return;
+      }
+
       if (this.item.get(key) === newValue) {
         return;
       }
@@ -37458,7 +37455,7 @@ var watchProp = function watchProp(key, deep) {
       return this.$group();
     },
     definedProps: function definedProps() {
-      var obj = fabricObject_objectSpread({}, this.$props);
+      var obj = _objectSpread2({}, this.$props);
 
       Object.keys(obj).forEach(function (key) {
         if (obj[key] === undefined) {
@@ -37508,7 +37505,7 @@ var watchProp = function watchProp(key, deep) {
 
       OBJECT_EVENTS.forEach(function (event) {
         _this2.item.on(event, function (e) {
-          _this2.$emit(event, fabricObject_objectSpread({
+          _this2.$emit(event, _objectSpread2({
             id: _this2.id
           }, e));
         });
@@ -37555,26 +37552,18 @@ var watchProp = function watchProp(key, deep) {
     this.destroyEvents();
 
     if (this.parentType == "group") {
-      this.group.removeWithUpdate(this.item);
+      if (this.group) {
+        this.group.removeWithUpdate(this.item);
+      }
     } else {
-      this.canvas.remove(this.item);
+      if (this.canvas) {
+        this.canvas.remove(this.item);
+      }
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricBackgroundImage.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricBackgroundImage.vue?vue&type=script&lang=js&
 
-
-
-
-
-
-
-
-
-
-function FabricBackgroundImagevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricBackgroundImagevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricBackgroundImagevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricBackgroundImagevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 /* harmony default export */ var FabricBackgroundImagevue_type_script_lang_js_ = ({
@@ -37616,7 +37605,7 @@ function FabricBackgroundImagevue_type_script_lang_js_objectSpread(target) { for
             _this.canvas.setBackgroundImage(_this.image, function () {
               _this.canvas.renderAll();
             });
-          }, FabricBackgroundImagevue_type_script_lang_js_objectSpread({}, this.definedProps));
+          }, _objectSpread2({}, this.definedProps));
         }
       },
       immediate: true
@@ -37647,7 +37636,7 @@ var FabricBackgroundImage_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricBackgroundImage = (FabricBackgroundImage_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4225c83a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=1fda5628&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01e31295-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=template&id=1fda5628&
 var FabricCanvasvue_type_template_id_1fda5628_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('canvas',{attrs:{"id":_vm.id}}),_vm._t("default")],2)}
 var FabricCanvasvue_type_template_id_1fda5628_staticRenderFns = []
 
@@ -37722,7 +37711,7 @@ var fabric = __webpack_require__("7a94");
     viewportTransform: Array
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCanvas.vue?vue&type=script&lang=js&
 
 
 
@@ -37730,15 +37719,6 @@ var fabric = __webpack_require__("7a94");
 
 
 
-
-
-
-
-
-
-function FabricCanvasvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricCanvasvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricCanvasvue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricCanvasvue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 //
 //
@@ -37959,7 +37939,7 @@ var canvasEvents = [//Static Canvas events
   },
   computed: {
     definedProps: function definedProps() {
-      var obj = FabricCanvasvue_type_script_lang_js_objectSpread({}, this.$props);
+      var obj = _objectSpread2({}, this.$props);
 
       Object.keys(obj).forEach(function (key) {
         if (obj[key] === undefined) {
@@ -37970,7 +37950,7 @@ var canvasEvents = [//Static Canvas events
     }
   },
   mounted: function mounted() {
-    this.canvas = new fabric["Canvas"](this.id, FabricCanvasvue_type_script_lang_js_objectSpread({}, this.definedProps));
+    this.canvas = new fabric["Canvas"](this.id, _objectSpread2({}, this.definedProps));
     this.createEvents();
   },
   beforeDestroy: function beforeDestroy() {
@@ -38042,20 +38022,8 @@ var FabricCanvas_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricCanvas = (FabricCanvas_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCircle.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricCircle.vue?vue&type=script&lang=js&
 
-
-
-
-
-
-
-
-
-
-function FabricCirclevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricCirclevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricCirclevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricCirclevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 /* harmony default export */ var FabricCirclevue_type_script_lang_js_ = ({
@@ -38093,7 +38061,7 @@ function FabricCirclevue_type_script_lang_js_objectSpread(target) { for (var i =
       handler: function handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.circle = new this.fabric.Circle(FabricCirclevue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.circle = new this.fabric.Circle(_objectSpread2({}, this.definedProps));
 
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.circle);
@@ -38133,15 +38101,12 @@ var FabricCircle_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricCircle = (FabricCircle_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4225c83a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricDotGrid.vue?vue&type=template&id=3c7a4f92&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01e31295-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricDotGrid.vue?vue&type=template&id=3c7a4f92&
 var FabricDotGridvue_type_template_id_3c7a4f92_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('fabric-rectangle',{attrs:{"id":_vm.id + 'rect',"width":_vm.gridWidth,"height":_vm.gridHeight,"stroke":'#ccc',"fill":'transparent',"selectable":false}}),_vm._l((_vm.dots),function(dot,index){return _c('fabric-circle',{key:_vm.id + 'dot' + index,attrs:{"id":_vm.id + 'dot' + index,"left":dot.left,"top":dot.top,"radius":1,"stroke":'#ccc',"fill":'#ccc',"selectable":false}})}),_c('fabric-line',{attrs:{"id":_vm.id + 'leftGuideLine',"visible":_vm.showLeftGuideLine,"x1":_vm.objectMovingLeft,"y1":0,"x2":_vm.objectMovingLeft,"y2":_vm.gridHeight,"stroke":'rgba(102,153,255,0.5)',"selectable":false}}),_c('fabric-line',{attrs:{"id":_vm.id + 'rightGuideLine',"visible":_vm.showRightGuideLine,"x1":_vm.objectMovingLeft + _vm.objectMovingWidth,"y1":0,"x2":_vm.objectMovingLeft + _vm.objectMovingWidth,"y2":_vm.gridHeight,"stroke":'rgba(102,153,255,0.5)',"selectable":false}}),_c('fabric-line',{attrs:{"id":_vm.id + 'topGuideLine',"visible":_vm.showTopGuideLine,"x1":0,"y1":_vm.objectMovingTop,"x2":_vm.gridWidth,"y2":_vm.objectMovingTop,"stroke":'rgba(102,153,255,0.5)',"selectable":false}}),_c('fabric-line',{attrs:{"id":_vm.id + 'bottomGuideLine',"visible":_vm.showBottomGuideLine,"x1":0,"y1":_vm.objectMovingTop + _vm.objectMovingHeight,"x2":_vm.gridWidth,"y2":_vm.objectMovingTop + _vm.objectMovingHeight,"selectable":false,"stroke":'rgba(102,153,255,0.5)'}})],2)}
 var FabricDotGridvue_type_template_id_3c7a4f92_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/FabricDotGrid.vue?vue&type=template&id=3c7a4f92&
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.parse-int.js
-var es_parse_int = __webpack_require__("e25e");
 
 // EXTERNAL MODULE: ./node_modules/regenerator-runtime/runtime.js
 var runtime = __webpack_require__("96cf");
@@ -38149,7 +38114,7 @@ var runtime = __webpack_require__("96cf");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("e6cf");
 
-// CONCATENATED MODULE: ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
 
 
 
@@ -38188,20 +38153,8 @@ function _asyncToGenerator(fn) {
     });
   };
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricRectangle.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricRectangle.vue?vue&type=script&lang=js&
 
-
-
-
-
-
-
-
-
-
-function FabricRectanglevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricRectanglevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricRectanglevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricRectanglevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 /* harmony default export */ var FabricRectanglevue_type_script_lang_js_ = ({
@@ -38243,7 +38196,7 @@ function FabricRectanglevue_type_script_lang_js_objectSpread(target) { for (var 
       handler: function handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.rect = new this.fabric.Rect(FabricRectanglevue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.rect = new this.fabric.Rect(_objectSpread2({}, this.definedProps));
 
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.rect);
@@ -38283,20 +38236,8 @@ var FabricRectangle_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricRectangle = (FabricRectangle_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLine.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLine.vue?vue&type=script&lang=js&
 
-
-
-
-
-
-
-
-
-
-function FabricLinevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricLinevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricLinevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricLinevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 /* harmony default export */ var FabricLinevue_type_script_lang_js_ = ({
@@ -38342,7 +38283,7 @@ function FabricLinevue_type_script_lang_js_objectSpread(target) { for (var i = 1
       handler: function handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.line = new this.fabric.Line([this.x1, this.y1, this.x2, this.y2], FabricLinevue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.line = new this.fabric.Line([this.x1, this.y1, this.x2, this.y2], _objectSpread2({}, this.definedProps));
 
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.line);
@@ -38382,8 +38323,7 @@ var FabricLine_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricLine = (FabricLine_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricDotGrid.vue?vue&type=script&lang=js&
-
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricDotGrid.vue?vue&type=script&lang=js&
 
 
 
@@ -38549,8 +38489,10 @@ var FabricLine_component = normalizeComponent(
     }
   },
   methods: {
-    setup: function () {
-      var _setup = _asyncToGenerator(
+    setup: function setup() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee() {
         var i, j;
@@ -38558,16 +38500,16 @@ var FabricLine_component = normalizeComponent(
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                this.dots = [];
+                _this2.dots = [];
                 _context.next = 3;
-                return this.$nextTick();
+                return _this2.$nextTick();
 
               case 3:
-                for (i = 1; i < this.rows; i++) {
-                  for (j = 1; j < this.cols; j++) {
-                    this.dots.push({
-                      left: j * this.gridSize,
-                      top: i * this.gridSize
+                for (i = 1; i < _this2.rows; i++) {
+                  for (j = 1; j < _this2.cols; j++) {
+                    _this2.dots.push({
+                      left: j * _this2.gridSize,
+                      top: i * _this2.gridSize
                     });
                   }
                 }
@@ -38577,15 +38519,9 @@ var FabricLine_component = normalizeComponent(
                 return _context.stop();
             }
           }
-        }, _callee, this);
-      }));
-
-      function setup() {
-        return _setup.apply(this, arguments);
-      }
-
-      return setup;
-    }(),
+        }, _callee);
+      }))();
+    },
     checkSnap: function checkSnap(e) {
       var snapThres = 4;
       this.objectMoving = true;
@@ -38669,20 +38605,8 @@ var FabricDotGrid_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricDotGrid = (FabricDotGrid_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricEllipse.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricEllipse.vue?vue&type=script&lang=js&
 
-
-
-
-
-
-
-
-
-
-function FabricEllipsevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricEllipsevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricEllipsevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricEllipsevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 /* harmony default export */ var FabricEllipsevue_type_script_lang_js_ = ({
@@ -38724,7 +38648,7 @@ function FabricEllipsevue_type_script_lang_js_objectSpread(target) { for (var i 
       handler: function handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.ellipse = new this.fabric.Ellipse(FabricEllipsevue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.ellipse = new this.fabric.Ellipse(_objectSpread2({}, this.definedProps));
 
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.ellipse);
@@ -38764,21 +38688,12 @@ var FabricEllipse_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricEllipse = (FabricEllipse_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGradient.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGradient.vue?vue&type=script&lang=js&
 
 
 
 
 
-
-
-
-
-
-
-function FabricGradientvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricGradientvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricGradientvue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricGradientvue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 /* harmony default export */ var FabricGradientvue_type_script_lang_js_ = ({
   render: function render(h) {
@@ -38855,7 +38770,7 @@ function FabricGradientvue_type_script_lang_js_objectSpread(target) { for (var i
       return this.$item();
     },
     definedProps: function definedProps() {
-      var obj = FabricGradientvue_type_script_lang_js_objectSpread({}, this.$props);
+      var obj = _objectSpread2({}, this.$props);
 
       Object.keys(obj).forEach(function (key) {
         if (obj[key] === undefined) {
@@ -38881,7 +38796,7 @@ function FabricGradientvue_type_script_lang_js_objectSpread(target) { for (var i
         };
       }
 
-      var opts = FabricGradientvue_type_script_lang_js_objectSpread({
+      var opts = _objectSpread2({
         type: this.gradientType
       }, coords, {
         colorStops: this.colorStops,
@@ -38946,15 +38861,14 @@ var FabricGradient_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricGradient = (FabricGradient_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4225c83a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLineGrid.vue?vue&type=template&id=72944ed6&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01e31295-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLineGrid.vue?vue&type=template&id=72944ed6&
 var FabricLineGridvue_type_template_id_72944ed6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('fabric-rectangle',{attrs:{"id":_vm.id + 'rect',"width":_vm.gridWidth,"height":_vm.gridHeight,"stroke":'#ccc',"fill":'transparent',"selectable":false}}),_vm._l((_vm.verticalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'v' + index,attrs:{"id":_vm.id + 'v' + index}},'fabric-line',line,false))}),_vm._l((_vm.horizontalLines),function(line,index){return _c('fabric-line',_vm._b({key:_vm.id + 'h' + index,attrs:{"id":_vm.id + 'h' + index}},'fabric-line',line,false))}),_c('fabric-line',{attrs:{"id":_vm.id + 'leftGuideLine',"visible":_vm.showLeftGuideLine,"x1":_vm.objectMovingLeft,"y1":0,"x2":_vm.objectMovingLeft,"y2":_vm.gridHeight,"stroke":'rgba(102,153,255,0.5)',"selectable":false}}),_c('fabric-line',{attrs:{"id":_vm.id + 'rightGuideLine',"visible":_vm.showRightGuideLine,"x1":_vm.objectMovingLeft + _vm.objectMovingWidth,"y1":0,"x2":_vm.objectMovingLeft + _vm.objectMovingWidth,"y2":_vm.gridHeight,"stroke":'rgba(102,153,255,0.5)',"selectable":false}}),_c('fabric-line',{attrs:{"id":_vm.id + 'topGuideLine',"visible":_vm.showTopGuideLine,"x1":0,"y1":_vm.objectMovingTop,"x2":_vm.gridWidth,"y2":_vm.objectMovingTop,"stroke":'rgba(102,153,255,0.5)',"selectable":false}}),_c('fabric-line',{attrs:{"id":_vm.id + 'bottomGuideLine',"visible":_vm.showBottomGuideLine,"x1":0,"y1":_vm.objectMovingTop + _vm.objectMovingHeight,"x2":_vm.gridWidth,"y2":_vm.objectMovingTop + _vm.objectMovingHeight,"selectable":false,"stroke":'rgba(102,153,255,0.5)'}})],2)}
 var FabricLineGridvue_type_template_id_72944ed6_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/FabricLineGrid.vue?vue&type=template&id=72944ed6&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLineGrid.vue?vue&type=script&lang=js&
-
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricLineGrid.vue?vue&type=script&lang=js&
 
 
 
@@ -39120,8 +39034,10 @@ var FabricLineGridvue_type_template_id_72944ed6_staticRenderFns = []
     }
   },
   methods: {
-    setup: function () {
-      var _setup = _asyncToGenerator(
+    setup: function setup() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee() {
         var i, _i;
@@ -39130,31 +39046,31 @@ var FabricLineGridvue_type_template_id_72944ed6_staticRenderFns = []
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                this.horizontalLines = [];
-                this.verticalLines = [];
+                _this2.horizontalLines = [];
+                _this2.verticalLines = [];
                 _context.next = 4;
-                return this.$nextTick();
+                return _this2.$nextTick();
 
               case 4:
-                for (i = 1; i < this.numberofVerticalLines; i++) {
-                  this.verticalLines.push({
+                for (i = 1; i < _this2.numberofVerticalLines; i++) {
+                  _this2.verticalLines.push({
                     stroke: "#ccc",
                     selectable: false,
-                    x1: i * this.gridSize,
+                    x1: i * _this2.gridSize,
                     y1: 0,
-                    x2: i * this.gridSize,
-                    y2: this.gridHeight
+                    x2: i * _this2.gridSize,
+                    y2: _this2.gridHeight
                   });
                 }
 
-                for (_i = 1; _i < this.numberofHorizontalLines; _i++) {
-                  this.horizontalLines.push({
+                for (_i = 1; _i < _this2.numberofHorizontalLines; _i++) {
+                  _this2.horizontalLines.push({
                     stroke: "#ccc",
                     selectable: false,
                     x1: 0,
-                    y1: _i * this.gridSize,
-                    x2: this.gridWidth,
-                    y2: _i * this.gridSize
+                    y1: _i * _this2.gridSize,
+                    x2: _this2.gridWidth,
+                    y2: _i * _this2.gridSize
                   });
                 }
 
@@ -39163,15 +39079,9 @@ var FabricLineGridvue_type_template_id_72944ed6_staticRenderFns = []
                 return _context.stop();
             }
           }
-        }, _callee, this);
-      }));
-
-      function setup() {
-        return _setup.apply(this, arguments);
-      }
-
-      return setup;
-    }(),
+        }, _callee);
+      }))();
+    },
     checkSnap: function checkSnap(e) {
       var snapThres = 4;
       this.objectMoving = true;
@@ -39278,19 +39188,7 @@ var FabricLineGrid_component = normalizeComponent(
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGroup.vue?vue&type=script&lang=js&
-
-
-
-
-
-
-
-
-
-function FabricGroupvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricGroupvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricGroupvue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricGroupvue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricGroup.vue?vue&type=script&lang=js&
 
 
 
@@ -39326,7 +39224,7 @@ function FabricGroupvue_type_script_lang_js_objectSpread(target) { for (var i = 
       handler: function handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.groupDef = new this.fabric.Group([], FabricGroupvue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.groupDef = new this.fabric.Group([], _objectSpread2({}, this.definedProps));
 
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.groupDef);
@@ -39365,20 +39263,8 @@ var FabricGroup_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricGroup = (FabricGroup_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricImageFromURL.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricImageFromURL.vue?vue&type=script&lang=js&
 
-
-
-
-
-
-
-
-
-
-function FabricImageFromURLvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricImageFromURLvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricImageFromURLvue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricImageFromURLvue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 /* harmony default export */ var FabricImageFromURLvue_type_script_lang_js_ = ({
@@ -39426,7 +39312,7 @@ function FabricImageFromURLvue_type_script_lang_js_objectSpread(target) { for (v
             _this.createEvents();
 
             _this.createWatchers();
-          }, FabricImageFromURLvue_type_script_lang_js_objectSpread({}, this.definedProps));
+          }, _objectSpread2({}, this.definedProps));
         }
       },
       immediate: true
@@ -39457,20 +39343,8 @@ var FabricImageFromURL_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricImageFromURL = (FabricImageFromURL_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricOverlayImage.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricOverlayImage.vue?vue&type=script&lang=js&
 
-
-
-
-
-
-
-
-
-
-function FabricOverlayImagevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricOverlayImagevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricOverlayImagevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricOverlayImagevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 /* harmony default export */ var FabricOverlayImagevue_type_script_lang_js_ = ({
@@ -39512,7 +39386,7 @@ function FabricOverlayImagevue_type_script_lang_js_objectSpread(target) { for (v
             _this.canvas.setOverlayImage(_this.image, function () {
               _this.canvas.renderAll();
             });
-          }, FabricOverlayImagevue_type_script_lang_js_objectSpread({}, this.definedProps));
+          }, _objectSpread2({}, this.definedProps));
         }
       },
       immediate: true
@@ -39543,19 +39417,7 @@ var FabricOverlayImage_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricOverlayImage = (FabricOverlayImage_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricPath.vue?vue&type=script&lang=js&
-
-
-
-
-
-
-
-
-
-function FabricPathvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricPathvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricPathvue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricPathvue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricPath.vue?vue&type=script&lang=js&
 
 
 /* harmony default export */ var FabricPathvue_type_script_lang_js_ = ({
@@ -39590,7 +39452,7 @@ function FabricPathvue_type_script_lang_js_objectSpread(target) { for (var i = 1
       handler: function handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.pathObj = new this.fabric.Path(this.path, FabricPathvue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.pathObj = new this.fabric.Path(this.path, _objectSpread2({}, this.definedProps));
 
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.pathObj);
@@ -39609,14 +39471,14 @@ function FabricPathvue_type_script_lang_js_objectSpread(target) { for (var i = 1
         if (this.parentType === "canvas") {
           this.destroyEvents();
           this.canvas.remove(this.item);
-          this.pathObj = new this.fabric.Path(newValue, FabricPathvue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.pathObj = new this.fabric.Path(newValue, _objectSpread2({}, this.definedProps));
           this.canvas.add(this.pathObj);
         }
 
         if (this.parentType === "group") {
           this.destroyEvents();
           this.parentItem.remove(this.item);
-          this.pathObj = new this.fabric.Path(newValue, FabricPathvue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.pathObj = new this.fabric.Path(newValue, _objectSpread2({}, this.definedProps));
           this.parentItem.addWithUpdate(this.pathObj);
         }
       }
@@ -39648,19 +39510,7 @@ var FabricPath_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricPath = (FabricPath_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricPolygon.vue?vue&type=script&lang=js&
-
-
-
-
-
-
-
-
-
-function FabricPolygonvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricPolygonvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricPolygonvue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricPolygonvue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricPolygon.vue?vue&type=script&lang=js&
 
 
 /* harmony default export */ var FabricPolygonvue_type_script_lang_js_ = ({
@@ -39714,7 +39564,7 @@ function FabricPolygonvue_type_script_lang_js_objectSpread(target) { for (var i 
       handler: function handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.polygon = new this.fabric.Polygon(this.points, FabricPolygonvue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.polygon = new this.fabric.Polygon(this.points, _objectSpread2({}, this.definedProps));
 
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.polygon);
@@ -39754,20 +39604,12 @@ var FabricPolygon_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricPolygon = (FabricPolygon_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricShadow.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricShadow.vue?vue&type=script&lang=js&
 
 
 
 
 
-
-
-
-
-
-function FabricShadowvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricShadowvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricShadowvue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricShadowvue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var FabricShadowvue_type_script_lang_js_watchProp = function watchProp(key, deep) {
   return {
@@ -39821,7 +39663,7 @@ var FabricShadowvue_type_script_lang_js_watchProp = function watchProp(key, deep
       return this.$item();
     },
     definedProps: function definedProps() {
-      var obj = FabricShadowvue_type_script_lang_js_objectSpread({}, this.$props);
+      var obj = _objectSpread2({}, this.$props);
 
       Object.keys(obj).forEach(function (key) {
         if (obj[key] === undefined) {
@@ -39851,7 +39693,7 @@ var FabricShadowvue_type_script_lang_js_watchProp = function watchProp(key, deep
   methods: {
     applyshadow: function applyshadow() {
       if (this.item) {
-        this.item.setShadow(FabricShadowvue_type_script_lang_js_objectSpread({}, this.definedProps));
+        this.item.setShadow(_objectSpread2({}, this.definedProps));
       }
     }
   }
@@ -39878,14 +39720,14 @@ var FabricShadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricShadow = (FabricShadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4225c83a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01e31295-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
 var FabricSVGFromURLvue_type_template_id_803e1144_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({},'fabric-group',_vm.$props,false),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
 var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
 
 
 // CONCATENATED MODULE: ./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=script&lang=js&
 
 //
 //
@@ -39962,20 +39804,8 @@ var FabricSVGFromURL_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricSVGFromURL = (FabricSVGFromURL_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricText.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricText.vue?vue&type=script&lang=js&
 
-
-
-
-
-
-
-
-
-
-function FabricTextvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricTextvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricTextvue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricTextvue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 /* harmony default export */ var FabricTextvue_type_script_lang_js_ = ({
@@ -40030,7 +39860,7 @@ function FabricTextvue_type_script_lang_js_objectSpread(target) { for (var i = 1
       handler: function handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.textObj = new this.fabric.Text(this.text, FabricTextvue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.textObj = new this.fabric.Text(this.text, _objectSpread2({}, this.definedProps));
 
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.textObj);
@@ -40070,20 +39900,8 @@ var FabricText_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricText = (FabricText_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricTriangle.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricTriangle.vue?vue&type=script&lang=js&
 
-
-
-
-
-
-
-
-
-
-function FabricTrianglevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function FabricTrianglevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricTrianglevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricTrianglevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 /* harmony default export */ var FabricTrianglevue_type_script_lang_js_ = ({
@@ -40125,7 +39943,7 @@ function FabricTrianglevue_type_script_lang_js_objectSpread(target) { for (var i
       handler: function handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.triangle = new this.fabric.Triangle(FabricTrianglevue_type_script_lang_js_objectSpread({}, this.definedProps));
+          this.triangle = new this.fabric.Triangle(_objectSpread2({}, this.definedProps));
 
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.triangle);
