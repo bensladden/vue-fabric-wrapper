@@ -39664,12 +39664,12 @@ var FabricShadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricShadow = (FabricShadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01e31295-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=0a239d80&
-var FabricSVGFromURLvue_type_template_id_0a239d80_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({attrs:{"id":_vm.id}},'fabric-group',_vm.groupProps,false,true),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
-var FabricSVGFromURLvue_type_template_id_0a239d80_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01e31295-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=05721082&
+var FabricSVGFromURLvue_type_template_id_05721082_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({attrs:{"id":_vm.id}},'fabric-group',_vm.groupProps,false,true),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
+var FabricSVGFromURLvue_type_template_id_05721082_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FabricSVGFromURL.vue?vue&type=template&id=0a239d80&
+// CONCATENATED MODULE: ./src/components/FabricSVGFromURL.vue?vue&type=template&id=05721082&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=script&lang=js&
 function FabricSVGFromURLvue_type_script_lang_js_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { FabricSVGFromURLvue_type_script_lang_js_typeof = function _typeof(obj) { return typeof obj; }; } else { FabricSVGFromURLvue_type_script_lang_js_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return FabricSVGFromURLvue_type_script_lang_js_typeof(obj); }
@@ -39790,7 +39790,7 @@ var watchAttrs = function watchAttrs(key, deep) {
           }
         }
 
-        _this3.$watch(key, watchAttrs(key, true));
+        _this3.$watch("$attrs." + key, watchAttrs(key, true));
       });
     }
   },
@@ -39810,8 +39810,8 @@ var watchAttrs = function watchAttrs(key, deep) {
 
 var FabricSVGFromURL_component = normalizeComponent(
   components_FabricSVGFromURLvue_type_script_lang_js_,
-  FabricSVGFromURLvue_type_template_id_0a239d80_render,
-  FabricSVGFromURLvue_type_template_id_0a239d80_staticRenderFns,
+  FabricSVGFromURLvue_type_template_id_05721082_render,
+  FabricSVGFromURLvue_type_template_id_05721082_staticRenderFns,
   false,
   null,
   null,

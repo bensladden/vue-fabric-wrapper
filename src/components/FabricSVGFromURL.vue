@@ -107,7 +107,7 @@ export default {
             return;
           }
         }
-        this.$watch(key, watchAttrs(key, true));
+        this.$watch("$attrs." + key, watchAttrs(key, true));
       });
     }
   },
