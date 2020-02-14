@@ -53,6 +53,8 @@
       <fabric-svg-from-url
         :id="'ttyuqqqqqud'"
         :url="svgUrl"
+        :left.sync="svgLeft"
+        :top.sync="svgTop"
       ></fabric-svg-from-url>
     </fabric-canvas>
     <b-button @click="imageInvert">invert</b-button>
@@ -108,7 +110,9 @@ export default {
       canvas: null,
       newId: "hello",
       imageUrl: "../vue.png",
-      svgUrl: "../svg/pipe.svg"
+      svgUrl: "../svg/pipe.svg",
+      svgLeft: 20,
+      svgTop: 30
     };
   },
   methods: {
