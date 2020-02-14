@@ -48,6 +48,16 @@
       <fabric-overlay-image :id="3455667"></fabric-overlay-image>
     </fabric-canvas>
     <b-form-input v-model="newId"></b-form-input>
+    <fabric-canvas :id="'image-update-test'">
+      <FabricImageFromUrl :id="'ttyeeuud'" :url="imageUrl"></FabricImageFromUrl>
+      <fabric-svg-from-url
+        :id="'ttyuqqqqqud'"
+        :url="svgUrl"
+        :left.sync="svgLeft"
+        :top.sync="svgTop"
+      ></fabric-svg-from-url>
+    </fabric-canvas>
+    <b-button @click="imageInvert">invert</b-button>
   </div>
 </template>
 
@@ -89,6 +99,7 @@ export default {
     FabricPolygon,
     FabricPolyline,
     FabricSvgFromUrl,
+    FabricImageFromUrl,
     FabricText,
     FabricShadow
   },
@@ -97,7 +108,11 @@ export default {
       startAnimation: false,
       image: "",
       canvas: null,
-      newId: "hello"
+      newId: "hello",
+      imageUrl: "../vue.png",
+      svgUrl: "../svg/pipe.svg",
+      svgLeft: 20,
+      svgTop: 30
     };
   },
   methods: {
@@ -124,6 +139,15 @@ export default {
         format: "jpeg",
         quality: 0.8
       });
+    },
+    imageInvert() {
+      if (this.imageUrl == "../vue.png") {
+        this.imageUrl = "../vue-down.png";
+        this.svgUrl = "../svg/pipe-end.svg";
+      } else {
+        this.imageUrl = "../vue.png";
+        this.svgUrl = "../svg/pipe.svg";
+      }
     }
   }
 };
