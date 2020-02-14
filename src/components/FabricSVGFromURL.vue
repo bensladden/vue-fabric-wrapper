@@ -38,12 +38,28 @@ export default {
     };
   },
   created() {
-    this.fabric.loadSVGFromURL(this.url, (objs, options) => {
-      this.objs = objs;
-    });
+    this.createSVG();
   },
-
-  methods: {},
-  beforeDestroy() {}
+  watch: {
+    url(newValue) {
+      if (this.objs) {
+        this.destroySVG();
+      }
+      this.createSVG();
+    }
+  },
+  methods: {
+    createSVG() {
+      this.fabric.loadSVGFromURL(this.url, (objs, options) => {
+        this.objs = objs;
+      });
+    },
+    destroySVG() {
+      this.objs = null;
+    }
+  },
+  beforeDestroy() {
+    destroySVG();
+  }
 };
 </script>

@@ -50,6 +50,10 @@
     <b-form-input v-model="newId"></b-form-input>
     <fabric-canvas :id="'image-update-test'">
       <FabricImageFromUrl :id="'ttyeeuud'" :url="imageUrl"></FabricImageFromUrl>
+      <fabric-svg-from-url
+        :id="'ttyuqqqqqud'"
+        :url="svgUrl"
+      ></fabric-svg-from-url>
     </fabric-canvas>
     <b-button @click="imageInvert">invert</b-button>
   </div>
@@ -103,7 +107,8 @@ export default {
       image: "",
       canvas: null,
       newId: "hello",
-      imageUrl: "../vue.png"
+      imageUrl: "../vue.png",
+      svgUrl: "../svg/pipe.svg"
     };
   },
   methods: {
@@ -134,8 +139,10 @@ export default {
     imageInvert() {
       if (this.imageUrl == "../vue.png") {
         this.imageUrl = "../vue-down.png";
+        this.svgUrl = "../svg/pipe-end.svg";
       } else {
         this.imageUrl = "../vue.png";
+        this.svgUrl = "../svg/pipe.svg";
       }
     }
   }
