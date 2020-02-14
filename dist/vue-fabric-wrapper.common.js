@@ -39167,7 +39167,11 @@ var FabricGroup_component = normalizeComponent(
 
 /* harmony default export */ var FabricGroup = (FabricGroup_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricImageFromURL.vue?vue&type=script&lang=js&
+function FabricImageFromURLvue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
+function FabricImageFromURLvue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricImageFromURLvue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { FabricImageFromURLvue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricImageFromURLvue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function FabricImageFromURLvue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 /* harmony default export */ var FabricImageFromURLvue_type_script_lang_js_ = ({
@@ -39190,7 +39194,8 @@ var FabricGroup_component = normalizeComponent(
   data: function data() {
     return {
       image: null,
-      type: "image"
+      type: "image",
+      customWatch: ["url"]
     };
   },
   render: function render(h) {
@@ -39199,30 +39204,57 @@ var FabricGroup_component = normalizeComponent(
   watch: {
     parentItem: {
       handler: function handler(newValue) {
-        var _this = this;
-
         if (newValue) {
           //Parent is created
-          this.fabric.Image.fromURL(this.url, function (img) {
-            _this.image = img;
-
-            if (_this.parentType == "group") {
-              _this.parentItem.addWithUpdate(_this.image);
-            } else {
-              _this.canvas.add(_this.image);
-            }
-
-            _this.createEvents();
-
-            _this.createWatchers();
-          }, _objectSpread2({}, this.definedProps));
+          this.createImage();
         }
       },
       immediate: true
+    },
+    url: function url(newValue) {
+      if (this.parentItem) {
+        if (this.image) {
+          this.destroyImage();
+        }
+
+        this.createImage();
+      }
     }
   },
-  methods: {},
-  beforeDestroy: function beforeDestroy() {}
+  methods: {
+    createImage: function createImage() {
+      var _this = this;
+
+      this.fabric.Image.fromURL(this.url, function (img) {
+        _this.image = img;
+
+        if (_this.parentType == "group") {
+          _this.parentItem.addWithUpdate(_this.image);
+        } else {
+          _this.canvas.add(_this.image);
+        }
+
+        _this.createEvents();
+
+        _this.createWatchers();
+      }, FabricImageFromURLvue_type_script_lang_js_objectSpread({}, this.definedProps));
+    },
+    destroyImage: function destroyImage() {
+      this.destroyEvents();
+
+      if (this.parentType == "group") {
+        if (this.group) {
+          this.group.removeWithUpdate(this.image);
+        }
+      } else {
+        if (this.canvas) {
+          this.canvas.remove(this.image);
+        }
+
+        this.image = null;
+      }
+    }
+  }
 });
 // CONCATENATED MODULE: ./src/components/FabricImageFromURL.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_FabricImageFromURLvue_type_script_lang_js_ = (FabricImageFromURLvue_type_script_lang_js_); 
@@ -39623,14 +39655,15 @@ var FabricShadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var FabricShadow = (FabricShadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01e31295-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
-var FabricSVGFromURLvue_type_template_id_803e1144_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({},'fabric-group',_vm.$props,false),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
-var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01e31295-vue-loader-template"}!./node_modules/@vue/cli-service/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=template&id=0a239d80&
+var FabricSVGFromURLvue_type_template_id_0a239d80_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('fabric-group',_vm._b({attrs:{"id":_vm.id}},'fabric-group',_vm.groupProps,false,true),_vm._l((_vm.objs),function(path,index){return _c('fabric-path',_vm._b({key:_vm.id + '_' + index,attrs:{"id":_vm.id + '_' + index}},'fabric-path',path,false))}),1)}
+var FabricSVGFromURLvue_type_template_id_0a239d80_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/FabricSVGFromURL.vue?vue&type=template&id=803e1144&
+// CONCATENATED MODULE: ./src/components/FabricSVGFromURL.vue?vue&type=template&id=0a239d80&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricSVGFromURL.vue?vue&type=script&lang=js&
+function FabricSVGFromURLvue_type_script_lang_js_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { FabricSVGFromURLvue_type_script_lang_js_typeof = function _typeof(obj) { return typeof obj; }; } else { FabricSVGFromURLvue_type_script_lang_js_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return FabricSVGFromURLvue_type_script_lang_js_typeof(obj); }
 
 //
 //
@@ -39644,10 +39677,42 @@ var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
 //
 //
 
+ //Props to change via interaction and need to be emitted for prop.sync usage
+
+var FabricSVGFromURLvue_type_script_lang_js_EMIT_PROPS = ["angle", "height", "left", "originX", "originY", "scaleX", "scaleY", "skewX", "skewY", "top", "width"]; //Monitor the group Object and emit an update to allow .sync usage
+
+var FabricSVGFromURLvue_type_script_lang_js_watchEmitProp = function watchEmitProp(key, deep) {
+  return {
+    handler: function handler(newValue) {
+      //If the prop caused the update there is no point emitting it back
+      if (this.$attrs[key] === newValue) {
+        return;
+      }
+
+      this.$emit("update:" + key, newValue);
+    },
+    deep: deep
+  };
+}; //Monitor the Props and update the item with the changed value
+
+
+var watchAttrs = function watchAttrs(key, deep) {
+  return {
+    handler: function handler(newValue) {
+      if (this.groupProps[key] === newValue) {
+        return;
+      }
+
+      this.groupProps[key] = newValue;
+    },
+    deep: deep
+  };
+};
 
 /* harmony default export */ var FabricSVGFromURLvue_type_script_lang_js_ = ({
   name: "fabric-svg-from-URL",
   inject: ["fabric"],
+  inheritAttrs: false,
   components: {
     fabricGroup: FabricGroup,
     fabricPath: FabricPath
@@ -39660,30 +39725,69 @@ var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
     url: {
       type: String,
       default: "../svg/pipe.svg"
-    },
-    top: {
-      type: Number,
-      default: 80
-    },
-    left: {
-      type: Number,
-      default: 80
     }
   },
   data: function data() {
     return {
-      objs: null
+      objs: null,
+      groupProps: null,
+      customWatch: ["url"]
     };
   },
   created: function created() {
-    var _this = this;
+    this.groupProps = this.$attrs; //any props that are not in the prop definition are assuemed to be for the group
 
-    this.fabric.loadSVGFromURL(this.url, function (objs, options) {
-      _this.objs = objs;
-    });
+    this.createSVG();
+    this.createGroupAttrWatchers();
+    this.createFabricItemWatchers();
   },
-  methods: {},
-  beforeDestroy: function beforeDestroy() {}
+  watch: {
+    url: function url(newValue) {
+      if (this.objs) {
+        this.destroySVG();
+      }
+
+      this.createSVG();
+    }
+  },
+  methods: {
+    createSVG: function createSVG() {
+      var _this = this;
+
+      this.fabric.loadSVGFromURL(this.url, function (objs, options) {
+        _this.objs = objs;
+      });
+    },
+    destroySVG: function destroySVG() {
+      this.objs = null;
+    },
+    createFabricItemWatchers: function createFabricItemWatchers() {
+      var _this2 = this;
+
+      //Setup Watchers for emmit sync option
+      FabricSVGFromURLvue_type_script_lang_js_EMIT_PROPS.forEach(function (prop) {
+        _this2.$watch("groupProps." + prop, FabricSVGFromURLvue_type_script_lang_js_watchEmitProp(prop, true));
+      });
+    },
+    createGroupAttrWatchers: function createGroupAttrWatchers() {
+      var _this3 = this;
+
+      //Setup prop watches to sync with fabric
+      Object.keys(this.$attrs).forEach(function (key) {
+        //Custom watch check to make sure the mixin also does not genearte a watch
+        if (FabricSVGFromURLvue_type_script_lang_js_typeof(_this3.customWatch) !== ( true ? "undefined" : undefined)) {
+          if (_this3.customWatch.includes(key)) {
+            return;
+          }
+        }
+
+        _this3.$watch(key, watchAttrs(key, true));
+      });
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.destroySVG();
+  }
 });
 // CONCATENATED MODULE: ./src/components/FabricSVGFromURL.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_FabricSVGFromURLvue_type_script_lang_js_ = (FabricSVGFromURLvue_type_script_lang_js_); 
@@ -39697,8 +39801,8 @@ var FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns = []
 
 var FabricSVGFromURL_component = normalizeComponent(
   components_FabricSVGFromURLvue_type_script_lang_js_,
-  FabricSVGFromURLvue_type_template_id_803e1144_render,
-  FabricSVGFromURLvue_type_template_id_803e1144_staticRenderFns,
+  FabricSVGFromURLvue_type_template_id_0a239d80_render,
+  FabricSVGFromURLvue_type_template_id_0a239d80_staticRenderFns,
   false,
   null,
   null,
