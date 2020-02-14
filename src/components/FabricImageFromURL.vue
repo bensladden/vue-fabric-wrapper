@@ -17,7 +17,8 @@ export default {
   data() {
     return {
       image: null,
-      type: "image"
+      type: "image",
+      customWatch: ["url"]
     };
   },
   render(h) {
@@ -28,26 +29,50 @@ export default {
       handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.fabric.Image.fromURL(
-            this.url,
-            img => {
-              this.image = img;
-              if (this.parentType == "group") {
-                this.parentItem.addWithUpdate(this.image);
-              } else {
-                this.canvas.add(this.image);
-              }
-              this.createEvents();
-              this.createWatchers();
-            },
-            { ...this.definedProps }
-          );
+          this.createImage();
         }
       },
       immediate: true
+    },
+    url(newValue) {
+      if (this.parentItem) {
+        if (this.image) {
+          this.destroyImage();
+        }
+        this.createImage();
+      }
     }
   },
-  methods: {},
-  beforeDestroy() {}
+  methods: {
+    createImage() {
+      this.fabric.Image.fromURL(
+        this.url,
+        img => {
+          this.image = img;
+          if (this.parentType == "group") {
+            this.parentItem.addWithUpdate(this.image);
+          } else {
+            this.canvas.add(this.image);
+          }
+          this.createEvents();
+          this.createWatchers();
+        },
+        { ...this.definedProps }
+      );
+    },
+    destroyImage() {
+      this.destroyEvents();
+      if (this.parentType == "group") {
+        if (this.group) {
+          this.group.removeWithUpdate(this.image);
+        }
+      } else {
+        if (this.canvas) {
+          this.canvas.remove(this.image);
+        }
+        this.image = null;
+      }
+    }
+  }
 };
 </script>

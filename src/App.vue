@@ -48,6 +48,10 @@
       <fabric-overlay-image :id="3455667"></fabric-overlay-image>
     </fabric-canvas>
     <b-form-input v-model="newId"></b-form-input>
+    <fabric-canvas :id="'image-update-test'">
+      <FabricImageFromUrl :id="'ttyeeuud'" :url="imageUrl"></FabricImageFromUrl>
+    </fabric-canvas>
+    <b-button @click="imageInvert">invert</b-button>
   </div>
 </template>
 
@@ -89,6 +93,7 @@ export default {
     FabricPolygon,
     FabricPolyline,
     FabricSvgFromUrl,
+    FabricImageFromUrl,
     FabricText,
     FabricShadow
   },
@@ -97,7 +102,8 @@ export default {
       startAnimation: false,
       image: "",
       canvas: null,
-      newId: "hello"
+      newId: "hello",
+      imageUrl: "../vue.png"
     };
   },
   methods: {
@@ -124,6 +130,13 @@ export default {
         format: "jpeg",
         quality: 0.8
       });
+    },
+    imageInvert() {
+      if (this.imageUrl == "../vue.png") {
+        this.imageUrl = "../vue-down.png";
+      } else {
+        this.imageUrl = "../vue.png";
+      }
     }
   }
 };
