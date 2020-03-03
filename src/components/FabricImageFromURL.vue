@@ -49,6 +49,7 @@ export default {
         this.url,
         img => {
           this.image = img;
+          this.$emit("image-loaded", img);
           if (this.parentType == "group") {
             this.parentItem.addWithUpdate(this.image);
           } else {

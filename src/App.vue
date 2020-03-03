@@ -18,7 +18,12 @@
       @after-render="afterRender"
       @canvas-updated="canvasUpdated"
     >
-      <fabric-background-image :id="345667"></fabric-background-image>
+      <fabric-background-image
+        :id="345667"
+        :scaleX="400 / imgWidth"
+        :scaleY="400 / imgHeight"
+        @image-loaded="imageLoaded"
+      ></fabric-background-image>
       <fabric-group :id="3421">
         <fabric-polygon :id="342101">
           <fabric-gradient
@@ -43,9 +48,14 @@
     <div id="drag1" @dragstart="dragStart" class="draggable" draggable></div>
     {{ canvas }}
     <button @click="setText">image</button>{{ image }}
-    <fabric-canvas>
+    <fabric-canvas :id="'overlay'" :height="400" :width="400">
       <fabric-svg-from-url :id="'ttyuud' + newId"></fabric-svg-from-url>
-      <fabric-overlay-image :id="3455667"></fabric-overlay-image>
+      <fabric-overlay-image
+        :id="3455667"
+        :scaleX="400 / overImgWidth"
+        :scaleY="400 / overImgHeight"
+        @image-loaded="overImageLoaded"
+      ></fabric-overlay-image>
     </fabric-canvas>
     <b-form-input v-model="newId"></b-form-input>
     <fabric-canvas :id="'image-update-test'">
@@ -112,12 +122,24 @@ export default {
       imageUrl: "../vue.png",
       svgUrl: "../svg/pipe.svg",
       svgLeft: 20,
-      svgTop: 30
+      svgTop: 30,
+      imgHeight: 1,
+      imgWidth: 1,
+      overImgHeight: 1,
+      overImgWidth: 1
     };
   },
   methods: {
     objMoved(e) {
       console.log("objMoved", e);
+    },
+    imageLoaded(img) {
+      this.imgHeight = img.height;
+      this.imgWidth = img.width;
+    },
+    overImageLoaded(img) {
+      this.overImgHeight = img.height;
+      this.overImgWidth = img.width;
     },
     objDropped(e) {
       // eslint-disable-next-line no-console
