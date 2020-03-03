@@ -37434,8 +37434,37 @@ var watchProp = function watchProp(key, deep) {
   }
 });
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricBackgroundImage.vue?vue&type=script&lang=js&
+function FabricBackgroundImagevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
+function FabricBackgroundImagevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricBackgroundImagevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { FabricBackgroundImagevue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricBackgroundImagevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
+function FabricBackgroundImagevue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+ //Monitor the Props and update the item with the changed value
+
+var watchBackgroundProp = function watchBackgroundProp(key, deep) {
+  return {
+    handler: function handler(newValue) {
+      //If the prop did not cause the update there is no updating the canvas
+      if (typeof this.image == "undefined") {
+        return;
+      }
+
+      if (key === "id") {
+        this.image.id = newValue;
+        return;
+      }
+
+      if (this.image.get(key) === newValue) {
+        return;
+      }
+
+      this.image.set(key, newValue);
+      this.canvas.renderAll();
+    },
+    deep: deep
+  };
+};
 
 /* harmony default export */ var FabricBackgroundImagevue_type_script_lang_js_ = ({
   name: "fabric-BackgroundImage",
@@ -37473,16 +37502,29 @@ var watchProp = function watchProp(key, deep) {
           this.fabric.Image.fromURL(this.url, function (img) {
             _this.image = img;
 
+            _this.$emit("image-loaded", img);
+
             _this.canvas.setBackgroundImage(_this.image, function () {
               _this.canvas.renderAll();
             });
-          }, _objectSpread2({}, this.definedProps));
+
+            _this.createBackgroundPropWatchers();
+          }, FabricBackgroundImagevue_type_script_lang_js_objectSpread({}, this.definedProps));
         }
       },
       immediate: true
     }
   },
-  methods: {},
+  methods: {
+    createBackgroundPropWatchers: function createBackgroundPropWatchers() {
+      var _this2 = this;
+
+      //Setup prop watches to sync with fabric
+      Object.keys(this.$props).forEach(function (key) {
+        _this2.$watch(key, watchBackgroundProp(key, true));
+      });
+    }
+  },
   beforeDestroy: function beforeDestroy() {}
 });
 // CONCATENATED MODULE: ./src/components/FabricBackgroundImage.vue?vue&type=script&lang=js&
@@ -37527,7 +37569,6 @@ var es_string_split = __webpack_require__("1276");
 var fabric = __webpack_require__("7a94");
 
 // CONCATENATED MODULE: ./src/components/fabricStaticCanvas.js
-
 //const OBJECT_EVENTS = ["before:render", "after:render", "canvas:cleared", "object:added", "object:removed"];
 /* harmony default export */ var fabricStaticCanvas = ({
   name: "fabric-static-canvas",
@@ -39237,6 +39278,8 @@ function FabricImageFromURLvue_type_script_lang_js_defineProperty(obj, key, valu
       this.fabric.Image.fromURL(this.url, function (img) {
         _this.image = img;
 
+        _this.$emit("image-loaded", img);
+
         if (_this.parentType == "group") {
           _this.parentItem.addWithUpdate(_this.image);
         } else {
@@ -39288,8 +39331,37 @@ var FabricImageFromURL_component = normalizeComponent(
 
 /* harmony default export */ var FabricImageFromURL = (FabricImageFromURL_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader/lib??vue-loader-options!./src/components/FabricOverlayImage.vue?vue&type=script&lang=js&
+function FabricOverlayImagevue_type_script_lang_js_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
+function FabricOverlayImagevue_type_script_lang_js_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { FabricOverlayImagevue_type_script_lang_js_ownKeys(Object(source), true).forEach(function (key) { FabricOverlayImagevue_type_script_lang_js_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { FabricOverlayImagevue_type_script_lang_js_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
+function FabricOverlayImagevue_type_script_lang_js_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+ //Monitor the Props and update the item with the changed value
+
+var watchOverlayProp = function watchOverlayProp(key, deep) {
+  return {
+    handler: function handler(newValue) {
+      //If the prop did not cause the update there is no updating the canvas
+      if (typeof this.image == "undefined") {
+        return;
+      }
+
+      if (key === "id") {
+        this.image.id = newValue;
+        return;
+      }
+
+      if (this.image.get(key) === newValue) {
+        return;
+      }
+
+      this.image.set(key, newValue);
+      this.canvas.renderAll();
+    },
+    deep: deep
+  };
+};
 
 /* harmony default export */ var FabricOverlayImagevue_type_script_lang_js_ = ({
   name: "fabric-overlay-image",
@@ -39327,16 +39399,29 @@ var FabricImageFromURL_component = normalizeComponent(
           this.fabric.Image.fromURL(this.url, function (img) {
             _this.image = img;
 
+            _this.$emit("image-loaded", img);
+
             _this.canvas.setOverlayImage(_this.image, function () {
               _this.canvas.renderAll();
             });
-          }, _objectSpread2({}, this.definedProps));
+
+            _this.createOverlayPropWatchers();
+          }, FabricOverlayImagevue_type_script_lang_js_objectSpread({}, this.definedProps));
         }
       },
       immediate: true
     }
   },
-  methods: {},
+  methods: {
+    createOverlayPropWatchers: function createOverlayPropWatchers() {
+      var _this2 = this;
+
+      //Setup prop watches to sync with fabric
+      Object.keys(this.$props).forEach(function (key) {
+        _this2.$watch(key, watchOverlayProp(key, true));
+      });
+    }
+  },
   beforeDestroy: function beforeDestroy() {}
 });
 // CONCATENATED MODULE: ./src/components/FabricOverlayImage.vue?vue&type=script&lang=js&
