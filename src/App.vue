@@ -9,6 +9,8 @@
     <line-grid />
     <h2>Dot Grid</h2>
     <dot-grid />
+    <h2>Group</h2>
+    <group />
     <fabric-canvas
       :id="'events'"
       :height="400"
@@ -76,6 +78,7 @@ import StickMan from "./examples/StickMan";
 import Animation from "./examples/Animation";
 import LineGrid from "./examples/LineGrid";
 import DotGrid from "./examples/DotGrid";
+import Group from './examples/Group';
 import FabricAnimation from "./components/FabricAnimation";
 import FabricBackgroundImage from "./components/FabricBackgroundImage";
 import FabricOverlayImage from "./components/FabricOverlayImage";
@@ -101,6 +104,7 @@ export default {
     Animation,
     LineGrid,
     DotGrid,
+    Group,
     FabricBackgroundImage,
     FabricOverlayImage,
     FabricCanvas,
