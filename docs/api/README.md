@@ -246,7 +246,10 @@ All Fabric.Object Props + the following
 | url | `String`| yes | ``|
 
 ### events
-All Fabric.Object Events
+All Fabric.Object Events + the following
+| Event Name |
+|-----------|
+| image-loaded |
 
 ## Line Component
 [Official Docs Link](http://fabricjs.com/docs/fabric.Line.html)
