@@ -39,10 +39,14 @@ export default {
       handler(newValue) {
         if (newValue) {
           //Parent is created
-          this.rect = new this.fabric.Rect({ ...this.definedProps });
           if (this.parentType == "group") {
+            // props should be relative to the group
+            this.definedProps.left += this.parentItem.get('left')
+            this.definedProps.top += this.parentItem.get('top')
+            this.rect = new this.fabric.Rect(this.definedProps);
             this.parentItem.addWithUpdate(this.rect);
           } else {
+            this.rect = new this.fabric.Rect({ ...this.definedProps });
             this.canvas.add(this.rect);
           }
           this.createEvents();
