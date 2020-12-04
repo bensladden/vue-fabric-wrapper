@@ -1,118 +1,54 @@
-<template>
-  <fabric-group :id="id" v-bind.sync="groupProps">
-    <fabric-path
-      v-for="(path, index) in objs"
-      :id="id + '_' + index"
-      :key="id + '_' + index"
-      v-bind="path"
-    ></fabric-path>
-  </fabric-group>
-</template>
-
 <script>
-import fabricGroup from "./FabricGroup";
-import fabricPath from "./FabricPath";
-
-//Props to change via interaction and need to be emitted for prop.sync usage
-const EMIT_PROPS = [
-  "angle",
-  "height",
-  "left",
-  "originX",
-  "originY",
-  "scaleX",
-  "scaleY",
-  "skewX",
-  "skewY",
-  "top",
-  "width"
-];
-
-//Monitor the group Object and emit an update to allow .sync usage
-const watchEmitProp = (key, deep) => ({
-  handler(newValue) {
-    //If the prop caused the update there is no point emitting it back
-    if (this.$attrs[key] === newValue) {
-      return;
-    }
-    this.$emit("update:" + key, newValue);
-  },
-  deep
-});
-//Monitor the Props and update the item with the changed value
-const watchAttrs = (key, deep) => ({
-  handler(newValue) {
-    if (this.groupProps[key] === newValue) {
-      return;
-    }
-    this.groupProps[key] = newValue;
-  },
-  deep
-});
+import fabricObject from "./fabricObject";
 
 export default {
-  name: "fabric-svg-from-URL",
-  inject: ["fabric"],
-  inheritAttrs: false,
-  components: {
-    fabricGroup,
-    fabricPath
-  },
+  name: "FabricSvgFromURLSimple",
+  mixins: [fabricObject],
   props: {
     id: { type: [Number, String], required: true },
-    url: { type: String, default: "../svg/pipe.svg" }
+    url: { type: String, required: true },
   },
   data() {
     return {
-      objs: null,
-      groupProps: null,
-      customWatch: ["url"]
+      type: "svg",
+      customWatch: ["url"],
     };
   },
-  created() {
-    this.groupProps = this.$attrs; //any props that are not in the prop definition are assuemed to be for the group
-    this.createSVG();
-    this.createGroupAttrWatchers();
-    this.createFabricItemWatchers();
+  computed: {
+    canvas() {
+      return this.$canvas();
+    },
   },
   watch: {
-    url(newValue) {
-      if (this.objs) {
-        this.destroySVG();
-      }
+    url() {
       this.createSVG();
-    }
+    },
+    parentItem: {
+      handler(val) {
+        if (val) {
+          this.createSVG();
+          this.createEvents();
+          this.createWatchers();
+        }
+      },
+      immediate: true,
+    },
   },
   methods: {
-    createSVG() {
-      this.fabric.loadSVGFromURL(this.url, (objs, options) => {
-        this.objs = objs;
+    async createSVG() {
+      const group = new this.fabric.Group([], { id: this.id });
+      this.canvas.add(group);
+      this.fabric.loadSVGFromURL(this.url, (objects, options) => {
+        objects.forEach((o) => group.addWithUpdate(o, options));
+
+        group.set({ ...this.definedProps }).setCoords();
+        this.canvas.renderAll();
       });
     },
-    destroySVG() {
-      this.objs = null;
-    },
-    createFabricItemWatchers() {
-      //Setup Watchers for emmit sync option
-      EMIT_PROPS.forEach(prop => {
-        this.$watch("groupProps." + prop, watchEmitProp(prop, true));
-      });
-    },
-    createGroupAttrWatchers() {
-      //Setup prop watches to sync with fabric
-      Object.keys(this.$attrs).forEach(key => {
-        //Custom watch check to make sure the mixin also does not genearte a watch
-        if (typeof this.customWatch !== typeof undefined) {
-          if (this.customWatch.includes(key)) {
-            return;
-          }
-        }
-        this.$watch("$attrs." + key, watchAttrs(key, true));
-      });
-    }
   },
-  beforeDestroy() {
-    this.destroySVG();
-  }
+  inject: ["$canvas", "fabric"],
+  render(h) {
+    return this.$slots.default ? h("div", this.$slots.default) : undefined;
+  },
 };
 </script>
