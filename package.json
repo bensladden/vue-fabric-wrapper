@@ -41,7 +41,7 @@
 		"@vue/eslint-config-prettier": "6.0.0",
 		"babel-eslint": "10.1.0",
 		"bootstrap-vue": "2.14.0",
-		"core-js": "3.6.4",
+		"core-js": "3.14.0",
 		"eslint": "6.8.0",
 		"eslint-plugin-prettier": "3.1.2",
 		"eslint-plugin-vue": "6.2.2",
