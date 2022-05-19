@@ -29,9 +29,9 @@ export default {
     r1: { type: Number, default: 0 },
     r2: { type: Number, default: 0 },
     colorStops: {
-      type: Object,
+      type: Array,
       default: function() {
-        return {};
+        return [];
       }
     }
   },
@@ -102,7 +102,7 @@ export default {
   methods: {
     updategradient() {
       if (this.validOptions && this.item) {
-        this.item.setGradient(this.gradientKey, this.options);
+        this.item.set("fill", new this.fabric.Gradient(this.options));
       }
     }
   }

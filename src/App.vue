@@ -32,7 +32,10 @@
             :y1="0"
             :y2="1"
             :gradientUnits="'percentage'"
-            :colorStops="{ 0: '#000', 1: '#fff' }"
+            :colorStops="[
+              { offset: 0, color: '#000' },
+              { offset: 1, color: '#fff' }
+            ]"
           ></fabric-gradient>
           <fabric-shadow
             :offsetX="25"
