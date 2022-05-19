@@ -57,7 +57,10 @@ export default {
   methods: {
     applyshadow() {
       if (this.item) {
-        this.item.setShadow({ ...this.definedProps });
+        this.item.set(
+          "shadow",
+          new this.fabric.Shadow({ ...this.definedProps })
+        );
       }
     }
   }
